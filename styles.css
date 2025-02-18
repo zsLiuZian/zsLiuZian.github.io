@@ -1,0 +1,125 @@
+/* 基本样式 */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #a2c2f3, #ffffff); /* 渐变背景 */
+    height: 100%; /* 设置 body 高度为 100% */
+    overflow: hidden; /* 防止出现滚动条 */
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* 左侧导航栏样式 */
+  .sidebar {
+    width: 250px;
+    background-color: rgba(44, 62, 80, 0.8); /* 半透明的深蓝色背景 */
+    color: #fff;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 居中内容 */
+    backdrop-filter: blur(10px); /* 模糊背景 */
+  }
+  
+  .sidebar .nav-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 将链接居中 */
+  }
+  
+  .sidebar .nav-list li {
+    margin: 15px 0;
+  }
+  
+  .sidebar .nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+  }
+  
+  /* 高亮时放大字体 */
+  .sidebar .nav-list li a.active {
+    transform: scale(1.2); /* 放大字体 */
+    font-weight: 600; /* 加粗字体 */
+  }
+  
+  /* 右侧内容区域样式 */
+  .main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto; /* 保持允许竖向滚动，如果内容超出屏幕 */
+    max-height: 100vh; /* 限制最大高度为视口高度，防止滚动条 */
+  }
+  
+  .profile {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 居中头像和姓名 */
+  }
+  
+  .profile .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 5px solid #fff;
+  }
+  
+  .profile .name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .profile .bio {
+    font-size: 16px;
+    color: #7f8c8d;
+    font-weight: 400;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* 内容部分 */
+  .main-content h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .main-content p, .main-content ul {
+    color: #7f8c8d;
+  }
+  
+  .main-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  section {
+    margin-bottom: 50px;
+  }
+  
+  section h2 {
+    margin-bottom: 10px;
+  }
+  

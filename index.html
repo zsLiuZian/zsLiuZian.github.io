@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Personal Homepage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .container {
-            text-align: center;
-        }
-        img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-        }
-        h1 {
-            margin: 20px 0 10px;
-        }
-        p {
-            margin: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My GitHub Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <img src="images/photo.jpg" alt="Profile Photo">
-        <h1>Liu Zian</h1>
-        <p>Welcome to my GitHub personal homepage!</p>
-        <p>I am a software developer with a passion for creating innovative solutions.</p>
-    </div>
+  <div class="container">
+    <!-- Left Sidebar -->
+    <nav class="sidebar">
+      <ul class="nav-list">
+        <li><a href="#research" class="nav-link">Research Interests</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#interests" class="nav-link">Personal Interests</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right Content -->
+    <main class="main-content">
+      <div class="profile">
+        <img src="./images/photo.jpg" alt="Avatar" class="avatar">
+        <h3 class="name">Dr. John Doe</h3> <!-- 姓名 -->
+        <p class="bio">Hi, I'm a passionate researcher and developer. I focus on autonomous systems, control theory, and robotics. Always looking for new challenges!</p> <!-- 个人简介 -->
+      </div>
+
+      <section id="research">
+        <h2>Research Interests</h2>
+        <ul>
+          <li>Research Interest 1</li>
+          <li>Research Interest 2</li>
+          <li>Research Interest 3</li>
+        </ul>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <ul>
+          <li>Master's in Robotics - University X (2019 - 2021)</li>
+          <li>Bachelor's in Computer Science - University Y (2015 - 2019)</li>
+        </ul>
+      </section>
+
+      <section id="achievements">
+        <h2>Achievements</h2>
+        <ul>
+          <li>Achievement 1</li>
+          <li>Achievement 2</li>
+          <li>Achievement 3</li>
+        </ul>
+      </section>
+
+      <section id="interests">
+        <h2>Personal Interests</h2>
+        <p>Here you can mention your hobbies and interests, such as sports, books, or anything else you're passionate about!</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
