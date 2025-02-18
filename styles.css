@@ -74,8 +74,8 @@ body {
   }
   
   .profile .avatar {
-    width: 120px;
-    height: 120px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     margin-bottom: 20px;
     border: 5px solid #fff;
@@ -107,7 +107,7 @@ body {
   }
   
   .main-content p, .main-content ul {
-    color: #7f8c8d;
+    color: #101314;
   }
   
   .main-content ul {
