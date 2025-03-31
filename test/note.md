@@ -1,3 +1,8 @@
+---
+title: 我的笔记
+layout: default
+---
+
 ###  01 初见Rust
 
 ##### Rust工具链
