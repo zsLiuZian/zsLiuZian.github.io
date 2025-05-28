@@ -1,0 +1,2598 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的网页</title>
+    <style>
+        /* 在这里写CSS代码 */
+        .markdown-body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    color: #24292e;
+    background-color: #fff;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
+
+.markdown-body h1, 
+.markdown-body h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eaecef;
+}
+
+.markdown-body h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+.markdown-body h2 {
+    font-size: 1.5em;
+}
+
+.markdown-body h3 {
+    font-size: 1.25em;
+}
+
+.markdown-body h4 {
+    font-size: 1em;
+}
+
+.markdown-body h5 {
+    font-size: 0.875em;
+}
+
+.markdown-body h6 {
+    font-size: 0.85em;
+    color: #6a737d;
+}
+
+.markdown-body p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.markdown-body ul, 
+.markdown-body ol {
+    padding-left: 2em;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.markdown-body li {
+    margin-bottom: 0.25em;
+}
+
+.markdown-body blockquote {
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+    margin: 0 0 16px 0;
+}
+
+.markdown-body pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.markdown-body code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 85%;
+    background-color: rgba(27,31,35,0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+.markdown-body pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+.markdown-body table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: block;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 16px;
+}
+
+.markdown-body th {
+    font-weight: 600;
+}
+
+.markdown-body th, 
+.markdown-body td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.markdown-body tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body tr:nth-child(2n) {
+    background-color: #f6f8fa;
+}
+
+.markdown-body img {
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+}
+
+.markdown-body hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
+
+/* 可选：添加一些动画效果 */
+.markdown-body a {
+    color: #0366d6;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.markdown-body a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+        /* 更多样式... */
+    </style>
+</head>
+<body>
+<div class="markdown-body">
+
+<h3 class="code-line" data-line-start=0 data-line-end=1 ><a id="01_Rust_0"></a>01 初见Rust</h3>
+<h5 class="code-line" data-line-start=2 data-line-end=3 ><a id="Rust_2"></a>Rust工具链</h5>
+<pre><code class="has-line-data" data-line-start="5" data-line-end="9">rustup update stable
+rustup self uninstall
+rustup doc //打开本地文档
+</code></pre>
+<pre><code class="has-line-data" data-line-start="11" data-line-end="18">cargo new hello
+cargo run //先调用了cargo build
+cargo clean //清除存在的编译结果
+cargo build //默认debug
+cargo build --release
+cargo check //检查语法错误
+</code></pre>
+<pre><code class="has-line-data" data-line-start="20" data-line-end="23">rustc main.rs
+./main
+</code></pre>
+<h5 class="code-line" data-line-start=24 data-line-end=25 ><a id="_24"></a>宏</h5>
+<pre><code class="has-line-data" data-line-start="27" data-line-end="31" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!"</span>);
+}
+</code></pre>
+<h5 class="code-line" data-line-start=32 data-line-end=33 ><a id="_32"></a>函数</h5>
+<pre><code class="has-line-data" data-line-start="35" data-line-end="48" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">gcd</span></span>(<span class="hljs-keyword">mut</span> x: <span class="hljs-keyword">u64</span>, <span class="hljs-keyword">mut</span> y: <span class="hljs-keyword">u64</span>) -&gt; <span class="hljs-keyword">u64</span> {
+    <span class="hljs-built_in">assert!</span>(x != <span class="hljs-number">0</span> &amp;&amp; y != <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">while</span> y != <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">if</span> x &gt; y {
+            <span class="hljs-keyword">let</span> t = x; <span class="hljs-comment">//类型推断（let t: u64 = x）</span>
+            x = y;
+            y = t;
+        }
+        y %= x;
+    }
+    x
+}
+</code></pre>
+<h5 class="code-line" data-line-start=49 data-line-end=50 ><a id="_49"></a>测试函数</h5>
+<ul>
+<li class="has-line-data" data-line-start="51" data-line-end="53">仅用于测试，正常情况无需编译</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="54" data-line-end="59" class="language-rust"><span class="hljs-preprocessor">#[test]</span> <span class="hljs-comment">//称为attribute</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">test_gcd</span></span>() {
+    <span class="hljs-built_in">assert_eq!</span>(gcd(<span class="hljs-number">14</span>, <span class="hljs-number">15</span>), <span class="hljs-number">1</span>);
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="61" data-line-end="63">cargo test
+</code></pre>
+<h5 class="code-line" data-line-start=64 data-line-end=65 ><a id="_64"></a>命令行参数</h5>
+<pre><code class="has-line-data" data-line-start="67" data-line-end="89" class="language-rust"><span class="hljs-keyword">use</span> std::env;
+<span class="hljs-keyword">use</span> std::str::FromStr;
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> a = Vec::new();
+    <span class="hljs-keyword">for</span> arg <span class="hljs-keyword">in</span> env::args().skip(<span class="hljs-number">1</span>) { <span class="hljs-comment">//获得参数，忽略第一个</span>
+        a.push(u64::from_str(&amp;arg).expect(<span class="hljs-string">"error parsing argument"</span>));
+    }
+
+    <span class="hljs-keyword">if</span> a.len() == <span class="hljs-number">0</span> {
+        eprintln!(<span class="hljs-string">"Usage: gcd NUMBER ..."</span>); <span class="hljs-comment">//写入标准错误</span>
+        std::process::exit(<span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> d = a[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &amp;a[<span class="hljs-number">1</span>..] {
+        d = gcd1(d, *i);
+    }
+    
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?} 的最大公约数是 {}"</span>, a, d);
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="90" data-line-end="91">std：a crate</li>
+<li class="has-line-data" data-line-start="91" data-line-end="92">env：a module in std</li>
+<li class="has-line-data" data-line-start="92" data-line-end="94">FromStr：a trait in std::str</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="95" data-line-end="100" class="language-rust">pub trait FromStr {
+    type Err;
+    fn from_str(s: &amp;str) -&gt; Result&lt;Self, Self::Err&gt;;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="101" data-line-end="102">Vec：a struct in std::vec；re-exported by std::prelude</li>
+<li class="has-line-data" data-line-start="102" data-line-end="104">new：a method in Vec</li>
+</ul>
+<h5 class="code-line" data-line-start=104 data-line-end=105 ><a id="Rust_104"></a>Rust语言之怪现象</h5>
+<ul>
+<li class="has-line-data" data-line-start="106" data-line-end="108">变量缺省不可被修改，但总可以被覆盖</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="109" data-line-end="117" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> x = x + <span class="hljs-number">1</span>;
+{
+    <span class="hljs-keyword">let</span> x = x * <span class="hljs-number">2</span>;
+    <span class="hljs-comment">//x = 12</span>
+}
+<span class="hljs-comment">//x = 6</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="118" data-line-end="120">代码块具有值</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="121" data-line-end="126" class="language-rust"><span class="hljs-keyword">let</span> y = {
+    <span class="hljs-keyword">let</span> z = x * x;
+    z / <span class="hljs-number">2</span>
+}
+</code></pre>
+<h3 class="code-line" data-line-start=127 data-line-end=128 ><a id="02__127"></a>02 基础类型</h3>
+<h5 class="code-line" data-line-start=129 data-line-end=130 ><a id="_129"></a>整数类型</h5>
+<ul>
+<li class="has-line-data" data-line-start="131" data-line-end="132">无符号整数：u8，u16，u32，u64，u128，usize（内存地址宽度）</li>
+<li class="has-line-data" data-line-start="132" data-line-end="134">有符号整数：i8，i16，i32，i64，i128，isize（内存地址宽度）</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="135" data-line-end="139" class="language-rust"><span class="hljs-number">123u8</span>, -<span class="hljs-number">1680isize</span>
+<span class="hljs-number">0x0fffffi32</span>, -<span class="hljs-number">0o1670isize</span>, <span class="hljs-number">0b1100u8</span>
+<span class="hljs-number">0x_0f_ffff_i32</span>, -<span class="hljs-number">0o_1_670_isize</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="140" data-line-end="142">
+<p class="has-line-data" data-line-start="140" data-line-end="141">推断出多种可能类型，如果i32是其中一种则为i32，否则编译器报错</p>
+</li>
+<li class="has-line-data" data-line-start="142" data-line-end="144">
+<p class="has-line-data" data-line-start="142" data-line-end="143">ASCII字符字面量</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="145" data-line-end="149" class="language-rust">b<span class="hljs-string">'A'</span> <span class="hljs-comment">//=65u8</span>
+b<span class="hljs-string">'\x41'</span> <span class="hljs-comment">//=65u8</span>
+b<span class="hljs-string">'\''</span>, b<span class="hljs-string">'\\'</span>, b<span class="hljs-string">'\n'</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="150" data-line-end="152">as类型转换</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="153" data-line-end="156" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">1000_i16</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">u8</span>, <span class="hljs-number">232_u8</span>);
+<span class="hljs-built_in">assert_eq!</span>(-<span class="hljs-number">10_i8</span> <span class="hljs-keyword">as</span> u16, <span class="hljs-number">65526_u16</span>); <span class="hljs-comment">//符号位高位填补</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="157" data-line-end="159">附着方法</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="160" data-line-end="169" class="language-rust"><span class="hljs-number">2_u16</span>.pow(<span class="hljs-number">4</span>)
+u16::pow(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
+
+(-<span class="hljs-number">4_i32</span>).abs()
+i32::abs(-<span class="hljs-number">4</span>)
+
+<span class="hljs-number">0b1001_u8</span>.count_ones()
+u8::count_ones(<span class="hljs-number">0b1001</span>)
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="170" data-line-end="172">函数调用优先级高于一元前缀操作符优先级</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="173" data-line-end="176" class="language-rust"><span class="hljs-built_in">assert_eq!</span>((-<span class="hljs-number">4_i32</span>).abs(), <span class="hljs-number">4</span>);
+<span class="hljs-built_in">assert_eq!</span>(-<span class="hljs-number">4_i32</span>.abs(), -<span class="hljs-number">4</span>);
+</code></pre>
+<h5 class="code-line" data-line-start=177 data-line-end=178 ><a id="_177"></a>整数运算溢出</h5>
+<pre><code class="has-line-data" data-line-start="180" data-line-end="186" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> num = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">loop</span> {
+    num *= <span class="hljs-number">2</span>;
+}
+<span class="hljs-comment">//debug模式下panic</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="187" data-line-end="189">checked operations</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="190" data-line-end="195" class="language-rust"><span class="hljs-keyword">loop</span> {
+    num = num.checked_mul(<span class="hljs-number">2</span>).expect(<span class="hljs-string">"overflowed"</span>);
+}
+<span class="hljs-comment">//dubug和release模式下</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="197" data-line-end="202" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">10_u8</span>.checked_add(<span class="hljs-number">2</span>), <span class="hljs-built_in">Some</span>(<span class="hljs-number">30</span>));
+<span class="hljs-built_in">assert_eq!</span>((-<span class="hljs-number">128_i8</span>).checked_div(-<span class="hljs-number">1</span>), <span class="hljs-built_in">None</span>);
+<span class="hljs-comment">//None.expect("xxx")：导致panic，输出xxx</span>
+<span class="hljs-comment">//Some(num).expect("xxx")：返回num</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="203" data-line-end="207">
+<p class="has-line-data" data-line-start="203" data-line-end="204">wrapping operations</p>
+<p class="has-line-data" data-line-start="205" data-line-end="206">与release模式下的缺省溢出行为完全相同</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="208" data-line-end="210" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">500_u16</span>.wrapping_mul(<span class="hljs-number">500</span>), <span class="hljs-number">53392</span>);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="211" data-line-end="215">
+<p class="has-line-data" data-line-start="211" data-line-end="212">overflowing operations</p>
+<p class="has-line-data" data-line-start="213" data-line-end="214">wrapping operation下的计算结果</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="216" data-line-end="219" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">255_u8</span>.overflowing_sub(<span class="hljs-number">2</span>), (<span class="hljs-number">253</span>, <span class="hljs-keyword">false</span>));
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">5_u16</span>.overflowing_shl(<span class="hljs-number">17</span>), (<span class="hljs-number">10</span>, <span class="hljs-keyword">true</span>)); <span class="hljs-comment">//17 % 16 = 1</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="220" data-line-end="226">
+<p class="has-line-data" data-line-start="220" data-line-end="221">saturating operations</p>
+<p class="has-line-data" data-line-start="222" data-line-end="223">类型表示范围内距离结果最近的值</p>
+<p class="has-line-data" data-line-start="224" data-line-end="225">除、取余、位移没有saturating operations</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="227" data-line-end="229" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">32760_i16</span>.saturating_add(<span class="hljs-number">10</span>), <span class="hljs-number">32767</span>);
+</code></pre>
+<h5 class="code-line" data-line-start=230 data-line-end=231 ><a id="_230"></a>浮点数类型</h5>
+<ul>
+<li class="has-line-data" data-line-start="232" data-line-end="233">f32、f64</li>
+<li class="has-line-data" data-line-start="233" data-line-end="235">无法推断则默认为f64</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="236" data-line-end="243" class="language-rust"><span class="hljs-number">31415.926e-4f64</span>
+f64::MAX
+f64::MIN
+f64::INFINITY
+f64::NEG_INFINITY
+f64::NAN
+</code></pre>
+<pre><code class="has-line-data" data-line-start="245" data-line-end="248" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, f64::NAN == f64::NAN); <span class="hljs-comment">//false</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, f64::is_nan(f64::NAN)); <span class="hljs-comment">//true</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="250" data-line-end="253" class="language-rust"><span class="hljs-keyword">let</span> a = <span class="hljs-number">0.0</span> / <span class="hljs-number">0.0</span>; <span class="hljs-comment">//NAN</span>
+<span class="hljs-keyword">let</span> b = f64::sqrt(-<span class="hljs-number">1.0</span>); <span class="hljs-comment">//NAN </span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="254" data-line-end="256">常量</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="257" data-line-end="262" class="language-rust"><span class="hljs-keyword">use</span> std::f64::consts::PI;
+
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, PI);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:/20}"</span>, PI); <span class="hljs-comment">//20位，不够则补0</span>
+</code></pre>
+<h5 class="code-line" data-line-start=263 data-line-end=264 ><a id="size_of_263"></a>工具函数size_of</h5>
+<pre><code class="has-line-data" data-line-start="266" data-line-end="268" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, std::mem::size_of::&lt;isize&gt;());
+</code></pre>
+<h5 class="code-line" data-line-start=269 data-line-end=270 ><a id="_269"></a>布尔类型</h5>
+<ul>
+<li class="has-line-data" data-line-start="271" data-line-end="272">1字节</li>
+<li class="has-line-data" data-line-start="272" data-line-end="274">as操作符可将bool转为整数，无法将数字转为bool</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="275" data-line-end="279" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-keyword">false</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">i32</span>, <span class="hljs-number">0</span>);
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-keyword">true</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">f32</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">//error</span>
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">bool</span>, <span class="hljs-keyword">true</span>); <span class="hljs-comment">//error</span>
+</code></pre>
+<h5 class="code-line" data-line-start=280 data-line-end=281 ><a id="_280"></a>字符类型</h5>
+<ul>
+<li class="has-line-data" data-line-start="282" data-line-end="284">
+<p class="has-line-data" data-line-start="282" data-line-end="283">4字节</p>
+</li>
+<li class="has-line-data" data-line-start="284" data-line-end="286">
+<p class="has-line-data" data-line-start="284" data-line-end="285">字面量</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="287" data-line-end="290" class="language-rust"><span class="hljs-string">'\xHH'</span> <span class="hljs-comment">//ASCII</span>
+'\u{HHHHHH}' <span class="hljs-comment">//Unicode</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="291" data-line-end="293">char转换为整数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="294" data-line-end="296" class="language-rust"><span class="hljs-built_in">assert_eq!</span>('👍' <span class="hljs-keyword">as</span> <span class="hljs-keyword">u32</span>, <span class="hljs-number">0x1f44d</span>);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="297" data-line-end="299">u8转换为char</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="300" data-line-end="303" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">97_u8</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>, <span class="hljs-string">'a'</span>);
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">97_u16</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">char</span>, <span class="hljs-string">'a'</span>); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="304" data-line-end="306">u32转换为char</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="307" data-line-end="312" class="language-rust"><span class="hljs-keyword">use</span> std::<span class="hljs-keyword">char</span>
+
+<span class="hljs-built_in">assert_eq!</span>(char::from_u32(<span class="hljs-number">0x2764</span>), <span class="hljs-built_in">Some</span>(❤));
+<span class="hljs-built_in">assert_eq!</span>(char::from_u32(<span class="hljs-number">0x110000</span>), <span class="hljs-built_in">None</span>);
+</code></pre>
+<h5 class="code-line" data-line-start=313 data-line-end=314 ><a id="_313"></a>元组类型</h5>
+<pre><code class="has-line-data" data-line-start="316" data-line-end="324" class="language-rust"><span class="hljs-keyword">let</span> t = (<span class="hljs-number">1</span>, <span class="hljs-keyword">false</span>, <span class="hljs-number">0.1</span>); <span class="hljs-comment">//类型推断</span>
+<span class="hljs-keyword">let</span> t1: (<span class="hljs-keyword">i64</span>, <span class="hljs-keyword">bool</span>, <span class="hljs-keyword">f32</span>) = (t.<span class="hljs-number">1</span>, t.<span class="hljs-number">2</span>, t.<span class="hljs-number">3</span>);
+
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, t);
+
+<span class="hljs-keyword">let</span> i: usize = <span class="hljs-number">1</span>;
+pritln!(<span class="hljs-string">"{}"</span>, t[i]); <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="326" data-line-end="332" class="language-rust"><span class="hljs-keyword">let</span> t = (<span class="hljs-number">1</span>, <span class="hljs-keyword">false</span>, ); <span class="hljs-comment">//最后一个值后可添加逗号</span>
+
+<span class="hljs-keyword">let</span> t1: (<span class="hljs-keyword">i32</span>, ) = (<span class="hljs-number">1</span> + <span class="hljs-number">1</span>, ); <span class="hljs-comment">//1元组最后必须添加逗号</span>
+
+<span class="hljs-keyword">let</span> t0: () = (); <span class="hljs-comment">//0元组不能出现逗号</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="333" data-line-end="335">作为函数返回值</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="336" data-line-end="340" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(x: <span class="hljs-keyword">i32</span>, y: <span class="hljs-keyword">i32</span>) -&gt; (<span class="hljs-keyword">i32</span>, <span class="hljs-keyword">i32</span>) {}
+
+<span class="hljs-keyword">let</span> (x, y) = f(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="342" data-line-end="344" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(x : <span class="hljs-keyword">i32</span>) {} <span class="hljs-comment">//实际返回0-tuple</span>
+</code></pre>
+<h5 class="code-line" data-line-start=345 data-line-end=346 ><a id="_345"></a>指针类型</h5>
+<ul>
+<li class="has-line-data" data-line-start="347" data-line-end="349">引用（Reference）</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="350" data-line-end="360" class="language-rust"><span class="hljs-keyword">let</span> v: <span class="hljs-keyword">i32</span> = <span class="hljs-number">123</span>;
+<span class="hljs-keyword">let</span> r = &amp;v;
+<span class="hljs-keyword">let</span> r1: &amp;<span class="hljs-keyword">i32</span> = &amp;v;
+
+<span class="hljs-keyword">let</span> v1: <span class="hljs-keyword">i32</span> = *r; <span class="hljs-comment">//去引用（dereference）</span>
+*r = <span class="hljs-number">456</span>; <span class="hljs-comment">//error，只读</span>
+
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:p}"</span>, r); <span class="hljs-comment">//地址</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r); <span class="hljs-comment">//123</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="362" data-line-end="366" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v: <span class="hljs-keyword">i32</span> = <span class="hljs-number">123</span>;
+<span class="hljs-keyword">let</span> r = &amp;<span class="hljs-keyword">mut</span> v;
+*r = <span class="hljs-number">456</span>;
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="367" data-line-end="371">
+<p class="has-line-data" data-line-start="367" data-line-end="368">Box</p>
+<p class="has-line-data" data-line-start="369" data-line-end="370">值存在堆中</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="372" data-line-end="377" class="language-rust"><span class="hljs-keyword">let</span> v = <span class="hljs-number">123</span>;
+<span class="hljs-keyword">let</span> b = Box::new(v);
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> b1: <span class="hljs-built_in">Box</span>&lt;<span class="hljs-keyword">i32</span>&gt; = Box::new(v);
+*b1 = <span class="hljs-number">456</span>;
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="378" data-line-end="380">raw pointer</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="381" data-line-end="390" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> ptr_x = &amp;<span class="hljs-keyword">mut</span> x <span class="hljs-keyword">as</span> *<span class="hljs-keyword">mut</span> <span class="hljs-keyword">i32</span>;
+<span class="hljs-keyword">let</span> y = Box::new(<span class="hljs-number">20</span>);
+<span class="hljs-keyword">let</span> ptr_y = &amp;*y <span class="hljs-keyword">as</span> *<span class="hljs-keyword">const</span> <span class="hljs-keyword">i32</span>;
+
+<span class="hljs-keyword">unsafe</span> {
+    *ptr_x += *ptr_y;
+}
+</code></pre>
+<h5 class="code-line" data-line-start=391 data-line-end=392 ><a id="_391"></a>数组、向量、切片</h5>
+<ul>
+<li class="has-line-data" data-line-start="393" data-line-end="397">
+<p class="has-line-data" data-line-start="393" data-line-end="394">array 数组</p>
+<p class="has-line-data" data-line-start="395" data-line-end="396">缺省被放置在栈中</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="398" data-line-end="402" class="language-rust"><span class="hljs-keyword">let</span> a: [<span class="hljs-keyword">u32</span>; <span class="hljs-number">5</span>] = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+<span class="hljs-keyword">let</span> b = [<span class="hljs-keyword">true</span>, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">true</span>];
+<span class="hljs-keyword">let</span> c = [<span class="hljs-number">0</span>; <span class="hljs-number">100</span>];
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="403" data-line-end="407">
+<p class="has-line-data" data-line-start="403" data-line-end="404">vector 向量</p>
+<p class="has-line-data" data-line-start="405" data-line-end="406">自身在栈中，元素在堆中</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="408" data-line-end="414" class="language-rust"><span class="hljs-keyword">let</span> v: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">i32</span>&gt; = <span class="hljs-built_in">vec!</span>[];
+<span class="hljs-keyword">let</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>; <span class="hljs-number">10</span>];
+v.insert(<span class="hljs-number">3</span>, <span class="hljs-number">10</span>);
+v.remove(<span class="hljs-number">1</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="416" data-line-end="423" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> vec: <span class="hljs-built_in">Vec</span>&lt;u16&gt; = Vec::with_capacity(<span class="hljs-number">10</span>);
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">10</span> {
+    vec.push(i);
+}
+vec.push(<span class="hljs-number">10</span>); 
+<span class="hljs-built_in">assert!</span>(vec.capacity() &gt;= <span class="hljs-number">11</span>); <span class="hljs-comment">//内存重分配</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="425" data-line-end="430" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">vec!</span>[];
+v.push(<span class="hljs-number">1</span>);
+<span class="hljs-built_in">assert_eq!</span>(v.pop(), <span class="hljs-built_in">Some</span>(<span class="hljs-number">1</span>));
+<span class="hljs-built_in">assert_eq!</span>(v.pop(), <span class="hljs-built_in">None</span>);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="431" data-line-end="433">slice 切片</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="434" data-line-end="443" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> a = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> s = &amp;a[<span class="hljs-number">0</span>..<span class="hljs-number">2</span>]; <span class="hljs-comment">//[0, 2)</span>
+
+<span class="hljs-keyword">let</span> s = &amp;a; <span class="hljs-comment">//不是切片</span>
+<span class="hljs-keyword">let</span> s: &amp;[u16] = &amp;a; <span class="hljs-comment">//是切片</span>
+<span class="hljs-keyword">let</span> s = &amp;a[..];
+<span class="hljs-keyword">let</span> s = &amp;a[<span class="hljs-number">1</span>..];
+<span class="hljs-keyword">let</span> s = &amp;a[..<span class="hljs-number">3</span>];
+</code></pre>
+<pre><code class="has-line-data" data-line-start="445" data-line-end="452" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(s: &amp;[u16]) {}
+
+<span class="hljs-keyword">let</span> a = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">let</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+f(&amp;a);
+f(&amp;v);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="454" data-line-end="458" class="language-rust"><span class="hljs-comment">//slice上附着的所有方法都适用于array和vector</span>
+v.sort();
+v.reverse();
+</code></pre>
+<h5 class="code-line" data-line-start=459 data-line-end=460 ><a id="_459"></a>字符串类型</h5>
+<pre><code class="has-line-data" data-line-start="462" data-line-end="475" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
+    <span class="hljs-keyword">let</span> s = <span class="hljs-string">"\"hello world\""</span>;
+    
+    <span class="hljs-keyword">let</span> s = <span class="hljs-string">"hello
+    world"</span>; <span class="hljs-comment">//包含每一行前面空格</span>
+    
+    <span class="hljs-keyword">let</span> s = <span class="hljs-string">"hello\
+    world"</span>; <span class="hljs-comment">//一行</span>
+    
+    <span class="hljs-keyword">let</span> s = <span class="hljs-string">r"\"</span>; <span class="hljs-comment">//停止转义操作，无法放置"字符</span>
+    <span class="hljs-keyword">let</span> s = <span class="hljs-string">r##"\"##</span>; <span class="hljs-comment">//可以放置"字符</span>
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="476" data-line-end="477">内存中采用UTF-8编码，不同字符编码长度可能不同</li>
+<li class="has-line-data" data-line-start="477" data-line-end="479">两种类型字符串：String（特殊的Vec&lt;u8&gt;）、&amp;str（特殊的&amp;[u8]）</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="480" data-line-end="486" class="language-rust"><span class="hljs-keyword">let</span> v = <span class="hljs-string">"hello"</span>.to_string();
+<span class="hljs-keyword">let</span> v = String::from(<span class="hljs-string">"world"</span>);
+
+<span class="hljs-keyword">let</span> s = &amp;v[<span class="hljs-number">1</span>..<span class="hljs-number">4</span>];
+<span class="hljs-keyword">let</span> l = <span class="hljs-string">"hello world"</span>; <span class="hljs-comment">//类型&amp;str，所引用字符串在内存的只读区域中</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="488" data-line-end="491" class="language-rust"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">format!</span>(<span class="hljs-string">"hello {}"</span>, <span class="hljs-string">"world"</span>);
+<span class="hljs-keyword">let</span> s = <span class="hljs-built_in">format!</span>(<span class="hljs-string">"x = {x}"</span>, x = <span class="hljs-number">1</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="493" data-line-end="499" class="language-rust"><span class="hljs-built_in">assert_eq!</span>([<span class="hljs-string">"hello"</span>, <span class="hljs-string">"world"</span>].concat(), <span class="hljs-string">"helloworld"</span>);
+<span class="hljs-built_in">assert_eq!</span>([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]].concat(), [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
+<span class="hljs-built_in">assert_eq!</span>([<span class="hljs-string">"hello"</span>, <span class="hljs-string">"world"</span>].join(<span class="hljs-string">" "</span>), <span class="hljs-string">"hello world"</span>);
+<span class="hljs-built_in">assert_eq!</span>([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]].join(&amp;<span class="hljs-number">0</span>), [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
+<span class="hljs-built_in">assert_eq!</span>([[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]].join(&amp;[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>][..]), [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="501" data-line-end="506" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-string">"中文"</span>.len, <span class="hljs-number">6</span>);
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-string">"中文"</span>.chars().count(), <span class="hljs-number">2</span>);
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-string">"English"</span>.len(), <span class="hljs-number">7</span>);
+<span class="hljs-built_in">assert_eq!</span>(<span class="hljs-string">"English"</span>.chars().count(), <span class="hljs-number">7</span>);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="507" data-line-end="509">mutable String</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="510" data-line-end="516" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = String::from(<span class="hljs-string">"hello"</span>);
+s.push(<span class="hljs-string">' '</span>);
+s.push_str(<span class="hljs-string">"world"</span>);
+s.insert(<span class="hljs-number">5</span>, <span class="hljs-string">' '</span>);
+s.insert_str(<span class="hljs-number">11</span>, <span class="hljs-string">"!!"</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="518" data-line-end="522" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = String::from(<span class="hljs-string">"中文"</span>)；
+s.push(<span class="hljs-string">'串'</span>)；
+s.insert(<span class="hljs-number">1</span>, <span class="hljs-string">'E'</span>); <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="524" data-line-end="527" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> z = String::from(<span class="hljs-string">"English"</span>);
+z[<span class="hljs-number">0</span>] = <span class="hljs-string">'e'</span>; <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="528" data-line-end="530">mutable &amp;str</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="531" data-line-end="535" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> z = String::from(<span class="hljs-string">"English"</span>);
+<span class="hljs-keyword">let</span> s = &amp;<span class="hljs-keyword">mut</span> z[<span class="hljs-number">0</span>..<span class="hljs-number">3</span>];
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s.make_ascii_lowercase());
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="536" data-line-end="538">比较操作符</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="539" data-line-end="543" class="language-rust"><span class="hljs-keyword">let</span> a = <span class="hljs-string">"Dog"</span>.to_lowecase() == <span class="hljs-string">"dog"</span>; <span class="hljs-comment">//true</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-string">"Dog"</span> != <span class="hljs-string">"dog"</span>; <span class="hljs-comment">//true</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-string">"Dog"</span> &gt; <span class="hljs-string">"dog"</span>; <span class="hljs-comment">//false</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="545" data-line-end="549" class="language-rust"><span class="hljs-keyword">let</span> s0 = <span class="hljs-string">"th\u{e9}"</span>; <span class="hljs-comment">//thé</span>
+<span class="hljs-keyword">let</span> s1 = <span class="hljs-string">"the\u{301}"</span>; <span class="hljs-comment">//thé</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s0 == s1); <span class="hljs-comment">//false</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="550" data-line-end="554">
+<p class="has-line-data" data-line-start="550" data-line-end="551">其他常用方法</p>
+<p class="has-line-data" data-line-start="552" data-line-end="553">当在String上调用&amp;str上的方法时编译器会自动把String转换为&amp;str</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="555" data-line-end="564" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, <span class="hljs-string">"Hello, world!"</span>.contains(<span class="hljs-string">"world"</span>)); <span class="hljs-comment">//true</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, <span class="hljs-string">"Hello, world!"</span>.replace(<span class="hljs-string">"world"</span>, <span class="hljs-string">"dog"</span>)); <span class="hljs-comment">//Hello, dog!</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, <span class="hljs-string">" Hello  \n  "</span>.trim() = <span class="hljs-string">"Hello"</span>); <span class="hljs-comment">//true</span>
+
+<span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> <span class="hljs-string">"Hello world and dog"</span>.split(<span class="hljs-string">""</span>) {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, word);
+}
+
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="565" data-line-end="573">
+<p class="has-line-data" data-line-start="565" data-line-end="566">Byte String</p>
+<p class="has-line-data" data-line-start="567" data-line-end="568">本质是[u8; N]</p>
+<p class="has-line-data" data-line-start="569" data-line-end="570">String literal的各种语法都适用于Byte String（Raw Byte String的前缀的br）</p>
+<p class="has-line-data" data-line-start="571" data-line-end="572">String和&amp;str上的方法不适用于Byte String</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="574" data-line-end="577" class="language-rust"><span class="hljs-keyword">let</span> s = b<span class="hljs-string">"GET"</span>;
+<span class="hljs-built_in">assert_eq!</span>(s, &amp;[b<span class="hljs-string">'G'</span>, b<span class="hljs-string">'E'</span>, b<span class="hljs-string">'T'</span>]);
+</code></pre>
+<h5 class="code-line" data-line-start=578 data-line-end=579 ><a id="_578"></a>类型别名</h5>
+<pre><code class="has-line-data" data-line-start="581" data-line-end="584" class="language-rust"><span class="hljs-keyword">type</span> <span class="hljs-title">Bytes</span> = <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u8</span>&gt;;
+<span class="hljs-keyword">let</span> a: Bytes = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+</code></pre>
+<h5 class="code-line" data-line-start=585 data-line-end=586 ><a id="_585"></a>用户自定义类型</h5>
+<ul>
+<li class="has-line-data" data-line-start="587" data-line-end="589">struct</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="590" data-line-end="613" class="language-rust"><span class="hljs-keyword">struct</span> Image {
+    size: (usize, usize),
+    pixels: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u32</span>&gt;
+}
+<span class="hljs-keyword">impl</span> Image {
+    <span class="hljs-comment">//type-associated function</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(w: usize, h: usize) -&gt; Image {
+        Image {
+            pixels: <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>; w * h];
+            size: (w, h);
+        }
+    }
+    <span class="hljs-comment">//value-associated function</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">sizes</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; (usize, usize) {
+        <span class="hljs-keyword">self</span>.size
+    }
+}
+
+<span class="hljs-keyword">let</span> image = Image {
+    pixels: <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>; width * height],
+    size: (width, height)
+};
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="614" data-line-end="616">enum</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="617" data-line-end="645" class="language-rust"><span class="hljs-preprocessor">#[derive(PartialEq)]</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title">Ordering</span> {
+    Less,
+    Equal,
+    Greater
+}
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">cmp</span></span>(a: <span class="hljs-keyword">i32</span>, b: <span class="hljs-keyword">i32</span>) -&gt; Ordering {
+    <span class="hljs-keyword">if</span> a &lt; b {
+        Ordering::Less
+    } 
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> a &gt; b {
+        Ordering::Greater
+    } 
+    <span class="hljs-keyword">else</span> {
+        Ordering::Equal
+    }
+}
+<span class="hljs-keyword">impl</span> Ordering {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">is_eq</span></span>(<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-keyword">bool</span> {
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span> == Ordering::Equal {
+            <span class="hljs-keyword">true</span>
+        } 
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">false</span>
+        }
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="647" data-line-end="667" class="language-rust"><span class="hljs-preprocessor">#[derive(PartialEq)]</span>
+<span class="hljs-keyword">enum</span> <span class="hljs-title">Color</span> {
+    RGB(<span class="hljs-keyword">u8</span>, <span class="hljs-keyword">u8</span>, <span class="hljs-keyword">u8</span>),
+    Gray(<span class="hljs-keyword">u8</span>)
+}
+<span class="hljs-keyword">impl</span> Color {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">is_gray</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-keyword">bool</span> {
+        <span class="hljs-keyword">match</span> <span class="hljs-keyword">self</span> {
+            Color::Gray(_) =&gt; <span class="hljs-keyword">true</span>,
+            Color::RGB(a, b, c) =&gt;
+                <span class="hljs-keyword">if</span> a == b &amp;&amp; b == c {
+                    <span class="hljs-keyword">true</span>
+                } 
+                <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">false</span>    
+                }
+        }
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="669" data-line-end="683" class="language-rust"><span class="hljs-comment">//std::option::Option</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title">Option</span>&lt;T&gt; {
+    <span class="hljs-built_in">None</span>,
+    <span class="hljs-built_in">Some</span>(T),
+}
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">divide</span></span>(x: <span class="hljs-keyword">f64</span>, y: <span class="hljs-keyword">f64</span>) -&gt; <span class="hljs-built_in">Option</span>&lt;<span class="hljs-keyword">f64</span>&gt; {
+    <span class="hljs-keyword">if</span> y == <span class="hljs-number">0.0</span> {
+        <span class="hljs-built_in">None</span>
+    } 
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">Some</span>(x / y)
+    }
+}
+</code></pre>
+<h5 class="code-line" data-line-start=684 data-line-end=685 ><a id="RustMemory_684"></a>Rust关于Memory的若干基本概念</h5>
+<ul>
+<li class="has-line-data" data-line-start="686" data-line-end="692">
+<p class="has-line-data" data-line-start="686" data-line-end="687">Value</p>
+<p class="has-line-data" data-line-start="688" data-line-end="689">Type + Byte Representation</p>
+<p class="has-line-data" data-line-start="690" data-line-end="691">Independent of where the value is stored</p>
+</li>
+<li class="has-line-data" data-line-start="692" data-line-end="698">
+<p class="has-line-data" data-line-start="692" data-line-end="693">Place</p>
+<p class="has-line-data" data-line-start="694" data-line-end="695">A location in memory that can hold a value</p>
+<p class="has-line-data" data-line-start="696" data-line-end="697">can be on stack, the heap, …</p>
+</li>
+<li class="has-line-data" data-line-start="698" data-line-end="704">
+<p class="has-line-data" data-line-start="698" data-line-end="699">Variable</p>
+<p class="has-line-data" data-line-start="700" data-line-end="701">A place on the stack</p>
+<p class="has-line-data" data-line-start="702" data-line-end="703">a named value slot on the stack</p>
+</li>
+<li class="has-line-data" data-line-start="704" data-line-end="710">
+<p class="has-line-data" data-line-start="704" data-line-end="705">Pointer</p>
+<p class="has-line-data" data-line-start="706" data-line-end="707">A value that holds the address of a place</p>
+<p class="has-line-data" data-line-start="708" data-line-end="709">That is, a pointer points to a place</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="711" data-line-end="721" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> v = &amp;x;
+<span class="hljs-comment">//Value: 5k, &amp;x</span>
+<span class="hljs-comment">//Place: x, v</span>
+<span class="hljs-comment">//Variable: x, v</span>
+<span class="hljs-comment">//Pointer: &amp;x</span>
+
+<span class="hljs-comment">//let x = vec![0, 1, 2];</span>
+<span class="hljs-comment">//let y = &amp;x[1..3];</span>
+</code></pre>
+<h3 class="code-line" data-line-start=724 data-line-end=725 ><a id="03__724"></a>03 所有权与所有权转移</h3>
+<h5 class="code-line" data-line-start=726 data-line-end=727 ><a id="_726"></a>示例</h5>
+<ul>
+<li class="has-line-data" data-line-start="728" data-line-end="730">C++</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="731" data-line-end="739" class="language-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> *ptr;
+{
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> s = <span class="hljs-string">"Hello world"</span>;
+    ptr = &amp;s;
+}
+<span class="hljs-comment">//无法访问变量s</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; *ptr; <span class="hljs-comment">//可以访问到s原本空间</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="740" data-line-end="742">Rust</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="743" data-line-end="751" class="language-rust"><span class="hljs-keyword">let</span> ptr: &amp;<span class="hljs-built_in">String</span>;
+{
+    <span class="hljs-keyword">let</span> s = String::from(<span class="hljs-string">"Hello world"</span>);
+    ptr = &amp;s; <span class="hljs-comment">//error</span>
+}
+<span class="hljs-comment">//无法访问变量s</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, ptr);
+</code></pre>
+<h5 class="code-line" data-line-start=752 data-line-end=753 ><a id="Rust_752"></a>Rust中的所有权</h5>
+<ul>
+<li class="has-line-data" data-line-start="754" data-line-end="762">
+<p class="has-line-data" data-line-start="754" data-line-end="755">在任意时刻</p>
+<p class="has-line-data" data-line-start="756" data-line-end="757">1、一个值具有唯一一个所有者</p>
+<p class="has-line-data" data-line-start="758" data-line-end="759">2、每一个变量，作为根节点，出现在一棵所有权关系树中</p>
+<p class="has-line-data" data-line-start="760" data-line-end="761">3、当一个变量离开当前作用域后，它所有权关系树中的所有值都无法再被访问，其中所有存在堆中的值所占空间会被自动释放</p>
+</li>
+<li class="has-line-data" data-line-start="762" data-line-end="772">
+<p class="has-line-data" data-line-start="762" data-line-end="763">扩展/软化措施</p>
+<p class="has-line-data" data-line-start="764" data-line-end="765">1、所有权转移</p>
+<p class="has-line-data" data-line-start="766" data-line-end="767">2、简单变量豁免</p>
+<p class="has-line-data" data-line-start="768" data-line-end="769">3、引用计数指针类型</p>
+<p class="has-line-data" data-line-start="770" data-line-end="771">4、borrow a ref to a value</p>
+</li>
+</ul>
+<h5 class="code-line" data-line-start=772 data-line-end=773 ><a id="_772"></a>所有权转移</h5>
+<ul>
+<li class="has-line-data" data-line-start="774" data-line-end="782">
+<p class="has-line-data" data-line-start="774" data-line-end="775">对no-copy type的值，发生如下操作时</p>
+<p class="has-line-data" data-line-start="776" data-line-end="777">1、赋给一个变量</p>
+<p class="has-line-data" data-line-start="778" data-line-end="779">2、作为参数传入函数调用</p>
+<p class="has-line-data" data-line-start="780" data-line-end="781">3、在函数调用中返回</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="783" data-line-end="787" class="language-rust"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> t = s; <span class="hljs-comment">//s栈空间的值拷贝到t的栈空间</span>
+<span class="hljs-keyword">let</span> u = s; <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="788" data-line-end="794">
+<p class="has-line-data" data-line-start="788" data-line-end="789">Python：赋值成本低（增加引用计数），内存管理成本高（运行时垃圾回收、循环引用难处理）</p>
+<p class="has-line-data" data-line-start="790" data-line-end="791">C++：赋值成本高（深层复制），内存管理成本低</p>
+<p class="has-line-data" data-line-start="792" data-line-end="793">Rust：赋值成本低（近拷贝栈空间），内存管理成本低</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="795" data-line-end="798" class="language-rust"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> t = s.clone(); <span class="hljs-comment">//实现C++赋值行为</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="800" data-line-end="803" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = String::from(<span class="hljs-string">"abc"</span>);
+s = String::from(<span class="hljs-string">"def"</span>); <span class="hljs-comment">//原来堆空间释放</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="804" data-line-end="808">
+<p class="has-line-data" data-line-start="804" data-line-end="805">条件语句</p>
+<p class="has-line-data" data-line-start="806" data-line-end="807">若变量有可能在某一个分支被剥夺所有权，即使运行没经过该分支也不能读该变量</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="809" data-line-end="816" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> c = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">if</span> c &lt; <span class="hljs-number">0</span> {
+    f(x);
+} 
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, x); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="817" data-line-end="819">循环语句</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="820" data-line-end="827" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> len = x.len();
+<span class="hljs-keyword">while</span> len &gt; <span class="hljs-number">0</span> {
+    f(x); <span class="hljs-comment">//error</span>
+    len -= <span class="hljs-number">1</span>;
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="829" data-line-end="837" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> x = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> len = x.len();
+<span class="hljs-keyword">while</span> len &gt; <span class="hljs-number">0</span> {
+    f(x);
+    x = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+    len -= <span class="hljs-number">1</span>;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="838" data-line-end="844">
+<p class="has-line-data" data-line-start="838" data-line-end="839">数组、向量、切片</p>
+<p class="has-line-data" data-line-start="840" data-line-end="841">不允许仅通过赋值把某位置上元素的所有权转移</p>
+<p class="has-line-data" data-line-start="842" data-line-end="843">多数情况不必转移所有权，取得元素的引用可能就足够</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="845" data-line-end="848" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">vec!</span>[String::from(<span class="hljs-string">"abc"</span>), String::from(<span class="hljs-string">"def"</span>), String::from(<span class="hljs-string">"ghi"</span>), String::from(<span class="hljs-string">"jkl"</span>)];
+<span class="hljs-keyword">let</span> x = v[<span class="hljs-number">1</span>]; <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="850" data-line-end="854" class="language-rust"><span class="hljs-comment">//从向量中，成本高</span>
+<span class="hljs-keyword">let</span> e = v.remove(<span class="hljs-number">1</span>);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, v); <span class="hljs-comment">//["abc", "ghi", "jkl"]</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="856" data-line-end="860" class="language-rust"><span class="hljs-comment">//从向量中</span>
+<span class="hljs-keyword">let</span> e = v.swap_remove(<span class="hljs-number">1</span>);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, v); <span class="hljs-comment">//["abc", "jkl", "ghi"]</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="862" data-line-end="866" class="language-rust"><span class="hljs-comment">//从向量中</span>
+<span class="hljs-keyword">let</span> e = v.pop().expect(<span class="hljs-string">"empty"</span>);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, v); <span class="hljs-comment">//["abc", "def", "ghi"]</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="868" data-line-end="872" class="language-rust"><span class="hljs-comment">//从向量/数组/切片中</span>
+<span class="hljs-keyword">let</span> e = std::mem::replace(&amp;<span class="hljs-keyword">mut</span> v[<span class="hljs-number">1</span>], String::from(<span class="hljs-string">"dog"</span>));
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, v); <span class="hljs-comment">//["abc", "dog", "ghi", "jkl"]</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="874" data-line-end="878" class="language-rust"><span class="hljs-comment">//必须是具有缺省值的类型</span>
+<span class="hljs-keyword">let</span> e = std::mem::take(&amp;<span class="hljs-keyword">mut</span> v[<span class="hljs-number">1</span>]);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, v); <span class="hljs-comment">//["abc", "", "ghi", "jkl"];</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="880" data-line-end="886" class="language-rust"><span class="hljs-comment">//显示标注是否有值</span>
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-built_in">Some</span>(String::from(<span class="hljs-string">"abc"</span>)), <span class="hljs-built_in">Some</span>(String::from(<span class="hljs-string">"def"</span>))];
+<span class="hljs-keyword">let</span> e = std::mem::take(&amp;<span class="hljs-keyword">mut</span> v[<span class="hljs-number">1</span>]);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, v); <span class="hljs-comment">//[Some("abc"), None]</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, e); <span class="hljs-comment">//Some("def")</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="887" data-line-end="889">向量/数组的所有权转移给循环语句</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="890" data-line-end="896" class="language-rust"><span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> v {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s);
+    <span class="hljs-comment">//不能读取v</span>
+}
+<span class="hljs-comment">//不能读取v</span>
+</code></pre>
+<h5 class="code-line" data-line-start=897 data-line-end=898 ><a id="Copy_Types_897"></a>Copy Types</h5>
+<ul>
+<li class="has-line-data" data-line-start="899" data-line-end="900">语言自带的所有数字类型（整数、浮点数），char/bool，若干其他类型，元素类型为Copy Type的数组，所有元素类型均为Copy Type的元组</li>
+<li class="has-line-data" data-line-start="900" data-line-end="902">用户自定义的数据类型缺省情况下都不是Copy Type</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="903" data-line-end="906" class="language-rust"><span class="hljs-keyword">let</span> n1 = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">let</span> n2 = n1; <span class="hljs-comment">//栈中新的空间</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="907" data-line-end="911">
+<p class="has-line-data" data-line-start="907" data-line-end="908">Copy Types与自定义数据类型</p>
+<p class="has-line-data" data-line-start="909" data-line-end="910">如果struct类型包含的所有分量类型都是Copy Type，那么可以通过attribute将该类型声明为Copy Type</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="912" data-line-end="917" class="language-rust"><span class="hljs-keyword">struct</span> C { x: <span class="hljs-keyword">u32</span> }
+<span class="hljs-keyword">let</span> l = C { x: <span class="hljs-number">3</span> };
+f(l);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, l.x); <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="919" data-line-end="925" class="language-rust"><span class="hljs-preprocessor">#[derive(Copy, Clone)]</span>
+<span class="hljs-keyword">struct</span> C { x: <span class="hljs-keyword">u32</span> }
+<span class="hljs-keyword">let</span> l = C { x: <span class="hljs-number">3</span> };
+f(l);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>. l.x); <span class="hljs-comment">//3</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="927" data-line-end="933" class="language-rust"><span class="hljs-preprocessor">#[derive(Copy, Clone)]</span>
+<span class="hljs-keyword">struct</span> C { x: <span class="hljs-keyword">u32</span>, s: <span class="hljs-built_in">String</span> }
+<span class="hljs-keyword">let</span> l = C { x: <span class="hljs-number">3</span>, s: String::from(<span class="hljs-string">"dog"</span>) }; <span class="hljs-comment">//error</span>
+f(l);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>. l.x);
+</code></pre>
+<h5 class="code-line" data-line-start=934 data-line-end=935 ><a id="_934"></a>共享所有权</h5>
+<pre><code class="has-line-data" data-line-start="937" data-line-end="953" class="language-rust"><span class="hljs-keyword">use</span> std::rc::Rc;
+
+<span class="hljs-comment">//可以不必写类型声明</span>
+<span class="hljs-keyword">let</span> s: Rc&lt;<span class="hljs-built_in">String</span>&gt; = Rc::new(String::from(<span class="hljs-string">"dog"</span>));
+<span class="hljs-keyword">let</span> t: Rc&lt;<span class="hljs-built_in">String</span>&gt; = s.clone(); <span class="hljs-comment">//Method-call syntax</span>
+<span class="hljs-keyword">let</span> u: Rc&lt;<span class="hljs-built_in">String</span>&gt; = Rc::clone(&amp;s); <span class="hljs-comment">//Fully qualified syntax</span>
+
+<span class="hljs-comment">//可以在Rc&lt;T&gt;类型的值上直接调用T类型的值上的方法</span>
+
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, RC::strong_count(&amp;s)); <span class="hljs-comment">//3</span>
+
+<span class="hljs-keyword">let</span> t = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">let</span> u = <span class="hljs-number">1</span>;
+
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, RC::strong_count(&amp;s)); <span class="hljs-comment">//3</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="954" data-line-end="956">被Rc拥有的值不可修改</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="957" data-line-end="960" class="language-rust"><span class="hljs-keyword">let</span> s = Rc::new(String::from(<span class="hljs-string">"dog"</span>));
+s.push_str(<span class="hljs-string">"!"</span>); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="961" data-line-end="965">
+<p class="has-line-data" data-line-start="961" data-line-end="962">Rc：non-thread-safe，速度快</p>
+<p class="has-line-data" data-line-start="963" data-line-end="964">Arc：thread-safe，速度慢</p>
+</li>
+<li class="has-line-data" data-line-start="965" data-line-end="967">
+<p class="has-line-data" data-line-start="965" data-line-end="966">使用建议：始终用Rc，除非编译器告诉用Arc（多线程环境下使用Rc会被编译器检查出来）</p>
+</li>
+</ul>
+<h3 class="code-line" data-line-start=967 data-line-end=968 ><a id="04__967"></a>04 引用</h3>
+<h5 class="code-line" data-line-start=969 data-line-end=970 ><a id="_969"></a>引用</h5>
+<ul>
+<li class="has-line-data" data-line-start="971" data-line-end="979">
+<p class="has-line-data" data-line-start="971" data-line-end="972">共享型引用（shared reference）</p>
+<p class="has-line-data" data-line-start="973" data-line-end="974">只能读取，不能修改，从该值出发可以访问到的任何东西都不能被改变</p>
+<p class="has-line-data" data-line-start="975" data-line-end="976">任一时刻一个值可有任意多个</p>
+<p class="has-line-data" data-line-start="977" data-line-end="978">只要存在共享引用，所有者也不能修改</p>
+</li>
+<li class="has-line-data" data-line-start="979" data-line-end="987">
+<p class="has-line-data" data-line-start="979" data-line-end="980">可变型引用（mutable reference)</p>
+<p class="has-line-data" data-line-start="981" data-line-end="982">读取、修改均可</p>
+<p class="has-line-data" data-line-start="983" data-line-end="984">任一时刻最多只能有一个可变引用，此刻不能再有只读引用</p>
+<p class="has-line-data" data-line-start="985" data-line-end="986">只要存在可变引用，所有者无法访问</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="988" data-line-end="991" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> r = &amp;x;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="993" data-line-end="997" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> m = &amp;<span class="hljs-keyword">mut</span> x;
+*m = <span class="hljs-number">20</span>;
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="998" data-line-end="1000">操作符左侧的引用/非引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1001" data-line-end="1007" class="language-rust"><span class="hljs-keyword">struct</span> C {x: <span class="hljs-keyword">i32</span>}
+<span class="hljs-keyword">let</span> c = C {x: <span class="hljs-number">5</span>};
+<span class="hljs-keyword">let</span> r = &amp;c;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, (*r).x);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r.x); <span class="hljs-comment">//自动dereference，完全等价</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1009" data-line-end="1013" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+(&amp;<span class="hljs-keyword">mut</span> v).sort();
+v.sort(); <span class="hljs-comment">//自动reference，完全等价</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1014" data-line-end="1016">对引用的赋值</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1017" data-line-end="1024" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> y = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> r = &amp;x;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r); <span class="hljs-comment">//10</span>
+r = &amp;y;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r); <span class="hljs-comment">//20</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1026" data-line-end="1037" class="language-cpp"><span class="hljs-keyword">int</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">int</span> y = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">int</span> &amp;r = x;
+<span class="hljs-built_in">cout</span> &lt;&lt; r; <span class="hljs-comment">//10</span>
+r = y;
+y = <span class="hljs-number">30</span>;
+<span class="hljs-built_in">cout</span> &lt;&lt; r; <span class="hljs-comment">//20</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; x; <span class="hljs-comment">//20</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; y; <span class="hljs-comment">//30</span>
+<span class="hljs-comment">//C++引用在创建后不能再引用另外的值</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1038" data-line-end="1040">引用的引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1041" data-line-end="1048" class="language-rust"><span class="hljs-keyword">struct</span> C {x: <span class="hljs-keyword">i32</span>}
+<span class="hljs-keyword">let</span> c = C {x: <span class="hljs-number">5</span>}
+<span class="hljs-keyword">let</span> r = &amp;c;
+<span class="hljs-keyword">let</span> rr = &amp;r;
+<span class="hljs-keyword">let</span> rrr = &amp;rr;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, rrr.x); <span class="hljs-comment">//5</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1049" data-line-end="1051">引用的比较</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1052" data-line-end="1064" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> y = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> rx = &amp;x;
+<span class="hljs-keyword">let</span> ry = &amp;y;
+<span class="hljs-keyword">let</span> rrx = &amp;rx;
+<span class="hljs-keyword">let</span> rry = &amp;ry;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, rrx == rry); <span class="hljs-comment">//true，看穿任意层数的引用</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, rrx &lt; ry); <span class="hljs-comment">//error，类型必须相同</span>
+
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:p}"</span>, rx); <span class="hljs-comment">//x的地址</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, std::ptr::eq(rx, ry)); <span class="hljs-comment">//false</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1065" data-line-end="1067">空引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1068" data-line-end="1075" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> r = <span class="hljs-built_in">Some</span>(&amp;x); <span class="hljs-comment">//Option&lt;&amp;i32&gt;</span>
+<span class="hljs-keyword">let</span> null = <span class="hljs-built_in">None</span>;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r == null); <span class="hljs-comment">//false</span>
+<span class="hljs-keyword">let</span> r = r.expect(<span class="hljs-string">"空指针"</span>);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1076" data-line-end="1078">在任意表达式上创建引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1079" data-line-end="1085" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">fac</span></span>(n: usize) -&gt; usize {
+    (<span class="hljs-number">1</span>..n+<span class="hljs-number">1</span>).product()
+}
+<span class="hljs-keyword">let</span> r = &amp;fac(<span class="hljs-number">5</span>);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r + &amp;<span class="hljs-number">1</span>); <span class="hljs-comment">//121，看穿同一层引用</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1086" data-line-end="1090">
+<p class="has-line-data" data-line-start="1086" data-line-end="1087">对slice的引用</p>
+<p class="has-line-data" data-line-start="1088" data-line-end="1089">类型&amp;[T]，一种fat pointer，包含首元素地址、元素数量</p>
+</li>
+</ul>
+<h5 class="code-line" data-line-start=1090 data-line-end=1091 ><a id="_1090"></a>引用的安全性</h5>
+<ul>
+<li class="has-line-data" data-line-start="1092" data-line-end="1094">在局部变量上创建引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1095" data-line-end="1102" class="language-rust"><span class="hljs-keyword">let</span> r;
+{
+    <span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+    r = &amp;x;
+}
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1103" data-line-end="1109">
+<p class="has-line-data" data-line-start="1103" data-line-end="1104">Lifetime</p>
+<p class="has-line-data" data-line-start="1105" data-line-end="1106">约束1：&amp;x的lifetime不能超过x的lifetime</p>
+<p class="has-line-data" data-line-start="1107" data-line-end="1108">约束2：&amp;x赋给变量r，&amp;x的lifetime不能小于语句r=&amp;x到r的lifetime终止处</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1110" data-line-end="1116" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+{
+    <span class="hljs-keyword">let</span> r = &amp;x;
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r);
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1118" data-line-end="1122" class="language-rust"><span class="hljs-keyword">let</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> r = &amp;v[<span class="hljs-number">1</span>];
+<span class="hljs-comment">//v[1] &gt;= &amp;v[1] &gt;= r</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1124" data-line-end="1130" class="language-rust"><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> y = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">let</span> rv = <span class="hljs-built_in">vec!</span>[&amp;x, &amp;y];
+<span class="hljs-comment">//x &gt;= &amp;x &gt;= rv</span>
+<span class="hljs-comment">//y &gt;= &amp;y &gt;- rv</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1131" data-line-end="1133">引用作为函数参数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1134" data-line-end="1142" class="language-rust"><span class="hljs-comment">//全局变量lifetime与程序运行的lifetime相同</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">mut</span> S: &amp;<span class="hljs-keyword">i32</span> = &amp;<span class="hljs-number">0</span>; <span class="hljs-comment">//全局变量必须初始化</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'a</span>&gt;(p: &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>) {
+    <span class="hljs-keyword">unsafe</span> {
+        S = p; <span class="hljs-comment">//必须满足约束p &gt;= S，但不总是满足 </span>
+    } <span class="hljs-comment">//只能在unsafe代码块访问可变全局变量</span>
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1144" data-line-end="1151" class="language-rust"><span class="hljs-keyword">static</span> <span class="hljs-keyword">mut</span> S: &amp;<span class="hljs-keyword">i32</span> = &amp;<span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(p: &amp;<span class="hljs-string">'static</span> <span class="hljs-keyword">i32</span>) {
+    <span class="hljs-keyword">unsafe</span> {
+        S = p;
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1152" data-line-end="1154">调用具有引用参数的函数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1155" data-line-end="1161" class="language-rust"><span class="hljs-keyword">static</span> T: <span class="hljs-keyword">i32</span> = <span class="hljs-number">1024</span>;
+f(&amp;T);
+<span class="hljs-keyword">unsafe</span> {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, S);
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1163" data-line-end="1166" class="language-rust"><span class="hljs-keyword">let</span> t: <span class="hljs-keyword">i32</span> = <span class="hljs-number">1024</span>;
+f(&amp;t); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1167" data-line-end="1169">函数返回引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1170" data-line-end="1185" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(v: &amp;[<span class="hljs-keyword">i32</span>]) -&gt; &amp;<span class="hljs-keyword">i32</span> {
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s = &amp;v[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> &amp;v[<span class="hljs-number">1</span>..] {
+        <span class="hljs-keyword">if</span> r &lt; s { s = r; }
+    }
+    s
+}
+<span class="hljs-keyword">let</span> s;
+{
+    <span class="hljs-keyword">let</span> v = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+    s = f(&amp;v);
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s); <span class="hljs-comment">//ok</span>
+}
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1186" data-line-end="1188">struct中包含引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1189" data-line-end="1191" class="language-rust"><span class="hljs-keyword">struct</span> S { r: &amp;<span class="hljs-keyword">i32</span> } <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1193" data-line-end="1201" class="language-rust"><span class="hljs-keyword">struct</span> S&lt;<span class="hljs-string">'a</span>&gt; { r: &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span> }
+<span class="hljs-keyword">let</span> s;
+{
+    <span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+    s = S { r: &amp;x };
+}
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, s.r); <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1203" data-line-end="1206" class="language-rust"><span class="hljs-keyword">struct</span> D { s: S&lt;<span class="hljs-string">'static</span>&gt; } <span class="hljs-comment">//D.s.r只能存放static reference</span>
+<span class="hljs-keyword">struct</span> D&lt;<span class="hljs-string">'a</span>&gt; { s: S&lt;<span class="hljs-string">'a</span>&gt; }
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1207" data-line-end="1209">不同的lifetimes</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1210" data-line-end="1230" class="language-rust"><span class="hljs-keyword">struct</span> S&lt;<span class="hljs-string">'a</span>&gt; { 
+    x: &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>,
+    y: &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>
+}
+<span class="hljs-keyword">let</span> x = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> r;
+{
+    <span class="hljs-keyword">let</span> y = <span class="hljs-number">20</span>;
+    {
+        <span class="hljs-keyword">let</span> s = S { x: &amp;x, y: &amp;y};
+        r = s.x
+    }
+}
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r);
+<span class="hljs-comment">//s.x = s.y</span>
+<span class="hljs-comment">//s.x &gt;= r</span>
+<span class="hljs-comment">//y &gt;= s.y</span>
+<span class="hljs-comment">//y &lt; r</span>
+<span class="hljs-comment">//不应该限制s.x == s.y</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1232" data-line-end="1237" class="language-rust"><span class="hljs-keyword">struct</span> S&lt;<span class="hljs-string">'a</span>, <span class="hljs-string">'b</span>&gt; { 
+    x: &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>,
+    y: &amp;<span class="hljs-string">'b</span> <span class="hljs-keyword">i32</span>
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1238" data-line-end="1240">省略函数签名中引用的lifetime参数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1241" data-line-end="1245" class="language-rust"><span class="hljs-comment">//最简单情况下，为每一个引用声明独立的lifetime参数</span>
+<span class="hljs-keyword">struct</span> S&lt;<span class="hljs-string">'a</span>, <span class="hljs-string">'b</span>&gt; {}
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'a</span>, <span class="hljs-string">'b</span>, <span class="hljs-string">'c</span>&gt;(r: &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>, s: S&lt;<span class="hljs-string">'b</span>, <span class="hljs-string">'c</span>&gt;) -&gt; <span class="hljs-keyword">i32</span> {}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1247" data-line-end="1250" class="language-rust"><span class="hljs-comment">//所有参数仅涉及一个lifetime，认为参数和返回值涉及的lifetime相同</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'a</span>&gt;(p: &amp;<span class="hljs-string">'a</span> [<span class="hljs-keyword">i32</span>; <span class="hljs-number">3</span>]) -&gt; (&amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>, &amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">i32</span>) {}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1252" data-line-end="1255" class="language-rust"><span class="hljs-comment">//附着在struct上的方法，具有参数&amp;self，返回值涉及的lifetime和self相同</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'a</span>, <span class="hljs-string">'b</span>&gt;(&amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">self</span>, p: &amp;<span class="hljs-string">'b</span> <span class="hljs-keyword">str</span>) -&gt; <span class="hljs-built_in">Option</span>&lt;&amp;<span class="hljs-string">'b</span> <span class="hljs-built_in">String</span>&gt; {}
+</code></pre>
+<h5 class="code-line" data-line-start=1256 data-line-end=1257 ><a id="_1256"></a>共享与可变</h5>
+<ul>
+<li class="has-line-data" data-line-start="1258" data-line-end="1260">悬空指针</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1261" data-line-end="1268" class="language-rust"><span class="hljs-keyword">let</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> r = &amp;v;
+<span class="hljs-keyword">let</span> u = v; <span class="hljs-comment">//error，所有权转移</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r[<span class="hljs-number">0</span>]);
+
+<span class="hljs-comment">//共享型指针的lifetime内，被指针引用的不可变，不能发生所有权转移</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1270" data-line-end="1275" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(vec: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">i32</span>&gt;, slice: &amp;[<span class="hljs-keyword">i32</span>]) {}
+
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+f(&amp;<span class="hljs-keyword">mut</span> v, &amp;v); <span class="hljs-comment">//error，已存在可变引用</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1276" data-line-end="1280">
+<p class="has-line-data" data-line-start="1276" data-line-end="1277">共享型：子树不可改变，到根路径不可改变</p>
+<p class="has-line-data" data-line-start="1278" data-line-end="1279">可变型：子树被引用独占，到根路径不可被访问</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1281" data-line-end="1287" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> w = (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+<span class="hljs-keyword">let</span> r = &amp;w;
+<span class="hljs-keyword">let</span> r0 = &amp;r.<span class="hljs-number">0</span>; <span class="hljs-comment">//ok</span>
+<span class="hljs-keyword">let</span> m1 = &amp;<span class="hljs-keyword">mut</span> r.<span class="hljs-number">1</span>; <span class="hljs-comment">//error</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r0);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1289" data-line-end="1297" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> w = (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+<span class="hljs-keyword">let</span> m = &amp;<span class="hljs-keyword">mut</span> w;
+<span class="hljs-keyword">let</span> m0 = &amp;<span class="hljs-keyword">mut</span> m.<span class="hljs-number">0</span>; <span class="hljs-comment">//ok</span>
+*m0 = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">let</span> r1 = &amp;m.<span class="hljs-number">1</span>; <span class="hljs-comment">//ok</span>
+w.<span class="hljs-number">1</span>; <span class="hljs-comment">//error</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r1);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1298" data-line-end="1300">C中的pointer to const</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1301" data-line-end="1306" class="language-c++"><span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *p = &amp;x;
+x++;
+<span class="hljs-built_in">cout</span> &lt;&lt; p; <span class="hljs-comment">//2</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1308" data-line-end="1312" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> x = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> p = &amp;x;
+x += <span class="hljs-number">1</span>; <span class="hljs-comment">//error</span>
+</code></pre>
+<h5 class="code-line" data-line-start=1313 data-line-end=1314 ><a id="_1313"></a>经过反思形成的一些信息</h5>
+<ul>
+<li class="has-line-data" data-line-start="1315" data-line-end="1317">所有权不包含可变性</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1318" data-line-end="1322" class="language-rust"><span class="hljs-keyword">let</span> s = String::from(<span class="hljs-string">"hello"</span>);
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> s_m = s;
+s_m.push_str(<span class="hljs-string">" world"</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1324" data-line-end="1328" class="language-rust"><span class="hljs-keyword">let</span> s = String::from(<span class="hljs-string">"hello"</span>);
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(<span class="hljs-keyword">mut</span> s_m: <span class="hljs-built_in">String</span>) {}
+print(s);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1329" data-line-end="1331">C中四种形式的pointer</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1332" data-line-end="1337" class="language-c++"><span class="hljs-comment">//pointer</span>
+<span class="hljs-keyword">int</span> *p = &amp;x;
+*p = <span class="hljs-number">3</span>;
+p = &amp;y;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1339" data-line-end="1344" class="language-c++"><span class="hljs-comment">//pointer to const</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *p = &amp;x;
+*p = <span class="hljs-number">3</span>; <span class="hljs-comment">//error</span>
+p = &amp;y;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1346" data-line-end="1351" class="language-rust"><span class="hljs-comment">//const pointer</span>
+<span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> p = &amp;x;
+*p = <span class="hljs-number">3</span>; 
+p = &amp;y; <span class="hljs-comment">//error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1353" data-line-end="1358" class="language-rust"><span class="hljs-comment">//const pointer to const</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> p = &amp;x;
+*p = <span class="hljs-number">3</span>; <span class="hljs-comment">//error</span>
+p = &amp;y; <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1359" data-line-end="1361">Rust中四种引用</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1362" data-line-end="1367" class="language-rust"><span class="hljs-keyword">let</span> p: &amp;<span class="hljs-keyword">i32</span> = &amp;a; <span class="hljs-comment">//const pointer to const</span>
+<span class="hljs-keyword">let</span> p: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">i32</span> = &amp;<span class="hljs-keyword">mut</span> a; <span class="hljs-comment">//const pointer</span>
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> p: &amp;<span class="hljs-keyword">i32</span> = &amp;a; <span class="hljs-comment">//pointer to const</span>
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> p: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">i32</span> = &amp;a; <span class="hljs-comment">//pointer</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1368" data-line-end="1372">
+<p class="has-line-data" data-line-start="1368" data-line-end="1369">Rust中Box类型pointer不具有四种形式</p>
+<p class="has-line-data" data-line-start="1370" data-line-end="1371">Box类型的pointer对所指的值有所有权，堆中值依附于栈中值</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1373" data-line-end="1381" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> a Box::new(<span class="hljs-number">0</span>);
+*a = <span class="hljs-number">1</span>; <span class="hljs-comment">//ok</span>
+a = Box::new(<span class="hljs-number">2</span>); <span class="hljs-comment">//ok</span>
+
+<span class="hljs-keyword">let</span> a = Box::new(<span class="hljs-number">0</span>);
+*a = <span class="hljs-number">1</span>; <span class="hljs-comment">//error</span>
+a = Box::new(<span class="hljs-number">2</span>); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1382" data-line-end="1384">限定栈值不变，堆值可变</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1385" data-line-end="1388" class="language-rust"><span class="hljs-keyword">let</span> p = &amp;<span class="hljs-keyword">mut</span> <span class="hljs-number">0</span>;
+*p = <span class="hljs-number">1</span>;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1390" data-line-end="1393" class="language-rust"><span class="hljs-keyword">let</span> p = &amp;<span class="hljs-keyword">mut</span> String::from(<span class="hljs-string">"hello"</span>);
+p.push_str(<span class="hljs-string">" world"</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1395" data-line-end="1398" class="language-rust"><span class="hljs-keyword">let</span> p = &amp;<span class="hljs-keyword">mut</span> *Box::new(<span class="hljs-number">0</span>);
+*p = <span class="hljs-number">1</span>;
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1399" data-line-end="1401">shadow</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1402" data-line-end="1407" class="language-rust"><span class="hljs-keyword">let</span> s = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> r = &amp;s;
+<span class="hljs-keyword">let</span> s = <span class="hljs-number">2</span>; <span class="hljs-comment">//ok</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r); <span class="hljs-comment">//1</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1408" data-line-end="1410">引用常数/表达式</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1411" data-line-end="1418" class="language-rust"><span class="hljs-keyword">let</span> r;
+{
+    <span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;
+    r = &amp;<span class="hljs-number">0</span>; <span class="hljs-comment">//0存放在静态数据区</span>
+}
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, r);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1420" data-line-end="1423" class="language-rust"><span class="hljs-keyword">let</span> r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//栈中</span>
+r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//error</span>
+</code></pre>
+<h3 class="code-line" data-line-start=1424 data-line-end=1425 ><a id="05__1424"></a>05 表达式</h3>
+<h5 class="code-line" data-line-start=1426 data-line-end=1427 ><a id="_1426"></a>代码块</h5>
+<pre><code class="has-line-data" data-line-start="1429" data-line-end="1435" class="language-rust"><span class="hljs-keyword">let</span> a = {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello"</span>);
+    <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;
+};
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a); <span class="hljs-comment">//()</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1437" data-line-end="1443" class="language-rust"><span class="hljs-keyword">let</span> a = {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello"</span>);
+    <span class="hljs-number">1</span> + <span class="hljs-number">2</span> 
+};
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a); <span class="hljs-comment">//3</span>
+</code></pre>
+<h5 class="code-line" data-line-start=1444 data-line-end=1445 ><a id="_1444"></a>分支表达式</h5>
+<ul>
+<li class="has-line-data" data-line-start="1446" data-line-end="1448">let declaration</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1449" data-line-end="1458" class="language-rust"><span class="hljs-keyword">let</span> b;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, b); <span class="hljs-comment">//error</span>
+<span class="hljs-keyword">if</span> a &gt; <span class="hljs-number">0</span> {
+    b = <span class="hljs-keyword">true</span>;
+} 
+<span class="hljs-keyword">else</span> {
+    b = <span class="hljs-keyword">false</span>;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1459" data-line-end="1461">if-else expr</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1462" data-line-end="1469" class="language-rust"><span class="hljs-keyword">let</span> b = <span class="hljs-keyword">if</span> a &gt; <span class="hljs-number">0</span> {
+    <span class="hljs-keyword">true</span>
+} 
+<span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">false</span>
+};
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1471" data-line-end="1478" class="language-rust"><span class="hljs-keyword">let</span> b = <span class="hljs-keyword">if</span> a &gt; <span class="hljs-number">0</span> {
+    <span class="hljs-keyword">true</span>
+} 
+<span class="hljs-keyword">else</span> {
+    <span class="hljs-number">0</span> <span class="hljs-comment">//error</span>
+};
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1480" data-line-end="1484" class="language-rust"><span class="hljs-keyword">let</span> b = <span class="hljs-keyword">if</span> a &gt; <span class="hljs-number">0</span> {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello"</span>);
+}; <span class="hljs-comment">//编译器添加else分支，值为()</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1485" data-line-end="1487">match expression</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1488" data-line-end="1493" class="language-rust"><span class="hljs-keyword">match</span> code {
+    <span class="hljs-number">0</span> =&gt; <span class="hljs-built_in">println!</span>(<span class="hljs-string">"0"</span>),
+    _ =&gt; <span class="hljs-built_in">println!</span>(<span class="hljs-string">"1"</span>),
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1495" data-line-end="1500" class="language-rust"><span class="hljs-keyword">let</span> name = <span class="hljs-keyword">match</span> a {
+    <span class="hljs-built_in">Some</span>(v) =&gt; v,
+    <span class="hljs-built_in">None</span> =&gt; String::from(<span class="hljs-string">"None"</span>)
+};
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1501" data-line-end="1503">if let expr</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1504" data-line-end="1511" class="language-rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-built_in">Some</span>(v) = a {
+    
+} 
+<span class="hljs-keyword">else</span> {
+    
+}
+</code></pre>
+<h5 class="code-line" data-line-start=1512 data-line-end=1513 ><a id="_1512"></a>循环表达式</h5>
+<ul>
+<li class="has-line-data" data-line-start="1514" data-line-end="1516">while循环表达式</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1517" data-line-end="1529" class="language-rust"><span class="hljs-string">'outer</span>:
+<span class="hljs-keyword">while</span> a &lt;= x {
+    <span class="hljs-keyword">while</span> b &lt;= x {
+        <span class="hljs-keyword">if</span> a * b == x {
+            <span class="hljs-keyword">break</span> <span class="hljs-string">'outer</span>; <span class="hljs-comment">//跳出嵌套循环</span>
+        }
+        b += <span class="hljs-number">1</span>;
+    }
+    a += <span class="hljs-number">1</span>;
+    b = <span class="hljs-number">1</span>;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1530" data-line-end="1532">while-let循环表达式</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1533" data-line-end="1541" class="language-rust"><span class="hljs-keyword">let</span> a = [<span class="hljs-built_in">Some</span>(<span class="hljs-string">"a"</span>), <span class="hljs-built_in">Some</span>(<span class="hljs-string">"b"</span>), <span class="hljs-built_in">None</span>, <span class="hljs-built_in">Some</span>(<span class="hljs-string">"c"</span>)];
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-built_in">Some</span>(s) = a[i] {
+    i += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> i == a.len() {
+        <span class="hljs-keyword">break</span>;
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1542" data-line-end="1544">for循环表达式</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1545" data-line-end="1554" class="language-rust"><span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> a {
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-built_in">Some</span>(s) = e {
+        i += <span class="hljs-number">1</span>;
+    }
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">break</span>;
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1556" data-line-end="1559" class="language-rust"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..=<span class="hljs-number">100</span> {}
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..<span class="hljs-number">101</span> {}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1560" data-line-end="1562">loop循环表达式</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1563" data-line-end="1576" class="language-rust"><span class="hljs-keyword">let</span> sqrt = <span class="hljs-string">'outer</span>: <span class="hljs-keyword">loop</span> {
+    n += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>.. {
+        <span class="hljs-keyword">let</span> sqr = i * i;
+        <span class="hljs-keyword">if</span> sqr == n {
+            <span class="hljs-keyword">break</span> <span class="hljs-string">'outer</span> i; <span class="hljs-comment">//break后放一个值</span>
+        }
+        <span class="hljs-keyword">if</span> sqr &gt; n {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+};
+</code></pre>
+<h5 class="code-line" data-line-start=1577 data-line-end=1578 ><a id="return_expr_1577"></a>return expr</h5>
+<ul>
+<li class="has-line-data" data-line-start="1579" data-line-end="1581">终止函数，返回表达式的值</li>
+</ul>
+<h5 class="code-line" data-line-start=1581 data-line-end=1582 ><a id="_1581"></a>运算</h5>
+<pre><code class="has-line-data" data-line-start="1584" data-line-end="1589" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, -<span class="hljs-number">100u32</span>); <span class="hljs-comment">//error，-不能作用在无符号整数上</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, +<span class="hljs-number">100</span>); <span class="hljs-comment">//error，不存在意愿操作符+</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, <span class="hljs-number">123.4</span> % <span class="hljs-number">10.0</span>); <span class="hljs-comment">//%适用于浮点数</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, !<span class="hljs-number">0x10</span>); <span class="hljs-comment">//按位取反是!</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1590" data-line-end="1591">位运算优先级高于比较运算</li>
+<li class="has-line-data" data-line-start="1591" data-line-end="1592">比较运算符两个操作数类型必须相同</li>
+<li class="has-line-data" data-line-start="1592" data-line-end="1594">带有短路行为的逻辑运算操作符两个操作数类型必须为bool</li>
+</ul>
+<h5 class="code-line" data-line-start=1594 data-line-end=1595 ><a id="_1594"></a>赋值</h5>
+<ul>
+<li class="has-line-data" data-line-start="1596" data-line-end="1597">右侧non-copy type发生所有权转移</li>
+<li class="has-line-data" data-line-start="1597" data-line-end="1598">支持复合赋值操作符：+=</li>
+<li class="has-line-data" data-line-start="1598" data-line-end="1599">不支持自增自减：++、–</li>
+<li class="has-line-data" data-line-start="1599" data-line-end="1601">不支持链式赋值：a = b = 1</li>
+</ul>
+<h5 class="code-line" data-line-start=1601 data-line-end=1602 ><a id="_1601"></a>类型转换</h5>
+<ul>
+<li class="has-line-data" data-line-start="1603" data-line-end="1604">内置数字类型间都可相互转换，浮点转换到整数向0取整</li>
+<li class="has-line-data" data-line-start="1604" data-line-end="1605">bool、char、类C的enum类型可转换为任何整数类型</li>
+<li class="has-line-data" data-line-start="1605" data-line-end="1606">一些unsafe pointer type之间也可转换</li>
+<li class="has-line-data" data-line-start="1606" data-line-end="1608">隐式转换：&amp;mut T→T、&amp;String→&amp;str、&amp;Vec&lt;T&gt;→&amp;[T]、&amp;Box&lt;T&gt;→&amp;T</li>
+</ul>
+<h3 class="code-line" data-line-start=1608 data-line-end=1609 ><a id="06__1608"></a>06 错误处理</h3>
+<h5 class="code-line" data-line-start=1610 data-line-end=1611 ><a id="_1610"></a>程序内部错误</h5>
+<ul>
+<li class="has-line-data" data-line-start="1612" data-line-end="1613">应对方式：panic</li>
+<li class="has-line-data" data-line-start="1613" data-line-end="1614">程序检测到某种错误即将发生；程序在执行中调用了宏panic!</li>
+<li class="has-line-data" data-line-start="1614" data-line-end="1615">unwinding（缺省行为）：打印错误信息、逆序释放、退出线程，不影响其他线程</li>
+<li class="has-line-data" data-line-start="1615" data-line-end="1617">aborting：unwinding过程中对某个值的drop方法调用又产生了panic；使用编译参数-C panic=abort</li>
+</ul>
+<h5 class="code-line" data-line-start=1617 data-line-end=1618 ><a id="_1617"></a>程序外部错误</h5>
+<ul>
+<li class="has-line-data" data-line-start="1619" data-line-end="1621">应对方式：the Result type</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1622" data-line-end="1627" class="language-rust"><span class="hljs-keyword">enum</span> <span class="hljs-title">Result</span>&lt;T, E&gt; {
+    <span class="hljs-built_in">Ok</span>(T),
+    <span class="hljs-built_in">Err</span>(E),
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1628" data-line-end="1632">
+<p class="has-line-data" data-line-start="1628" data-line-end="1629">Result&lt;T, E&gt;上方法</p>
+<p class="has-line-data" data-line-start="1630" data-line-end="1631">除is_ok和is_err都会所有权转移</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1633" data-line-end="1642" class="language-rust">rst.is_ok() <span class="hljs-comment">//Ok(T)返回true，Err(E)返回false</span>
+rst.is_err() <span class="hljs-comment">//!rst.is_ok()</span>
+rst.ok() <span class="hljs-comment">//返回Option&lt;T&gt;</span>
+rst.err() <span class="hljs-comment">//返回Option&lt;E&gt;</span>
+rst.unwrap() <span class="hljs-comment">//Ok(T)返回T，否则panic</span>
+rst.expect(msg) <span class="hljs-comment">//与rst.unwrap()相同，触发panic后打印msg</span>
+rst.unwrap_or(fallback) <span class="hljs-comment">//Ok(T)返回T，否则返回fallback</span>
+rst.unwrap_or_else(fallback_fn) <span class="hljs-comment">//Ok(T)返回T，否则返回fallback_fn()的返回值</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1644" data-line-end="1647" class="language-rust">rst.as_ref() <span class="hljs-comment">//转为Result&lt;&amp;T, &amp;E&gt;</span>
+rst.as_mut() <span class="hljs-comment">//转为Result&lt;&amp;mut T, &amp;mut E&gt;</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1649" data-line-end="1656" class="language-rust"><span class="hljs-keyword">if</span> rst.is_ok() {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, rst.unwrap());
+}
+<span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, rst.err().unwrap()); <span class="hljs-comment">//unwrap也适用于Option&lt;T&gt;</span>
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1657" data-line-end="1659">Result&lt;T, E&gt;的别名</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1660" data-line-end="1662" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">type</span> <span class="hljs-title">Result</span>&lt;T&gt; = <span class="hljs-built_in">Result</span>&lt;T, Error&gt;;
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1663" data-line-end="1665">标准库中定义的Error</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1666" data-line-end="1671" class="language-rust">std::io::Error
+std::fmt::Error
+std::str::Utf8Error
+<span class="hljs-comment">//核心是std::error::Error</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1673" data-line-end="1678" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, err); <span class="hljs-comment">//简要信息</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, err); <span class="hljs-comment">//详细信息</span>
+err.to_string()
+err.source() <span class="hljs-comment">//返回Option&lt;E&gt;，表示错误发生的源错误，不存在则None</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1679" data-line-end="1683">
+<p class="has-line-data" data-line-start="1679" data-line-end="1680">错误的传播</p>
+<p class="has-line-data" data-line-start="1681" data-line-end="1682">所在的函数返回值类型为Result&lt;T, E&gt;，且err类型为E</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1684" data-line-end="1689" class="language-rust"><span class="hljs-keyword">let</span> v = <span class="hljs-keyword">match</span> f() {
+    <span class="hljs-built_in">Ok</span>(suc) =&gt; suc,
+    <span class="hljs-built_in">Err</span>(err) =&gt; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Err</span>(err)
+};
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1691" data-line-end="1693" class="language-rust"><span class="hljs-keyword">let</span> v = f()?;
+</code></pre>
+<h3 class="code-line" data-line-start=1694 data-line-end=1695 ><a id="07_Crates_and_Modules_1694"></a>07 Crates and Modules</h3>
+<h5 class="code-line" data-line-start=1696 data-line-end=1697 ><a id="Crate_1696"></a>Crate</h5>
+<ul>
+<li class="has-line-data" data-line-start="1698" data-line-end="1699">由module构成的树</li>
+<li class="has-line-data" data-line-start="1699" data-line-end="1700">Library crate编译后得到库文件，Binary crate编译后得到可执行程序</li>
+<li class="has-line-data" data-line-start="1700" data-line-end="1702">crate root：对crate进行编译的起点</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1703" data-line-end="1706">cargo new //创建的项目缺省仅包含一个binary crate
+cargo build --verbose //编译过程细节
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1707" data-line-end="1709"><a href="http://xn--main-4h0gl8cigp36k.xn--rslib-sn9h.rs">同时包含main.rs和lib.rs</a></li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1710" data-line-end="1712" class="language-rust"><span class="hljs-keyword">let</span> c = crate_main_lib::add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1714" data-line-end="1717" class="language-rust"><span class="hljs-keyword">use</span> crate_main_lib::add;
+<span class="hljs-keyword">let</span> c = add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1719" data-line-end="1722" class="language-rust"><span class="hljs-keyword">use</span> crate_main_lib::add <span class="hljs-keyword">as</span> plus;
+<span class="hljs-keyword">let</span> c = add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1723" data-line-end="1727">
+<p class="has-line-data" data-line-start="1723" data-line-end="1724">一个lib crate关联多个binary crates</p>
+<p class="has-line-data" data-line-start="1725" data-line-end="1726">./src/bin下的每一个rs文件是一个binary crate的root</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1728" data-line-end="1730">cargo run --bin file_name
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1731" data-line-end="1733">两个本地crates之间建立依赖关系</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1734" data-line-end="1737" class="language-toml"><span class="hljs-title">[dependencies]</span>
+<span class="hljs-setting">calc = <span class="hljs-value">{ path = <span class="hljs-string">"../calc"</span> }</span></span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1739" data-line-end="1741" class="language-rust"><span class="hljs-keyword">use</span> calc::add;
+</code></pre>
+<h5 class="code-line" data-line-start=1742 data-line-end=1743 ><a id="module_1742"></a>module</h5>
+<ul>
+<li class="has-line-data" data-line-start="1744" data-line-end="1746">
+<p class="has-line-data" data-line-start="1744" data-line-end="1745">a collection of items</p>
+</li>
+<li class="has-line-data" data-line-start="1746" data-line-end="1748">
+<p class="has-line-data" data-line-start="1746" data-line-end="1747">items：function、type、module、constant……</p>
+</li>
+<li class="has-line-data" data-line-start="1748" data-line-end="1760">
+<p class="has-line-data" data-line-start="1748" data-line-end="1749">可见性</p>
+<p class="has-line-data" data-line-start="1750" data-line-end="1751">private：当前及后代模块内</p>
+<p class="has-line-data" data-line-start="1752" data-line-end="1753">pub(crate)：当前crate内</p>
+<p class="has-line-data" data-line-start="1754" data-line-end="1755">pub：当前模块内外</p>
+<p class="has-line-data" data-line-start="1756" data-line-end="1757">pub(super)：父模块及后代模块内</p>
+<p class="has-line-data" data-line-start="1758" data-line-end="1759">pub(in &lt;path&gt;)：一个祖先模块及后代模块内</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1761" data-line-end="1767" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> arith {
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> simple {
+        <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>(a: <span class="hljs-keyword">i32</span>, b: <span class="hljs-keyword">i32</span>) -&gt; <span class="hljs-keyword">i32</span> { a + b }
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1768" data-line-end="1770">当前：self；父：super；根：crate</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1771" data-line-end="1777" class="language-rust">super::simple::add
+crate::arith::simple::add
+arith::simple::add <span class="hljs-comment">//当前</span>
+self::arith::simple::add <span class="hljs-comment">//永远指向亲兄弟</span>
+::arith::simple::add <span class="hljs-comment">//外部crate</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1778" data-line-end="1780">use语句</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1781" data-line-end="1793" class="language-rust">add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">//ok</span>
+<span class="hljs-keyword">use</span> self::arith::simple::add;
+add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">//ok</span>
+{
+    add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">//ok</span>
+    <span class="hljs-keyword">mod</span> inner {
+        <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() -&gt; <span class="hljs-keyword">i32</span> {
+            add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) <span class="hljs-comment">//error，代码块中定义的模块无法使用use引入的别名</span>
+        }
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1795" data-line-end="1808" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> a {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() -&gt; <span class="hljs-keyword">i32</span> {
+        super::b::add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+        crate::b::add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+        crate::add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);
+    }
+}
+add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <span class="hljs-comment">//ok</span>
+<span class="hljs-keyword">use</span> self::b::add;
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> b {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>() {}
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1809" data-line-end="1811">一条use语句引入多个items</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1812" data-line-end="1816" class="language-rust"><span class="hljs-keyword">use</span> std::collections::{HashMap, HashSet};
+<span class="hljs-keyword">use</span> std::fs::{<span class="hljs-keyword">self</span>, File};
+<span class="hljs-keyword">use</span> std::io::prelude::*; <span class="hljs-comment">//所有可见的items</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1817" data-line-end="1819">pub use</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1820" data-line-end="1830" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> a {
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> b {
+        <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>() {}
+        <span class="hljs-keyword">pub</span>(<span class="hljs-keyword">crate</span>) <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>() {} <span class="hljs-comment">//error，re-exporting不能与item可见性冲突</span>
+    }
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">use</span> self::b::add; <span class="hljs-comment">//re-exports the item add</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() -&gt; <span class="hljs-keyword">i32</span> { add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) }
+}
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() -&gt; <span class="hljs-keyword">i32</span> { self::a::add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) }
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1831" data-line-end="1835">
+<p class="has-line-data" data-line-start="1831" data-line-end="1832">一个crate放在多个文件中</p>
+<p class="has-line-data" data-line-start="1833" data-line-end="1834">四种存放方式：embed、single file、file+dir、dir</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1836" data-line-end="1840" class="language-rust"><span class="hljs-comment">// main.rs</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {}
+<span class="hljs-keyword">mod</span> calc;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1842" data-line-end="1845" class="language-rust"><span class="hljs-comment">// ./calc.rs ./calc/mod.rs</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> arith;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1847" data-line-end="1850" class="language-rust"><span class="hljs-comment">// ./calc/arith.rs ./calc/arith/mod.rs</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> simple;
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1851" data-line-end="1852">预先imports的items：std、std::prelude::*</li>
+<li class="has-line-data" data-line-start="1852" data-line-end="1854">控制Struct中Field的可见性</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1855" data-line-end="1868" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> a {
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> b {
+        <span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> C {
+            <span class="hljs-keyword">pub</span> x: <span class="hljs-keyword">i32</span>,
+            <span class="hljs-keyword">pub</span>(<span class="hljs-keyword">super</span>) y: <span class="hljs-keyword">i32</span>,
+            z: <span class="hljs-keyword">i32</span>
+        }
+        <span class="hljs-comment">//x, y, z</span>
+    }
+    <span class="hljs-comment">//x, y</span>
+}
+<span class="hljs-comment">// x</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1869" data-line-end="1875">
+<p class="has-line-data" data-line-start="1869" data-line-end="1870">在模块中定义static和constant items</p>
+<p class="has-line-data" data-line-start="1871" data-line-end="1872">const：类似#define定义的宏常量，不存在mut</p>
+<p class="has-line-data" data-line-start="1873" data-line-end="1874">static：一种变量，生存期与程序相同，存在mut（mut static不具有线程安全性，只能在unsafe中使用）</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1876" data-line-end="1881" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> a {
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">const</span> C: <span class="hljs-keyword">f64</span> = <span class="hljs-number">1.0</span>;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> F: <span class="hljs-keyword">f64</span> = <span class="hljs-number">2.0</span>;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1882" data-line-end="1884">在item上声明attributes</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1885" data-line-end="1890" class="language-rust"><span class="hljs-keyword">mod</span> a {
+    <span class="hljs-comment">//#[warn(dead_code)]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() {}
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1892" data-line-end="1897" class="language-rust"><span class="hljs-keyword">mod</span> a {
+    <span class="hljs-preprocessor">#[allow(dead_code)]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() {}
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1899" data-line-end="1901" class="language-rust"><span class="hljs-preprocessor">#[cfg(...)]</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1903" data-line-end="1907" class="language-rust"><span class="hljs-preprocessor">#[inline]</span>
+<span class="hljs-preprocessor">#[inline(always)]</span>
+<span class="hljs-preprocessor">#[inline(never)]</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1909" data-line-end="1911" class="language-rust"><span class="hljs-preprocessor">#![allow(dead_code)]</span> <span class="hljs-comment">//作用到所有后代模块的所有相关程序元素</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1913" data-line-end="1917" class="language-rust"><span class="hljs-preprocessor">#[test]</span>
+<span class="hljs-preprocessor">#[inline]</span> <span class="hljs-comment">//不能#![]</span>
+<span class="hljs-preprocessor">#![feature(...)]</span> <span class="hljs-comment">//只能#![]</span>
+</code></pre>
+<h5 class="code-line" data-line-start=1918 data-line-end=1919 ><a id="_1918"></a>添加单元测试代码</h5>
+<pre><code class="has-line-data" data-line-start="1921" data-line-end="1924">cargo new unit_test --lib
+cargo test
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1926" data-line-end="1935" class="language-rust"><span class="hljs-preprocessor">#[cfg(test)]</span>
+<span class="hljs-keyword">mod</span> tests {
+    <span class="hljs-preprocessor">#[test]</span>
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">it_works</span></span>() {
+        <span class="hljs-keyword">let</span> result = <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;
+        <span class="hljs-built_in">assert_eq!</span>(result, <span class="hljs-number">4</span>);
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1936" data-line-end="1940">
+<p class="has-line-data" data-line-start="1936" data-line-end="1937">常用的两个宏</p>
+<p class="has-line-data" data-line-start="1938" data-line-end="1939">在非测试代码中可以使用，会被编译到release中，带debug前缀只在debug有效</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1941" data-line-end="1944" class="language-rust"><span class="hljs-built_in">assert!</span>();
+<span class="hljs-built_in">assert_eq!</span>();
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1945" data-line-end="1947">测试一定会panic</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1948" data-line-end="1956" class="language-rust"><span class="hljs-preprocessor">#[test]</span>
+<span class="hljs-preprocessor">#[should_panic(expected="divide by zero")]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() {
+    <span class="hljs-keyword">let</span> a = <span class="hljs-keyword">if</span> <span class="hljs-number">2</span> &gt; <span class="hljs-number">3</span> {<span class="hljs-number">1</span>} <span class="hljs-keyword">else</span> {<span class="hljs-number">1</span>};
+    <span class="hljs-keyword">let</span> b = <span class="hljs-keyword">if</span> a &gt; <span class="hljs-number">0</span> {<span class="hljs-number">0</span>} <span class="hljs-keyword">else</span> {<span class="hljs-number">0</span>};
+    <span class="hljs-keyword">let</span> c = a / b;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1957" data-line-end="1959">返回Result&lt;(), E&gt;</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1960" data-line-end="1966" class="language-rust"><span class="hljs-preprocessor">#[test]</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>() -&gt; <span class="hljs-built_in">Result</span>&lt;(), ParseIntError&gt; {
+    i32::from_str_radix(<span class="hljs-string">"a11"</span>, <span class="hljs-number">10</span>)?;
+    <span class="hljs-built_in">Ok</span>(())
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1967" data-line-end="1969">选择测试函数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1970" data-line-end="1972">cargo test f
+</code></pre>
+<h5 class="code-line" data-line-start=1973 data-line-end=1974 ><a id="_1973"></a>添加集成测试代码</h5>
+<ul>
+<li class="has-line-data" data-line-start="1975" data-line-end="1977">放在./tests/目录下，每一个rs文件视为一个crate</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1978" data-line-end="1981" class="language-rust"><span class="hljs-comment">// ./tests/test_1.rs</span>
+<span class="hljs-keyword">use</span> inte_test::calc::add;
+</code></pre>
+<h5 class="code-line" data-line-start=1982 data-line-end=1983 ><a id="_1982"></a>添加说明文字</h5>
+<pre><code class="has-line-data" data-line-start="1985" data-line-end="1990" class="language-rust"><span class="hljs-preprocessor">#![doc = "hello"]</span>
+
+<span class="hljs-preprocessor">#[doc = "hello"]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">mod</span> a {}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="1992" data-line-end="1994">cargo doc --no-deps --open
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="1995" data-line-end="1997">doc attr的语法糖</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="1998" data-line-end="2001" class="language-rust"><span class="hljs-comment">/// hello</span>
+<span class="hljs-comment">//! hello</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2002" data-line-end="2004">在doc添加代码块</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2005" data-line-end="2010" class="language-rust"><span class="hljs-comment">/// code</span>
+<span class="hljs-comment">///</span>
+<span class="hljs-comment">///     println!("hello");</span>
+<span class="hljs-comment">///     </span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2012" data-line-end="2017" class="language-rust"><span class="hljs-comment">/// code</span>
+<span class="hljs-comment">/// '''</span>
+<span class="hljs-comment">/// println!("hello");</span>
+<span class="hljs-comment">/// '''</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2018" data-line-end="2020">指定代码行不出现在doc文档</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2021" data-line-end="2026" class="language-rust"><span class="hljs-comment">/// code</span>
+<span class="hljs-comment">/// '''</span>
+<span class="hljs-comment">/// # println!("hello");</span>
+<span class="hljs-comment">/// '''</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2027" data-line-end="2029">doc中代码块被编译为测试函数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2030" data-line-end="2035" class="language-rust"><span class="hljs-comment">/// code</span>
+<span class="hljs-comment">/// '''ignore //不编译运行</span>
+<span class="hljs-comment">/// println!("hello");</span>
+<span class="hljs-comment">/// '''</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2037" data-line-end="2042" class="language-rust"><span class="hljs-comment">/// code</span>
+<span class="hljs-comment">/// '''no_run //编译，不运行</span>
+<span class="hljs-comment">/// println!("hello");</span>
+<span class="hljs-comment">/// '''</span>
+</code></pre>
+<h5 class="code-line" data-line-start=2043 data-line-end=2044 ><a id="cargo_2043"></a>在cargo项目中声明外部依赖</h5>
+<ul>
+<li class="has-line-data" data-line-start="2045" data-line-end="2047">外部crate放在本地项目中</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2048" data-line-end="2051" class="language-toml"><span class="hljs-title">[dependencies]</span>
+<span class="hljs-setting">util = <span class="hljs-value">{ path = <span class="hljs-string">"util"</span> }</span></span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2053" data-line-end="2056" class="language-toml"><span class="hljs-title">[dependencies]</span>
+<span class="hljs-setting">calc = <span class="hljs-value">{ path = <span class="hljs-string">"../calc"</span> }</span></span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2057" data-line-end="2059">外部crate放在远程git仓库中</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2060" data-line-end="2063" class="language-toml"><span class="hljs-title">[dependencies]</span>
+<span class="hljs-setting">regex = <span class="hljs-value">{ git = <span class="hljs-string">"https://github.com/rust-lang/regex"</span> }</span></span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2065" data-line-end="2068" class="language-toml"><span class="hljs-title">[dependencies]</span>
+<span class="hljs-setting">regex = <span class="hljs-value">{ git = <span class="hljs-string">"https://github.com/rust-lang/regex"</span>, branch = <span class="hljs-string">"next"</span>}</span></span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2069" data-line-end="2071">外部crate放在crates.io上</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2072" data-line-end="2075" class="language-toml"><span class="hljs-title">[dependencies]</span>
+<span class="hljs-setting">image = <span class="hljs-value"><span class="hljs-string">"0.13.0"</span> //考虑多方需求，找到与<span class="hljs-number">0.13</span>.<span class="hljs-number">0</span>兼容的尽可能新的版本</span></span>
+</code></pre>
+<h5 class="code-line" data-line-start=2076 data-line-end=2077 ><a id="_2076"></a>版本号管理</h5>
+<ul>
+<li class="has-line-data" data-line-start="2078" data-line-end="2086">
+<p class="has-line-data" data-line-start="2078" data-line-end="2079">Major.Minor.Patch</p>
+<p class="has-line-data" data-line-start="2080" data-line-end="2081">Major/主版本号：不具兼容性改变</p>
+<p class="has-line-data" data-line-start="2082" data-line-end="2083">Minor/次版本号：具有兼容性的增强</p>
+<p class="has-line-data" data-line-start="2084" data-line-end="2085">Patch/修订号：修复</p>
+</li>
+<li class="has-line-data" data-line-start="2086" data-line-end="2094">
+<p class="has-line-data" data-line-start="2086" data-line-end="2087">兼容性判断</p>
+<p class="has-line-data" data-line-start="2088" data-line-end="2089">两个0.0前缀不存在兼容关系</p>
+<p class="has-line-data" data-line-start="2090" data-line-end="2091">两个相同0.x（x非0）存在兼容关系</p>
+<p class="has-line-data" data-line-start="2092" data-line-end="2093">主版本号相同具有兼容关系</p>
+</li>
+<li class="has-line-data" data-line-start="2094" data-line-end="2112">
+<p class="has-line-data" data-line-start="2094" data-line-end="2095">Caret requirements</p>
+<p class="has-line-data" data-line-start="2096" data-line-end="2097">^0：[0.0.0, 1.0.0)，不兼容</p>
+<p class="has-line-data" data-line-start="2098" data-line-end="2099">^0.0：[0.0.0, 0.1.0)，不兼容</p>
+<p class="has-line-data" data-line-start="2100" data-line-end="2101">^0.0.3：[0.0.3, 0.0.4)，不适用</p>
+<p class="has-line-data" data-line-start="2102" data-line-end="2103">^0.2：[0.2.0, 0.3.0)，兼容</p>
+<p class="has-line-data" data-line-start="2104" data-line-end="2105">^0.2.3：[0.2.3, 0.3.0)，兼容</p>
+<p class="has-line-data" data-line-start="2106" data-line-end="2107">^1：[1.0.0, 2.0.0)，兼容</p>
+<p class="has-line-data" data-line-start="2108" data-line-end="2109">^1.2：[1.2.0, 2.0.0)，兼容</p>
+<p class="has-line-data" data-line-start="2110" data-line-end="2111">^1.2.3: [1.2.3, 2.0.0)，兼容</p>
+</li>
+<li class="has-line-data" data-line-start="2112" data-line-end="2114">
+<p class="has-line-data" data-line-start="2112" data-line-end="2113">Tilde requirements：<sub>1、</sub>1.2、~1.2.3</p>
+</li>
+<li class="has-line-data" data-line-start="2114" data-line-end="2122">
+<p class="has-line-data" data-line-start="2114" data-line-end="2115">Other requirements</p>
+<p class="has-line-data" data-line-start="2116" data-line-end="2117">Wildcard：*、1.*、1.2.*</p>
+<p class="has-line-data" data-line-start="2118" data-line-end="2119">Comparison：&gt;=1.2.0、&lt;2、=1.2.3</p>
+<p class="has-line-data" data-line-start="2120" data-line-end="2121">Combination：&gt;=2, &lt; 1.5</p>
+</li>
+<li class="has-line-data" data-line-start="2122" data-line-end="2124">
+<p class="has-line-data" data-line-start="2122" data-line-end="2123">Cargo.lock记录当前项目直接/间接依赖的外部crates来源与真实版本，本地缓存，供所有Cargo项目复用</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2125" data-line-end="2127">cargo update //重新计算
+</code></pre>
+<h5 class="code-line" data-line-start=2128 data-line-end=2129 ><a id="cratecratesio_2128"></a><a href="http://xn--cratecrates-cn7rq5d15jx97bpiak71ee08f897ax2l.io">把自己编写的crate发布到crates.io</a></h5>
+<pre><code class="has-line-data" data-line-start="2131" data-line-end="2135">cargo package
+cargo login &lt;key&gt;
+cargo publish
+</code></pre>
+<h5 class="code-line" data-line-start=2136 data-line-end=2137 ><a id="workspace_2136"></a>把项目组织为workspace</h5>
+<ul>
+<li class="has-line-data" data-line-start="2138" data-line-end="2140">在所有cargo项目的上层目录创建Cargo.toml文件，删除每一个carog项目中的Cargo.lock和target目录</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2141" data-line-end="2144" class="language-toml"><span class="hljs-title">[workspace]</span>
+<span class="hljs-setting">members = <span class="hljs-value">[<span class="hljs-string">"crate_1"</span>, <span class="hljs-string">"crate_2"</span>]</span></span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2146" data-line-end="2148">cargo build --workspace
+</code></pre>
+<h3 class="code-line" data-line-start=2149 data-line-end=2150 ><a id="08__2149"></a>08 结构体</h3>
+<h5 class="code-line" data-line-start=2151 data-line-end=2152 ><a id="NamedField_Struct_2151"></a>Named-Field Struct</h5>
+<pre><code class="has-line-data" data-line-start="2154" data-line-end="2163" class="language-rust"><span class="hljs-keyword">struct</span> Image {
+    size: (usize, usize),
+    pixels: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u32</span>&gt;
+}
+<span class="hljs-keyword">let</span> im = Image {
+    pixels: <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>; w * h],
+    size: (w, h)
+};
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2164" data-line-end="2166">一个语法糖</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2167" data-line-end="2171" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>(size: (usize, usize), pixels: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u32</span>&gt;) -&gt; Image {
+    Image { size, pixels }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2172" data-line-end="2174">可见性，缺省为private</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2175" data-line-end="2180" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> Image {
+    <span class="hljs-keyword">pub</span> size: (usize, usize),
+    <span class="hljs-keyword">pub</span> pixels: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u32</span>&gt;
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2181" data-line-end="2185">
+<p class="has-line-data" data-line-start="2181" data-line-end="2182">partially moved</p>
+<p class="has-line-data" data-line-start="2183" data-line-end="2184">其他field仍然可以正常访问，自身的所有权不能再被转移</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2186" data-line-end="2195" class="language-rust"><span class="hljs-keyword">let</span> a = A {
+    x: String::from(<span class="hljs-string">"hello"</span>),
+    y: String::from(<span class="hljs-string">"world"</span>),
+    n: <span class="hljs-number">1</span>
+};
+<span class="hljs-keyword">let</span> s = a.x;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, a.n); <span class="hljs-comment">//ok</span>
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a); <span class="hljs-comment">//error</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2196" data-line-end="2198">缺省值表达式</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2199" data-line-end="2205" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(a: A) -&gt; (A, A) {
+    <span class="hljs-keyword">let</span> a1 = A { n: a.n + <span class="hljs-number">1</span>, ..a };
+    <span class="hljs-keyword">let</span> a2 = A { x: a1.x.clone(), y: a1.y.clone(), ..a1 };
+    (a1, a2)
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2206 data-line-end=2207 ><a id="TupleLike_Struct_2206"></a>Tuple-Like Struct</h5>
+<pre><code class="has-line-data" data-line-start="2209" data-line-end="2214" class="language-rust"><span class="hljs-keyword">struct</span> Bound(usize, usize);
+<span class="hljs-keyword">let</span> b = Bound(<span class="hljs-number">1024</span>, <span class="hljs-number">768</span>);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}, {}"</span>, b.<span class="hljs-number">0</span>, b.<span class="hljs-number">1</span>);
+<span class="hljs-keyword">let</span> Bound (b0, b1) = b;
+</code></pre>
+<h5 class="code-line" data-line-start=2215 data-line-end=2216 ><a id="UnitLike_Struct_2215"></a>Unit-Like Struct</h5>
+<pre><code class="has-line-data" data-line-start="2218" data-line-end="2223" class="language-rust"><span class="hljs-preprocessor">#[derive(Debug)]</span>
+<span class="hljs-keyword">struct</span> OneSuch;
+<span class="hljs-keyword">let</span> o = OneSuch;
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, o);
+</code></pre>
+<h5 class="code-line" data-line-start=2224 data-line-end=2225 ><a id="impl_2224"></a>通过impl代码块添加方法</h5>
+<ul>
+<li class="has-line-data" data-line-start="2226" data-line-end="2228">冗余版本</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2229" data-line-end="2241" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> Queue {}
+<span class="hljs-keyword">impl</span> Queue {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>() -&gt; Queue {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">is_empty</span></span>(<span class="hljs-keyword">self</span>: &amp;Queue) -&gt; <span class="hljs-keyword">bool</span> {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">push</span></span>(<span class="hljs-keyword">self</span>: &amp;<span class="hljs-keyword">mut</span> Queue, c: <span class="hljs-keyword">char</span>) {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">pop</span></span>(<span class="hljs-keyword">self</span>: &amp;<span class="hljs-keyword">mut</span> Queue) -&gt; <span class="hljs-built_in">Option</span>&lt;<span class="hljs-keyword">char</span>&gt; {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">split</span></span>(<span class="hljs-keyword">self</span>: Queue) -&gt; (<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">char</span>&gt;, <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">char</span>&gt;) {}
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> q = Queue::new();
+Queue::push(&amp;<span class="hljs-keyword">mut</span> q, <span class="hljs-string">'a'</span>);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2242" data-line-end="2244">简洁版本</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2245" data-line-end="2256" class="language-rust"><span class="hljs-keyword">impl</span> Queue {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">new</span></span>() -&gt; <span class="hljs-keyword">Self</span> {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">is_empty</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-keyword">bool</span> {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">push</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, c: <span class="hljs-keyword">char</span>) {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">pop</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Option</span>&lt;<span class="hljs-keyword">char</span>&gt; {}
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">split</span></span>(<span class="hljs-keyword">self</span>) -&gt; (<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">char</span>&gt;, <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">char</span>&gt;) {}
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> q = Queue::new()
+q.push(<span class="hljs-string">'a'</span>) <span class="hljs-comment">//dot操作符知道左边取什么形式的值</span>
+</code></pre>
+<h5 class="code-line" data-line-start=2257 data-line-end=2258 ><a id="dot_2257"></a>dot操作</h5>
+<ul>
+<li class="has-line-data" data-line-start="2259" data-line-end="2261">用到Box</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2262" data-line-end="2268" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> bq = Box::new(Queue::new());
+
+bq.push(<span class="hljs-string">'a'</span>);  <span class="hljs-comment">//从mut Box&lt;Queue&gt;中获得&amp;mut Queue，获得方式&amp;mut *bq</span>
+bq.is_empty(); <span class="hljs-comment">//获得方式&amp;*bq</span>
+bq.split(); <span class="hljs-comment">//*bq发生所有权转移</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2269" data-line-end="2271">用到Rc</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2272" data-line-end="2278" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> q = Queue::new();
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> cq = Rc::new(q); <span class="hljs-comment">//q is removed</span>
+cq.is_empty(); <span class="hljs-comment">//获得方式&amp;*cq</span>
+cq.push(<span class="hljs-string">'a'</span>); <span class="hljs-comment">//error，被RC拥有的值is immutable</span>
+cq.split(); <span class="hljs-comment">//error，cannot move out of an Rc</span>
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2279" data-line-end="2281">Rc的两个高级函数</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2282" data-line-end="2292" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">get_mut</span></span>(this: &amp;<span class="hljs-keyword">mut</span> Rc&lt;T&gt;) -&gt; <span class="hljs-built_in">Option</span>&lt;&amp;<span class="hljs-keyword">mut</span> T&gt; {
+    <span class="hljs-keyword">if</span> Rc::is_unique(this) { <span class="hljs-keyword">unsafe</span> { <span class="hljs-built_in">Some</span>(Rc::get_mut_unchecked(this)) } } <span class="hljs-keyword">else</span> { <span class="hljs-built_in">None</span> }
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> x = Rc::new(<span class="hljs-number">3</span>);
+*Rc::get_mut(&amp;<span class="hljs-keyword">mut</span> x).unwrap() = <span class="hljs-number">4</span>;
+<span class="hljs-built_in">assert_eq!</span>(*x, <span class="hljs-number">4</span>);
+<span class="hljs-keyword">let</span> y = Rc::clone(&amp;x);
+<span class="hljs-built_in">assert!</span>(Rc::get_mut(&amp;<span class="hljs-keyword">mut</span> x).is_none());
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2294" data-line-end="2315" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">try_unwrap</span></span>(this: Rc&lt;T&gt;) -&gt; <span class="hljs-built_in">Result</span>&lt;T, Rc&lt;T&gt;&gt; {
+    <span class="hljs-keyword">if</span> Rc::strong_count(&amp;this) == <span class="hljs-number">1</span> {
+        <span class="hljs-keyword">unsafe</span> {
+            <span class="hljs-keyword">let</span> val = ptr::read(&amp;*this);
+            this.inner().dec_strong();
+            <span class="hljs-keyword">let</span> _weak = Weak { ptr: this.ptr };
+            forget(this);
+            <span class="hljs-built_in">Ok</span>(val)
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">Err</span>(this)
+    }
+}
+
+<span class="hljs-keyword">let</span> x = Rc::new(<span class="hljs-number">3</span>);
+<span class="hljs-built_in">assert_eq!</span>(Rc::try_unwrap(x), <span class="hljs-built_in">Ok</span>(<span class="hljs-number">3</span>));
+
+<span class="hljs-keyword">let</span> x = Rc::new(<span class="hljs-number">3</span>);
+<span class="hljs-keyword">let</span> y = Rc::clone(&amp;x);
+<span class="hljs-built_in">assert_eq!</span>(*Rc::try_unwrap(x).unwrap_err(), <span class="hljs-number">4</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2317" data-line-end="2324" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> cq = Rc::new(Queue::new());
+<span class="hljs-keyword">let</span> q = Rc::get_mut(&amp;<span class="hljs-keyword">mut</span> cq).unwrap(); <span class="hljs-comment">//q is a &amp;mut Queue</span>
+q.push(<span class="hljs-string">'a'</span>);
+q.is_empty();
+<span class="hljs-keyword">let</span> q = Rc::try_unwrap(cq).unwrap(); <span class="hljs-comment">//cq is moved, q is a Queue</span>
+<span class="hljs-keyword">let</span> (o, y) = q.split(); <span class="hljs-comment">//q is moved</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2326" data-line-end="2339" class="language-rust"><span class="hljs-keyword">struct</span> Node {
+    tag: <span class="hljs-built_in">String</span>,
+    children: <span class="hljs-built_in">Vec</span>&lt;Rc&lt;Node&gt;&gt;
+}
+<span class="hljs-keyword">impl</span> Node {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">append_to</span></span>(<span class="hljs-keyword">self</span>: Rc&lt;<span class="hljs-keyword">Self</span>&gt;, parent: &amp;<span class="hljs-keyword">mut</span> Node) {
+        parent.children.push(<span class="hljs-keyword">self</span>);
+    }
+}
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> p = Node::new(<span class="hljs-string">"p"</span>);
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> c = Rc::new(Node::new(<span class="hljs-string">"c"</span>));
+c.append_to(&amp;<span class="hljs-keyword">mut</span> p); <span class="hljs-comment">//c的所有权转移到append_to，又被转移到向量中</span>
+</code></pre>
+<h5 class="code-line" data-line-start=2340 data-line-end=2341 ><a id="impl_2340"></a>通过impl代码块添加常量</h5>
+<pre><code class="has-line-data" data-line-start="2343" data-line-end="2355" class="language-rust"><span class="hljs-preprocessor">#[derive(Debug)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> Vec2D {
+    x: <span class="hljs-keyword">f32</span>,
+    y: <span class="hljs-keyword">f32</span>
+}
+<span class="hljs-keyword">impl</span> Vec2D {
+    <span class="hljs-keyword">const</span> NAME: &amp;<span class="hljs-string">'static</span> <span class="hljs-keyword">str</span> = <span class="hljs-string">"Vec2D"</span>;
+    <span class="hljs-keyword">const</span> UNIT: <span class="hljs-keyword">Self</span> = <span class="hljs-keyword">Self</span> { x: <span class="hljs-number">1.0</span>, y:<span class="hljs-number">0.0</span> };
+}
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, Vec2D::NAME);
+<span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, Vec2D::UNIT);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2356" data-line-end="2358">可存在多个impl代码块，必须出现在类型所在crate中</li>
+</ul>
+<h5 class="code-line" data-line-start=2358 data-line-end=2359 ><a id="Generic_Struct_2358"></a>Generic Struct</h5>
+<pre><code class="has-line-data" data-line-start="2361" data-line-end="2368" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> Queue&lt;T&gt; {
+    older: <span class="hljs-built_in">Vec</span>&lt;T&gt;,
+    ynger: <span class="hljs-built_in">Vec</span>&lt;T&gt;
+}
+<span class="hljs-keyword">impl</span>&lt;T&gt; Queue&lt;T&gt; {}
+<span class="hljs-keyword">impl</span> Queue&lt;<span class="hljs-keyword">f64</span>&gt; {}
+</code></pre>
+<h5 class="code-line" data-line-start=2369 data-line-end=2370 ><a id="Struct_with_lifetime_parameters_2369"></a>Struct with lifetime parameters</h5>
+<pre><code class="has-line-data" data-line-start="2372" data-line-end="2377" class="language-rust"><span class="hljs-keyword">struct</span> Extrema&lt;<span class="hljs-string">'elt</span>&gt; {
+    min: &amp;<span class="hljs-string">'elt</span> <span class="hljs-keyword">i32</span>, max: &amp;<span class="hljs-string">'elt</span> <span class="hljs-keyword">i32</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">find_extrema</span></span>&lt;<span class="hljs-string">'s</span>&gt;(slice: &amp;<span class="hljs-string">'s</span> [<span class="hljs-keyword">i32</span>]) -&gt; Extrema&lt;<span class="hljs-string">'s</span>&gt; {}
+</code></pre>
+<h5 class="code-line" data-line-start=2378 data-line-end=2379 ><a id="Deriving_Common_Traits_for_Struct_2378"></a>Deriving Common Traits for Struct</h5>
+<pre><code class="has-line-data" data-line-start="2381" data-line-end="2384" class="language-rust"><span class="hljs-preprocessor">#[derive(Copy, Clone, Debug, PartialEq)]</span>
+<span class="hljs-keyword">struct</span> Point {}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2385" data-line-end="2386">Copy：声明为copy type</li>
+<li class="has-line-data" data-line-start="2386" data-line-end="2387">Clone：附着clone方法</li>
+<li class="has-line-data" data-line-start="2387" data-line-end="2388">Dubug：可以通过println!(&quot;{:?}&quot;)打印</li>
+<li class="has-line-data" data-line-start="2388" data-line-end="2390">PartialEq：可以通过相等或不等操作符判断</li>
+</ul>
+<h5 class="code-line" data-line-start=2390 data-line-end=2391 ><a id="Interior_Mutability_2390"></a>Interior Mutability</h5>
+<ul>
+<li class="has-line-data" data-line-start="2392" data-line-end="2394">Cell&lt;T&gt;</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2395" data-line-end="2408" class="language-rust"><span class="hljs-keyword">use</span> std::cell::Cell;
+<span class="hljs-keyword">struct</span> S {
+    regular: <span class="hljs-keyword">u8</span>,
+    special: Cell&lt;<span class="hljs-keyword">u8</span>&gt;
+}
+<span class="hljs-keyword">let</span> s = S {
+    regular: <span class="hljs-number">0</span>,
+    special: Cell::new(<span class="hljs-number">1</span>)
+};
+s.regular = <span class="hljs-number">5</span>; <span class="hljs-comment">//error</span>
+s.special.set(<span class="hljs-number">5</span>); <span class="hljs-comment">//ok, enables "interior mutability"</span>
+<span class="hljs-built_in">assert_eq!</span>(s.special.get(), <span class="hljs-number">5</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2410" data-line-end="2417" class="language-rust"><span class="hljs-comment">//impl&lt;T&gt;（定长类型T）</span>
+<span class="hljs-keyword">let</span> c = Cell::new(<span class="hljs-number">1</span>);
+c.set(<span class="hljs-number">2</span>);
+c1.swap(&amp;c2); <span class="hljs-comment">//交换各自的值</span>
+<span class="hljs-keyword">let</span> x = c.replace(<span class="hljs-number">5</span>); <span class="hljs-comment">//置换拥有的值，返回旧值</span>
+<span class="hljs-keyword">let</span> x = c.into_inner(); <span class="hljs-comment">//把不可变cell拆了，取出其值</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2419" data-line-end="2422" class="language-rust"><span class="hljs-comment">//impl&lt;T: Copy&gt;（copy type T）</span>
+<span class="hljs-keyword">let</span> x = c.get(); <span class="hljs-comment">//复制其值</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2424" data-line-end="2431" class="language-rust"><span class="hljs-comment">//impl&lt;T: ?Sized&gt;（任意类型T）</span>
+*c.get_mut() += <span class="hljs-number">1</span>; <span class="hljs-comment">//返回可变引用</span>
+
+<span class="hljs-keyword">let</span> slice: &amp;<span class="hljs-keyword">mut</span> [<span class="hljs-keyword">i32</span>] = &amp;<span class="hljs-keyword">mut</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> cell_slice: &amp;Cell&lt;[<span class="hljs-keyword">i32</span>]&gt; = Cell::from_mut(slice);
+<span class="hljs-keyword">let</span> slice_cell: &amp;[Cell&lt;<span class="hljs-keyword">i32</span>&gt;] = cell_slice.as_slice_of_cells();
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2432" data-line-end="2436">
+<p class="has-line-data" data-line-start="2432" data-line-end="2433">RefCell&lt;T&gt;</p>
+<p class="has-line-data" data-line-start="2434" data-line-end="2435">运行时检查borrow rules是否满足</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2437" data-line-end="2443" class="language-rust"><span class="hljs-comment">//impl&lt;T&gt;</span>
+<span class="hljs-keyword">let</span> c = RefCell::new(<span class="hljs-number">1</span>);
+<span class="hljs-keyword">let</span> x = c.into_inner();
+c.replace(<span class="hljs-number">2</span>); <span class="hljs-comment">//panics if the value is currently borrowed</span>
+c1.swap(&amp;d); <span class="hljs-comment">//panics if the value in either RefCell is currently borrowed</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2445" data-line-end="2453" class="language-rust"><span class="hljs-comment">//impl&lt;T: ?Sized&gt;</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">borrow</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; Ref&lt;<span class="hljs-string">'_</span>, T&gt; {}
+<span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">borrow</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; RefMut&lt;<span class="hljs-string">'_</span>, T&gt; {}
+
+<span class="hljs-keyword">let</span> b = c.borrow();
+<span class="hljs-keyword">let</span> m = c.borrow_mut();
+<span class="hljs-keyword">let</span> b = c.borrow(); <span class="hljs-comment">//panic</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2455" data-line-end="2463" class="language-rust"><span class="hljs-comment">//impl&lt;T: ?Sized&gt;</span>
+<span class="hljs-keyword">let</span> m = c.borrow_mut();
+<span class="hljs-built_in">assert!</span>(c.try_borrow().is_err());
+
+<span class="hljs-keyword">let</span> m = c.borrow();
+<span class="hljs-built_in">assert!</span>(c.try_borrow().is_ok());
+<span class="hljs-built_in">assert!</span>(c.try_borrow_mut().is_err());
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2464" data-line-end="2466">示例</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2467" data-line-end="2475" class="language-rust"><span class="hljs-comment">//Introducing mutability 'inside' of something immutable</span>
+<span class="hljs-keyword">let</span> shared_map: Rc&lt;RefCell&lt;_&gt;&gt; = Rc::new(RefCell::new(HashMap::new()));
+{
+    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> map: RefMut&lt;_&gt; = shared_map.borrow_mut();
+    map.insert(<span class="hljs-string">"a"</span>, <span class="hljs-number">1</span>);
+}
+<span class="hljs-keyword">let</span> total: <span class="hljs-keyword">i32</span> = shared_map.borrow().values().sum();
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2477" data-line-end="2492" class="language-rust"><span class="hljs-comment">//Implementation details of logically-immutable methods</span>
+<span class="hljs-keyword">struct</span> Graph {
+    edges: <span class="hljs-built_in">Vec</span>&lt;(<span class="hljs-keyword">i32</span>, <span class="hljs-keyword">i32</span>)&gt;,
+    span_tree_cache: RefCell&lt;<span class="hljs-built_in">Option</span>&lt;<span class="hljs-built_in">Vec</span>&lt;(<span class="hljs-keyword">i32</span>, <span class="hljs-keyword">i32</span>)&gt;&gt;&gt;,
+}
+
+<span class="hljs-keyword">impl</span> Graph {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">minimum_spanning_tree</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Vec</span>&lt;(<span class="hljs-keyword">i32</span>, <span class="hljs-keyword">i32</span>)&gt; {
+        <span class="hljs-keyword">self</span>.span_tree_cache.borrow_mut().get_or_insert_with(|| <span class="hljs-keyword">self</span>.calc_span_tree()).clone()
+    }
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">calc_span_tree</span></span>(&amp;<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">Vec</span>&lt;(<span class="hljs-keyword">i32</span>, <span class="hljs-keyword">i32</span>)&gt; {
+        <span class="hljs-built_in">vec!</span>[]
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2494" data-line-end="2498" class="language-rust"><span class="hljs-comment">//Mutating implementations of Clone</span>
+<span class="hljs-keyword">let</span> s: Rc&lt;<span class="hljs-built_in">String</span>&gt; = Rc::new(String::from(<span class="hljs-string">"hello"</span>));
+<span class="hljs-keyword">let</span> t: Rc&lt;<span class="hljs-built_in">String</span>&gt; = s.clone(); <span class="hljs-comment">//实际修改了共享的值</span>
+</code></pre>
+<h3 class="code-line" data-line-start=2499 data-line-end=2500 ><a id="09__2499"></a>09 枚举</h3>
+<h5 class="code-line" data-line-start=2501 data-line-end=2502 ><a id="Cstyple_Enums_2501"></a>C-styple Enums</h5>
+<pre><code class="has-line-data" data-line-start="2504" data-line-end="2522" class="language-rust"><span class="hljs-preprocessor">#[repr(i8)]</span>
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title">Ordering</span> {
+    Less,
+    Equal,
+    Greater,
+}
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">compare</span></span>(n: <span class="hljs-keyword">i32</span>, m: <span class="hljs-keyword">i32</span>) -&gt; Ordering {
+    <span class="hljs-keyword">if</span> n &lt; m {
+        Ordering::Less
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> n &gt; m {
+        Ordering::Greater
+    } 
+    <span class="hljs-keyword">else</span> {
+        Equal <span class="hljs-comment">//use std::cmp::Ordering::{self, *}</span>
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2523" data-line-end="2525">内存中被表示为整数，类型为某个基本整数类型，缺省情况下从0开始编号</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2526" data-line-end="2533" class="language-rust"><span class="hljs-keyword">enum</span> <span class="hljs-title">HttpStatus</span> {
+    <span class="hljs-built_in">Ok</span> = <span class="hljs-number">200</span>,
+    NotFound = <span class="hljs-number">404</span>,
+}
+assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
+<span class="hljs-built_in">assert_eq!</span>(size_of::&lt;HttpStatus&gt;(), <span class="hljs-number">2</span>);
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2535" data-line-end="2538" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(HttpsStatus::<span class="hljs-built_in">Ok</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">i32</span>, <span class="hljs-number">200</span>);
+<span class="hljs-comment">//as不支持将整数转换为Enum</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2540" data-line-end="2548" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(n: <span class="hljs-keyword">u32</span>) -&gt; <span class="hljs-built_in">Option</span>&lt;HttpStatus&gt; {
+    <span class="hljs-keyword">match</span> n {
+        <span class="hljs-number">200</span> =&gt; <span class="hljs-built_in">Some</span>(HttpStatus::<span class="hljs-built_in">Ok</span>),
+        ...
+        _ =&gt; <span class="hljs-built_in">None</span>,
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2549" data-line-end="2551">derive traits and attach methods</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2552" data-line-end="2561" class="language-rust"><span class="hljs-keyword">impl</span> TimeUnit {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(<span class="hljs-keyword">self</span>) -&gt; &amp;<span class="hljs-string">'static</span> <span class="hljs-keyword">str</span> {
+        <span class="hljs-keyword">match</span> <span class="hljs-keyword">self</span> {
+            TimeUnit::Seconds =&gt; <span class="hljs-string">"seconds"</span>,
+            TimeUnit::Minutes =&gt; <span class="hljs-string">"minutes"</span>,
+        }
+    }
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2562 data-line-end=2563 ><a id="Enums_with_Data_2562"></a>Enums with Data</h5>
+<pre><code class="has-line-data" data-line-start="2565" data-line-end="2571" class="language-rust"><span class="hljs-keyword">enum</span> <span class="hljs-title">S</span> {
+    A, <span class="hljs-comment">//Unit variant/constructor</span>
+    B(<span class="hljs-keyword">u32</span>, <span class="hljs-keyword">u32</span>), <span class="hljs-comment">//Tuple variant/constructor</span>
+    C{ x: <span class="hljs-keyword">u32</span>, y: <span class="hljs-keyword">u32</span> }, <span class="hljs-comment">//Struct variant/constructor</span>
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2572" data-line-end="2574">Enum与每一个variant以及variant的每个field具有相同可见性</li>
+</ul>
+<h5 class="code-line" data-line-start=2574 data-line-end=2575 ><a id="Enum_in_Memory_2574"></a>Enum in Memory</h5>
+<ul>
+<li class="has-line-data" data-line-start="2576" data-line-end="2578">包含两部分：a small integer tag to distinguish variant；enough memory to hold the largest variant</li>
+</ul>
+<h5 class="code-line" data-line-start=2578 data-line-end=2579 ><a id="Rich_Data_Structure_with_Enus_2578"></a>Rich Data Structure with Enus</h5>
+<pre><code class="has-line-data" data-line-start="2581" data-line-end="2590" class="language-rust"><span class="hljs-keyword">enum</span> <span class="hljs-title">Json</span> {
+    Null,
+    Boolean(<span class="hljs-keyword">bool</span>),
+    Number(<span class="hljs-keyword">f64</span>),
+    <span class="hljs-built_in">String</span>(<span class="hljs-built_in">String</span>),
+    Array(<span class="hljs-built_in">Vec</span>&lt;Json&gt;),
+    Object(<span class="hljs-built_in">Box</span>&lt;HashMap&lt;<span class="hljs-built_in">String</span>, Json&gt;&gt;)
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2591 data-line-end=2592 ><a id="Generic_Enums_2591"></a>Generic Enums</h5>
+<pre><code class="has-line-data" data-line-start="2594" data-line-end="2601" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title">Option</span>&lt;T&gt; {
+    <span class="hljs-built_in">None</span>, <span class="hljs-built_in">Some</span>(T),
+}
+<span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title">Result</span>&lt;T, E&gt; {
+    <span class="hljs-built_in">Ok</span>(T), <span class="hljs-built_in">Err</span>(E),
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2602" data-line-end="2604">如果T是ref、Box、其他smart pointer，Rust编译器会消除Option&lt;T&gt;表示中的tag（0表示None，非0表示pointer）</li>
+</ul>
+<h5 class="code-line" data-line-start=2604 data-line-end=2605 ><a id="Enums_2604"></a>Enums存在的一个问题</h5>
+<ul>
+<li class="has-line-data" data-line-start="2606" data-line-end="2608">判断ET类型变量e是ET中的哪一个variant：pattern matching</li>
+</ul>
+<h3 class="code-line" data-line-start=2608 data-line-end=2609 ><a id="10__2608"></a>10 模式匹配</h3>
+<h5 class="code-line" data-line-start=2610 data-line-end=2611 ><a id="Enum_2610"></a>Enum</h5>
+<pre><code class="has-line-data" data-line-start="2613" data-line-end="2622" class="language-rust"><span class="hljs-keyword">impl</span> TimeUnit {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">plural</span></span>(<span class="hljs-keyword">self</span>) -&gt; &amp;<span class="hljs-string">'static</span> <span class="hljs-keyword">str</span> {
+        <span class="hljs-keyword">match</span> <span class="hljs-keyword">self</span> {
+            TimeUnit::Second =&gt; <span class="hljs-string">"seconds"</span>,
+            TimeUnit::Minute =&gt; <span class="hljs-string">"minutes"</span>,
+            TimeUnit::Hour =&gt; <span class="hljs-string">"hours"</span>,
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2624" data-line-end="2634" class="language-rust"><span class="hljs-keyword">impl</span> RoughTime {
+    <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">to_english</span></span>(<span class="hljs-keyword">self</span>) -&gt; <span class="hljs-built_in">String</span> {
+        <span class="hljs-keyword">match</span> <span class="hljs-keyword">self</span> {
+            RoughTime::InThePast(TimeUnit::Hour, <span class="hljs-number">1</span>) =&gt; {},
+            RoughTime::InThePast(unit, <span class="hljs-number">1</span>) =&gt; {},
+            RoughTime::InThePast(unit, count) =&gt; {},
+        }
+    }
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2635 data-line-end=2636 ><a id="literal_pattern_variable_pattern_wildcard_pattern_2635"></a>literal pattern, variable pattern, wildcard pattern</h5>
+<ul>
+<li class="has-line-data" data-line-start="2637" data-line-end="2639">literal pattern, variable pattern</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2640" data-line-end="2645" class="language-rust"><span class="hljs-keyword">match</span> x {
+    <span class="hljs-number">0</span> =&gt; {},
+    n =&gt; pritln!(<span class="hljs-string">"{}"</span>, n),
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2646" data-line-end="2648">wildcard pattern</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2649" data-line-end="2654" class="language-rust"><span class="hljs-keyword">match</span> x {
+    <span class="hljs-number">0</span> =&gt; {},
+    _ =&gt; {},
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2655 data-line-end=2656 ><a id="tuple_pattern_struct_pattern_2655"></a>tuple pattern, struct pattern</h5>
+<ul>
+<li class="has-line-data" data-line-start="2657" data-line-end="2659">tuple pattern</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2660" data-line-end="2666" class="language-rust"><span class="hljs-keyword">match</span> (x.cmp(&amp;<span class="hljs-number">0</span>), y.cmp(&amp;<span class="hljs-number">0</span>)) {
+    (Equal, Equal) =&gt; {},
+    (_, Equal) =&gt; {},
+    _ =&gt; {},
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2667" data-line-end="2669">struct pattern</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2670" data-line-end="2675" class="language-rust"><span class="hljs-keyword">match</span> s {
+    Point { x: <span class="hljs-number">0</span>, y: height } =&gt; {},
+    Point { x: x, y: y } =&gt; {},
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2677" data-line-end="2686" class="language-rust"><span class="hljs-keyword">match</span> s {
+    Account { name, language, id: _, status: _, address: _ } =&gt; {},
+    ...
+}
+<span class="hljs-keyword">match</span> s {
+    Account { name, language, .. } =&gt; {}, <span class="hljs-comment">//..省略符</span>
+    ...
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2687 data-line-end=2688 ><a id="array_pattern_slice_pattern_2687"></a>array pattern, slice pattern</h5>
+<pre><code class="has-line-data" data-line-start="2690" data-line-end="2695" class="language-rust"><span class="hljs-keyword">match</span> a {
+    [_, _, <span class="hljs-number">0</span>] =&gt; [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
+    ...
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2697" data-line-end="2704" class="language-rust"><span class="hljs-keyword">match</span> a {
+    [] =&gt; {},
+    [x] =&gt; {},
+    [x, y] =&gt; {},
+    [x, .., y] =&gt; {},
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2705 data-line-end=2706 ><a id="reference_pattern_2705"></a>reference pattern</h5>
+<pre><code class="has-line-data" data-line-start="2708" data-line-end="2721" class="language-rust"><span class="hljs-keyword">match</span> account {
+    Account { name, .. } =&gt; {
+        f(&amp;name);
+        g(account); <span class="hljs-comment">//假设name不是copy type，error</span>
+    }
+}
+<span class="hljs-keyword">match</span> account {
+    Account { <span class="hljs-keyword">ref</span> name, <span class="hljs-keyword">ref</span> <span class="hljs-keyword">mut</span> x, .. } =&gt; {
+        f(name); <span class="hljs-comment">//以引用方式指向匹配的值</span>
+        g(account); <span class="hljs-comment">//ok</span>
+    }
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2722" data-line-end="2724">&amp; pattern</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2725" data-line-end="2729" class="language-rust"><span class="hljs-keyword">match</span> s.center() { <span class="hljs-comment">//假设返回引用&amp;Pointer</span>
+    &amp;Pointer { x, y } =&gt; {} <span class="hljs-comment">//若x, y不是copy type则编译错误，无法从共享引用中move out一个值</span>
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2730 data-line-end=2731 ><a id="Match_Guards_2730"></a>Match Guards</h5>
+<pre><code class="has-line-data" data-line-start="2733" data-line-end="2741" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(x: <span class="hljs-keyword">i64</span>) {
+    <span class="hljs-keyword">match</span> s {
+        <span class="hljs-built_in">None</span> =&gt; {},
+        <span class="hljs-built_in">Some</span>(x) =&gt; {}, <span class="hljs-comment">//一个全新的变量覆盖x</span>
+        <span class="hljs-built_in">Some</span>(other) =&gt; {},
+    }
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2743" data-line-end="2751" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(x: <span class="hljs-keyword">i64</span>) {
+    <span class="hljs-keyword">match</span> s {
+        <span class="hljs-built_in">None</span> =&gt; {},
+        <span class="hljs-built_in">Some</span>(y) <span class="hljs-keyword">if</span> y == x =&gt; {},
+        <span class="hljs-built_in">Some</span>(y) =&gt; {},
+    }
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2752 data-line-end=2753 ><a id="Matching_Multiple_Possibilities_2752"></a>Matching Multiple Possibilities</h5>
+<pre><code class="has-line-data" data-line-start="2755" data-line-end="2761" class="language-rust"><span class="hljs-keyword">match</span> c {
+    <span class="hljs-string">'a'</span>..=<span class="hljs-string">'z'</span> | <span class="hljs-string">'A'</span>..=<span class="hljs-string">'Z'</span> =&gt; {},
+    <span class="hljs-string">'0'</span>..=<span class="hljs-string">'9'</span> =&gt; {},
+    _ =&gt; {},
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2762 data-line-end=2763 ><a id="Bingding_with__Patterns_2762"></a>Bingding with @ Patterns</h5>
+<pre><code class="has-line-data" data-line-start="2765" data-line-end="2772" class="language-rust"><span class="hljs-keyword">match</span> s {
+    Shape::Rect(top_left, bottom_right) =&gt; {
+        paint(&amp;Shape::Rect(top_left, bottom_right))
+    }
+    _ {}
+}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2774" data-line-end="2781" class="language-rust"><span class="hljs-keyword">match</span> s {
+    rect @ Shape::Rect(..) =&gt; {
+        paint(&amp;rect)
+    }
+    _ {}
+}
+</code></pre>
+<h5 class="code-line" data-line-start=2782 data-line-end=2783 ><a id="Pattern_Matching__2782"></a>Pattern Matching 其他可以使用的地方</h5>
+<pre><code class="has-line-data" data-line-start="2785" data-line-end="2797" class="language-rust"><span class="hljs-keyword">let</span> Track { album, title, .. } = song; 
+
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">dis</span></span>((x, y): (<span class="hljs-keyword">f64</span>, <span class="hljs-keyword">f64</span>)) {}
+
+<span class="hljs-keyword">for</span> (id, d) <span class="hljs-keyword">in</span> &amp;cache_map {}
+
+<span class="hljs-keyword">let</span> sum = numbers.fold(<span class="hljs-number">0</span>, |a, &amp;num| a + num);
+
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-built_in">Some</span>(_) = x {}
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-built_in">Err</span>(err) = f() {}
+</code></pre>
+<h5 class="code-line" data-line-start=2798 data-line-end=2799 ><a id="Binary_Tree__2798"></a>Binary Tree 示例</h5>
+<pre><code class="has-line-data" data-line-start="2801" data-line-end="2823" class="language-rust"><span class="hljs-keyword">impl</span>&lt;T: <span class="hljs-built_in">Ord</span>&gt; BinaryTree&lt;T&gt; {
+    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, value: T) {
+        <span class="hljs-keyword">match</span> *<span class="hljs-keyword">self</span> {
+            BinaryTree::Empty =&gt; {
+                *<span class="hljs-keyword">self</span> = BinaryTree::NonEmpty(Box::new(TreeNode {
+                    element: value,
+                    left: BinaryTree::Empty,
+                    right: BinaryTree::Empty,
+                }))
+            }
+            BinaryTree::NonEmpty(<span class="hljs-keyword">ref</span> <span class="hljs-keyword">mut</span> node) =&gt; {
+                <span class="hljs-keyword">if</span> value &lt;= node.element {
+                    node.left.add(value);
+                }
+                <span class="hljs-keyword">else</span> {
+                    node.right.add(value);
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h3 class="code-line" data-line-start=2824 data-line-end=2825 ><a id="11_Trait_and_Generic_2824"></a>11 Trait and Generic</h3>
+<h5 class="code-line" data-line-start=2826 data-line-end=2827 ><a id="Trait_2826"></a>Trait</h5>
+<ul>
+<li class="has-line-data" data-line-start="2828" data-line-end="2830">定义示例</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2831" data-line-end="2835" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">trait</span> <span class="hljs-title">Write</span> {
+    ...
+}
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2836" data-line-end="2838">使用示例</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2839" data-line-end="2848" class="language-rust"><span class="hljs-comment">//Trait Object</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">say_hello</span></span>(out: &amp;<span class="hljs-keyword">mut</span> dyn Write) -&gt; std::io::<span class="hljs-built_in">Result</span>&lt;()&gt; {}
+
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> bytes = <span class="hljs-built_in">vec!</span>[]; <span class="hljs-comment">//实现了Write</span>
+<span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> file = File::create(<span class="hljs-string">"hello.txt"</span>)?; <span class="hljs-comment">//实现了Write</span>
+
+say_hello(&amp;<span class="hljs-keyword">mut</span> bytes)?;
+sya_hello(&amp;<span class="hljs-keyword">mut</span> file)?;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2850" data-line-end="2853" class="language-rust"><span class="hljs-comment">//Trait Bound on type parameters in generic functions</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">min</span></span>&lt;T: <span class="hljs-built_in">Ord</span>&gt;(value1: T, value2: T) -&gt; T {}
+</code></pre>
+<h5 class="code-line" data-line-start=2854 data-line-end=2855 ><a id="Trait_2854"></a>Trait的使用</h5>
+<ul>
+<li class="has-line-data" data-line-start="2856" data-line-end="2862">
+<p class="has-line-data" data-line-start="2856" data-line-end="2857">需要确保trait被引入到当前作用域</p>
+<p class="has-line-data" data-line-start="2858" data-line-end="2859">一个类型可能实现多个trait，显式引入所需trait减少名称冲突</p>
+<p class="has-line-data" data-line-start="2860" data-line-end="2861">std::prelude已经引入很多traits</p>
+</li>
+<li class="has-line-data" data-line-start="2862" data-line-end="2868">
+<p class="has-line-data" data-line-start="2862" data-line-end="2863">Trait Object</p>
+<p class="has-line-data" data-line-start="2864" data-line-end="2865">a ref to a value with a trait type</p>
+<p class="has-line-data" data-line-start="2866" data-line-end="2867">vtable、data</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2869" data-line-end="2872" class="language-rust"><span class="hljs-keyword">let</span> writer: dy Write = buf; <span class="hljs-comment">//error</span>
+<span class="hljs-keyword">let</span> writer: &amp;<span class="hljs-keyword">mut</span> dyn Write = &amp;<span class="hljs-keyword">mut</span> buf;
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2874" data-line-end="2878" class="language-rust"><span class="hljs-comment">//自动转换</span>
+say_hello(&amp;<span class="hljs-keyword">mut</span> file)?;
+<span class="hljs-keyword">let</span> w: <span class="hljs-built_in">Box</span>&lt;dy Write&gt; = Box::new(file);
+</code></pre>
+<ul>
+<li class="has-line-data" data-line-start="2879" data-line-end="2885">
+<p class="has-line-data" data-line-start="2879" data-line-end="2880">Trait Object VS Type Parameter</p>
+<p class="has-line-data" data-line-start="2881" data-line-end="2882">Trait Object：Dynamic Dispatch（在运行时刻查找vtable确定调用方法的地址）</p>
+<p class="has-line-data" data-line-start="2883" data-line-end="2884">Type Parameter：Static Dispatch（在编译时刻确定调用方法的地址）</p>
+</li>
+<li class="has-line-data" data-line-start="2885" data-line-end="2887">
+<p class="has-line-data" data-line-start="2885" data-line-end="2886">Generic function</p>
+</li>
+</ul>
+<pre><code class="has-line-data" data-line-start="2888" data-line-end="2892" class="language-rust"><span class="hljs-keyword">let</span> v1 = (<span class="hljs-number">0</span>..<span class="hljs-number">1000</span>).collect(); <span class="hljs-comment">//error</span>
+<span class="hljs-keyword">let</span> v2: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">i32</span>&gt; = (<span class="hljs-number">0</span>..<span class="hljs-number">1000</span>).colloct(); <span class="hljs-comment">//ok</span>
+<span class="hljs-keyword">let</span> v3: (<span class="hljs-number">0</span>..<span class="hljs-number">1000</span>).collect::&lt;<span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">i32</span>&gt;&gt;(); <span class="hljs-comment">//ok</span>
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2894" data-line-end="2899" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;T: Debug + Hash + <span class="hljs-built_in">Eq</span>&gt;() {}
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;T&gt;() 
+    <span class="hljs-keyword">where</span> T: Debug + Hash + <span class="hljs-built_in">Eq</span> 
+{}
+</code></pre>
+<pre><code class="has-line-data" data-line-start="2901" data-line-end="2904" class="language-rust"><span class="hljs-comment">//Lifetiem parameter需要放在Type parameter之前</span>
+<span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'t</span>, <span class="hljs-string">'c</span>, P&gt;() {}
+</code></pre>
+</div>
+</body>
+</html>
