@@ -1,21 +1,66 @@
-
 <html>
 <head>
     <meta charset="UTF-8">
     <title>我的网页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.css">
+    <link rel="stylesheet" href="github-markdown.css">
     <style>
         /* 在这里写CSS代码 */
-        .markdown-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    word-wrap: break-word;
-    color: #24292e;
-    background-color: #fff;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 45px;
+        h3, h5 {
+        scroll-margin-top: 20px; /* 防止标题被顶部导航栏遮挡 */
+        }
+        /* 平滑滚动 */
+        html {
+        scroll-behavior: smooth;
+        }
+        .toc-container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            overflow-y: visible;
+            padding: 30px;
+            background: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            box-sizing: border-box;
+            
+            /* 新增字体样式 */
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 18px;  /* 调大字号（原浏览器默认通常为14px） */
+            line-height: 1.6; /* 增加行高提升可读性 */
+            color: #333;      /* 深灰色文字更柔和 */
+        }
+
+/* 移除目录项的下划线 */
+.toc-container a {
+    text-decoration: none !important; /* 强制移除下划线 */
+    color: #555; /* 可选：调整链接颜色 */
 }
+
+/* 悬停效果优化 */
+.toc-container a:hover {
+    color: #000; /* 悬停时加深颜色 */
+    background-color: rgba(0,0,0,0.05); /* 添加浅灰色背景 */
+    border-radius: 3px;
+}
+
+
+        .markdown-body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            color: #24292e;
+            background-color: #fff;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+        .markdown-body {
+            margin-left: 350px;
+            padding: 20px;
+        }
 
 .markdown-body h1, 
 .markdown-body h2 {
@@ -24,28 +69,28 @@
 }
 
 .markdown-body h1 {
-    font-size: 2em;
+    font-size: 3em;
     margin: 0.67em 0;
 }
 
 .markdown-body h2 {
-    font-size: 1.5em;
+    font-size: 2.5em;
 }
 
 .markdown-body h3 {
-    font-size: 1.25em;
+    font-size: 2em;
 }
 
 .markdown-body h4 {
-    font-size: 1em;
+    font-size: 1.5em;
 }
 
 .markdown-body h5 {
-    font-size: 0.875em;
+    font-size: 1em;
 }
 
 .markdown-body h6 {
-    font-size: 0.85em;
+    font-size: 0.8em;
     color: #6a737d;
 }
 
@@ -160,10 +205,11 @@
     </style>
 </head>
 <body>
+    <div class="toc-container" id="toc"></div>
 <div class="markdown-body">
 
-<h3 class="code-line" data-line-start=0 data-line-end=1 ><a id="01_Rust_0"></a>01 初见Rust</h3>
-<h5 class="code-line" data-line-start=2 data-line-end=3 ><a id="Rust_2"></a>Rust工具链</h5>
+<h3 id="0" class="code-line" data-line-start=0 data-line-end=1 ><a id="01_Rust_0"></a>01 初见Rust</h3>
+<h5 id="1" class="code-line" data-line-start=2 data-line-end=3 ><a id="Rust_2"></a>Rust工具链</h5>
 <pre><code class="has-line-data" data-line-start="5" data-line-end="9">rustup update stable
 rustup self uninstall
 rustup doc //打开本地文档
@@ -178,12 +224,12 @@ cargo check //检查语法错误
 <pre><code class="has-line-data" data-line-start="20" data-line-end="23">rustc main.rs
 ./main
 </code></pre>
-<h5 class="code-line" data-line-start=24 data-line-end=25 ><a id="_24"></a>宏</h5>
+<h5 id="18"class="code-line" data-line-start=24 data-line-end=25 ><a id="_24"></a>宏</h5>
 <pre><code class="has-line-data" data-line-start="27" data-line-end="31" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"Hello, world!"</span>);
 }
 </code></pre>
-<h5 class="code-line" data-line-start=32 data-line-end=33 ><a id="_32"></a>函数</h5>
+<h5 id="19"class="code-line" data-line-start=32 data-line-end=33 ><a id="_32"></a>函数</h5>
 <pre><code class="has-line-data" data-line-start="35" data-line-end="48" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">gcd</span></span>(<span class="hljs-keyword">mut</span> x: <span class="hljs-keyword">u64</span>, <span class="hljs-keyword">mut</span> y: <span class="hljs-keyword">u64</span>) -&gt; <span class="hljs-keyword">u64</span> {
     <span class="hljs-built_in">assert!</span>(x != <span class="hljs-number">0</span> &amp;&amp; y != <span class="hljs-number">0</span>);
     <span class="hljs-keyword">while</span> y != <span class="hljs-number">0</span> {
@@ -197,7 +243,7 @@ cargo check //检查语法错误
     x
 }
 </code></pre>
-<h5 class="code-line" data-line-start=49 data-line-end=50 ><a id="_49"></a>测试函数</h5>
+<h5 id="20"class="code-line" data-line-start=49 data-line-end=50 ><a id="_49"></a>测试函数</h5>
 <ul>
 <li class="has-line-data" data-line-start="51" data-line-end="53">仅用于测试，正常情况无需编译</li>
 </ul>
@@ -208,7 +254,7 @@ cargo check //检查语法错误
 </code></pre>
 <pre><code class="has-line-data" data-line-start="61" data-line-end="63">cargo test
 </code></pre>
-<h5 class="code-line" data-line-start=64 data-line-end=65 ><a id="_64"></a>命令行参数</h5>
+<h5 id="21"class="code-line" data-line-start=64 data-line-end=65 ><a id="_64"></a>命令行参数</h5>
 <pre><code class="has-line-data" data-line-start="67" data-line-end="89" class="language-rust"><span class="hljs-keyword">use</span> std::env;
 <span class="hljs-keyword">use</span> std::str::FromStr;
 
@@ -245,7 +291,7 @@ cargo check //检查语法错误
 <li class="has-line-data" data-line-start="101" data-line-end="102">Vec：a struct in std::vec；re-exported by std::prelude</li>
 <li class="has-line-data" data-line-start="102" data-line-end="104">new：a method in Vec</li>
 </ul>
-<h5 class="code-line" data-line-start=104 data-line-end=105 ><a id="Rust_104"></a>Rust语言之怪现象</h5>
+<h5 id="22"class="code-line" data-line-start=104 data-line-end=105 ><a id="Rust_104"></a>Rust语言之怪现象</h5>
 <ul>
 <li class="has-line-data" data-line-start="106" data-line-end="108">变量缺省不可被修改，但总可以被覆盖</li>
 </ul>
@@ -265,8 +311,8 @@ cargo check //检查语法错误
     z / <span class="hljs-number">2</span>
 }
 </code></pre>
-<h3 class="code-line" data-line-start=127 data-line-end=128 ><a id="02__127"></a>02 基础类型</h3>
-<h5 class="code-line" data-line-start=129 data-line-end=130 ><a id="_129"></a>整数类型</h5>
+<h3 id="2"class="code-line" data-line-start=127 data-line-end=128 ><a id="02__127"></a>02 基础类型</h3>
+<h5 id="3"class="code-line" data-line-start=129 data-line-end=130 ><a id="_129"></a>整数类型</h5>
 <ul>
 <li class="has-line-data" data-line-start="131" data-line-end="132">无符号整数：u8，u16，u32，u64，u128，usize（内存地址宽度）</li>
 <li class="has-line-data" data-line-start="132" data-line-end="134">有符号整数：i8，i16，i32，i64，i128，isize（内存地址宽度）</li>
@@ -311,7 +357,7 @@ u8::count_ones(<span class="hljs-number">0b1001</span>)
 <pre><code class="has-line-data" data-line-start="173" data-line-end="176" class="language-rust"><span class="hljs-built_in">assert_eq!</span>((-<span class="hljs-number">4_i32</span>).abs(), <span class="hljs-number">4</span>);
 <span class="hljs-built_in">assert_eq!</span>(-<span class="hljs-number">4_i32</span>.abs(), -<span class="hljs-number">4</span>);
 </code></pre>
-<h5 class="code-line" data-line-start=177 data-line-end=178 ><a id="_177"></a>整数运算溢出</h5>
+<h5 id="23"class="code-line" data-line-start=177 data-line-end=178 ><a id="_177"></a>整数运算溢出</h5>
 <pre><code class="has-line-data" data-line-start="180" data-line-end="186" class="language-rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> num = <span class="hljs-number">1</span>;
 <span class="hljs-keyword">loop</span> {
     num *= <span class="hljs-number">2</span>;
@@ -357,7 +403,7 @@ u8::count_ones(<span class="hljs-number">0b1001</span>)
 </ul>
 <pre><code class="has-line-data" data-line-start="227" data-line-end="229" class="language-rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">32760_i16</span>.saturating_add(<span class="hljs-number">10</span>), <span class="hljs-number">32767</span>);
 </code></pre>
-<h5 class="code-line" data-line-start=230 data-line-end=231 ><a id="_230"></a>浮点数类型</h5>
+<h5 id="24"class="code-line" data-line-start=230 data-line-end=231 ><a id="_230"></a>浮点数类型</h5>
 <ul>
 <li class="has-line-data" data-line-start="232" data-line-end="233">f32、f64</li>
 <li class="has-line-data" data-line-start="233" data-line-end="235">无法推断则默认为f64</li>
@@ -383,10 +429,10 @@ f64::NAN
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, PI);
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:/20}"</span>, PI); <span class="hljs-comment">//20位，不够则补0</span>
 </code></pre>
-<h5 class="code-line" data-line-start=263 data-line-end=264 ><a id="size_of_263"></a>工具函数size_of</h5>
+<h5 id="25"class="code-line" data-line-start=263 data-line-end=264 ><a id="size_of_263"></a>工具函数size_of</h5>
 <pre><code class="has-line-data" data-line-start="266" data-line-end="268" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, std::mem::size_of::&lt;isize&gt;());
 </code></pre>
-<h5 class="code-line" data-line-start=269 data-line-end=270 ><a id="_269"></a>布尔类型</h5>
+<h5 id="26"class="code-line" data-line-start=269 data-line-end=270 ><a id="_269"></a>布尔类型</h5>
 <ul>
 <li class="has-line-data" data-line-start="271" data-line-end="272">1字节</li>
 <li class="has-line-data" data-line-start="272" data-line-end="274">as操作符可将bool转为整数，无法将数字转为bool</li>
@@ -395,7 +441,7 @@ f64::NAN
 <span class="hljs-built_in">assert_eq!</span>(<span class="hljs-keyword">true</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">f32</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">//error</span>
 <span class="hljs-built_in">assert_eq!</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">as</span> <span class="hljs-keyword">bool</span>, <span class="hljs-keyword">true</span>); <span class="hljs-comment">//error</span>
 </code></pre>
-<h5 class="code-line" data-line-start=280 data-line-end=281 ><a id="_280"></a>字符类型</h5>
+<h5 id="27"class="code-line" data-line-start=280 data-line-end=281 ><a id="_280"></a>字符类型</h5>
 <ul>
 <li class="has-line-data" data-line-start="282" data-line-end="284">
 <p class="has-line-data" data-line-start="282" data-line-end="283">4字节</p>
@@ -426,7 +472,7 @@ f64::NAN
 <span class="hljs-built_in">assert_eq!</span>(char::from_u32(<span class="hljs-number">0x2764</span>), <span class="hljs-built_in">Some</span>(❤));
 <span class="hljs-built_in">assert_eq!</span>(char::from_u32(<span class="hljs-number">0x110000</span>), <span class="hljs-built_in">None</span>);
 </code></pre>
-<h5 class="code-line" data-line-start=313 data-line-end=314 ><a id="_313"></a>元组类型</h5>
+<h5 id="28"class="code-line" data-line-start=313 data-line-end=314 ><a id="_313"></a>元组类型</h5>
 <pre><code class="has-line-data" data-line-start="316" data-line-end="324" class="language-rust"><span class="hljs-keyword">let</span> t = (<span class="hljs-number">1</span>, <span class="hljs-keyword">false</span>, <span class="hljs-number">0.1</span>); <span class="hljs-comment">//类型推断</span>
 <span class="hljs-keyword">let</span> t1: (<span class="hljs-keyword">i64</span>, <span class="hljs-keyword">bool</span>, <span class="hljs-keyword">f32</span>) = (t.<span class="hljs-number">1</span>, t.<span class="hljs-number">2</span>, t.<span class="hljs-number">3</span>);
 
@@ -450,7 +496,7 @@ pritln!(<span class="hljs-string">"{}"</span>, t[i]); <span class="hljs-comment"
 </code></pre>
 <pre><code class="has-line-data" data-line-start="342" data-line-end="344" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(x : <span class="hljs-keyword">i32</span>) {} <span class="hljs-comment">//实际返回0-tuple</span>
 </code></pre>
-<h5 class="code-line" data-line-start=345 data-line-end=346 ><a id="_345"></a>指针类型</h5>
+<h5 id="29"class="code-line" data-line-start=345 data-line-end=346 ><a id="_345"></a>指针类型</h5>
 <ul>
 <li class="has-line-data" data-line-start="347" data-line-end="349">引用（Reference）</li>
 </ul>
@@ -491,7 +537,7 @@ pritln!(<span class="hljs-string">"{}"</span>, t[i]); <span class="hljs-comment"
     *ptr_x += *ptr_y;
 }
 </code></pre>
-<h5 class="code-line" data-line-start=391 data-line-end=392 ><a id="_391"></a>数组、向量、切片</h5>
+<h5 id="30"class="code-line" data-line-start=391 data-line-end=392 ><a id="_391"></a>数组、向量、切片</h5>
 <ul>
 <li class="has-line-data" data-line-start="393" data-line-end="397">
 <p class="has-line-data" data-line-start="393" data-line-end="394">array 数组</p>
@@ -549,7 +595,7 @@ f(&amp;v);
 v.sort();
 v.reverse();
 </code></pre>
-<h5 class="code-line" data-line-start=459 data-line-end=460 ><a id="_459"></a>字符串类型</h5>
+<h5 id="31"class="code-line" data-line-start=459 data-line-end=460 ><a id="_459"></a>字符串类型</h5>
 <pre><code class="has-line-data" data-line-start="462" data-line-end="475" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() {
     <span class="hljs-keyword">let</span> s = <span class="hljs-string">"\"hello world\""</span>;
     
@@ -647,11 +693,11 @@ z[<span class="hljs-number">0</span>] = <span class="hljs-string">'e'</span>; <s
 <pre><code class="has-line-data" data-line-start="574" data-line-end="577" class="language-rust"><span class="hljs-keyword">let</span> s = b<span class="hljs-string">"GET"</span>;
 <span class="hljs-built_in">assert_eq!</span>(s, &amp;[b<span class="hljs-string">'G'</span>, b<span class="hljs-string">'E'</span>, b<span class="hljs-string">'T'</span>]);
 </code></pre>
-<h5 class="code-line" data-line-start=578 data-line-end=579 ><a id="_578"></a>类型别名</h5>
+<h5 id="32"class="code-line" data-line-start=578 data-line-end=579 ><a id="_578"></a>类型别名</h5>
 <pre><code class="has-line-data" data-line-start="581" data-line-end="584" class="language-rust"><span class="hljs-keyword">type</span> <span class="hljs-title">Bytes</span> = <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u8</span>&gt;;
 <span class="hljs-keyword">let</span> a: Bytes = <span class="hljs-built_in">vec!</span>[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
 </code></pre>
-<h5 class="code-line" data-line-start=585 data-line-end=586 ><a id="_585"></a>用户自定义类型</h5>
+<h5 id="33"class="code-line" data-line-start=585 data-line-end=586 ><a id="_585"></a>用户自定义类型</h5>
 <ul>
 <li class="has-line-data" data-line-start="587" data-line-end="589">struct</li>
 </ul>
@@ -743,7 +789,7 @@ z[<span class="hljs-number">0</span>] = <span class="hljs-string">'e'</span>; <s
     }
 }
 </code></pre>
-<h5 class="code-line" data-line-start=684 data-line-end=685 ><a id="RustMemory_684"></a>Rust关于Memory的若干基本概念</h5>
+<h5 id="34"class="code-line" data-line-start=684 data-line-end=685 ><a id="RustMemory_684"></a>Rust关于Memory的若干基本概念</h5>
 <ul>
 <li class="has-line-data" data-line-start="686" data-line-end="692">
 <p class="has-line-data" data-line-start="686" data-line-end="687">Value</p>
@@ -776,8 +822,8 @@ z[<span class="hljs-number">0</span>] = <span class="hljs-string">'e'</span>; <s
 <span class="hljs-comment">//let x = vec![0, 1, 2];</span>
 <span class="hljs-comment">//let y = &amp;x[1..3];</span>
 </code></pre>
-<h3 class="code-line" data-line-start=724 data-line-end=725 ><a id="03__724"></a>03 所有权与所有权转移</h3>
-<h5 class="code-line" data-line-start=726 data-line-end=727 ><a id="_726"></a>示例</h5>
+<h3 id="4"class="code-line" data-line-start=724 data-line-end=725 ><a id="03__724"></a>03 所有权与所有权转移</h3>
+<h5 id="5"class="code-line" data-line-start=726 data-line-end=727 ><a id="_726"></a>示例</h5>
 <ul>
 <li class="has-line-data" data-line-start="728" data-line-end="730">C++</li>
 </ul>
@@ -800,7 +846,7 @@ z[<span class="hljs-number">0</span>] = <span class="hljs-string">'e'</span>; <s
 <span class="hljs-comment">//无法访问变量s</span>
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, ptr);
 </code></pre>
-<h5 class="code-line" data-line-start=752 data-line-end=753 ><a id="Rust_752"></a>Rust中的所有权</h5>
+<h5 id="35"class="code-line" data-line-start=752 data-line-end=753 ><a id="Rust_752"></a>Rust中的所有权</h5>
 <ul>
 <li class="has-line-data" data-line-start="754" data-line-end="762">
 <p class="has-line-data" data-line-start="754" data-line-end="755">在任意时刻</p>
@@ -816,7 +862,7 @@ z[<span class="hljs-number">0</span>] = <span class="hljs-string">'e'</span>; <s
 <p class="has-line-data" data-line-start="770" data-line-end="771">4、borrow a ref to a value</p>
 </li>
 </ul>
-<h5 class="code-line" data-line-start=772 data-line-end=773 ><a id="_772"></a>所有权转移</h5>
+<h5 id="36"class="code-line" data-line-start=772 data-line-end=773 ><a id="_772"></a>所有权转移</h5>
 <ul>
 <li class="has-line-data" data-line-start="774" data-line-end="782">
 <p class="has-line-data" data-line-start="774" data-line-end="775">对no-copy type的值，发生如下操作时</p>
@@ -918,7 +964,7 @@ s = String::from(<span class="hljs-string">"def"</span>); <span class="hljs-comm
 }
 <span class="hljs-comment">//不能读取v</span>
 </code></pre>
-<h5 class="code-line" data-line-start=897 data-line-end=898 ><a id="Copy_Types_897"></a>Copy Types</h5>
+<h5 id="37"class="code-line" data-line-start=897 data-line-end=898 ><a id="Copy_Types_897"></a>Copy Types</h5>
 <ul>
 <li class="has-line-data" data-line-start="899" data-line-end="900">语言自带的所有数字类型（整数、浮点数），char/bool，若干其他类型，元素类型为Copy Type的数组，所有元素类型均为Copy Type的元组</li>
 <li class="has-line-data" data-line-start="900" data-line-end="902">用户自定义的数据类型缺省情况下都不是Copy Type</li>
@@ -949,7 +995,7 @@ f(l);
 f(l);
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>. l.x);
 </code></pre>
-<h5 class="code-line" data-line-start=934 data-line-end=935 ><a id="_934"></a>共享所有权</h5>
+<h5 id="38"class="code-line" data-line-start=934 data-line-end=935 ><a id="_934"></a>共享所有权</h5>
 <pre><code class="has-line-data" data-line-start="937" data-line-end="953" class="language-rust"><span class="hljs-keyword">use</span> std::rc::Rc;
 
 <span class="hljs-comment">//可以不必写类型声明</span>
@@ -981,8 +1027,8 @@ s.push_str(<span class="hljs-string">"!"</span>); <span class="hljs-comment">//e
 <p class="has-line-data" data-line-start="965" data-line-end="966">使用建议：始终用Rc，除非编译器告诉用Arc（多线程环境下使用Rc会被编译器检查出来）</p>
 </li>
 </ul>
-<h3 class="code-line" data-line-start=967 data-line-end=968 ><a id="04__967"></a>04 引用</h3>
-<h5 class="code-line" data-line-start=969 data-line-end=970 ><a id="_969"></a>引用</h5>
+<h3 id="6"class="code-line" data-line-start=967 data-line-end=968 ><a id="04__967"></a>04 引用</h3>
+<h5 id="7"class="code-line" data-line-start=969 data-line-end=970 ><a id="_969"></a>引用</h5>
 <ul>
 <li class="has-line-data" data-line-start="971" data-line-end="979">
 <p class="has-line-data" data-line-start="971" data-line-end="972">共享型引用（shared reference）</p>
@@ -1088,7 +1134,7 @@ y = <span class="hljs-number">30</span>;
 <p class="has-line-data" data-line-start="1088" data-line-end="1089">类型&amp;[T]，一种fat pointer，包含首元素地址、元素数量</p>
 </li>
 </ul>
-<h5 class="code-line" data-line-start=1090 data-line-end=1091 ><a id="_1090"></a>引用的安全性</h5>
+<h5 id="39"class="code-line" data-line-start=1090 data-line-end=1091 ><a id="_1090"></a>引用的安全性</h5>
 <ul>
 <li class="has-line-data" data-line-start="1092" data-line-end="1094">在局部变量上创建引用</li>
 </ul>
@@ -1227,7 +1273,7 @@ f(&amp;t); <span class="hljs-comment">//error</span>
 <pre><code class="has-line-data" data-line-start="1252" data-line-end="1255" class="language-rust"><span class="hljs-comment">//附着在struct上的方法，具有参数&amp;self，返回值涉及的lifetime和self相同</span>
 <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'a</span>, <span class="hljs-string">'b</span>&gt;(&amp;<span class="hljs-string">'a</span> <span class="hljs-keyword">self</span>, p: &amp;<span class="hljs-string">'b</span> <span class="hljs-keyword">str</span>) -&gt; <span class="hljs-built_in">Option</span>&lt;&amp;<span class="hljs-string">'b</span> <span class="hljs-built_in">String</span>&gt; {}
 </code></pre>
-<h5 class="code-line" data-line-start=1256 data-line-end=1257 ><a id="_1256"></a>共享与可变</h5>
+<h5 id="40"class="code-line" data-line-start=1256 data-line-end=1257 ><a id="_1256"></a>共享与可变</h5>
 <ul>
 <li class="has-line-data" data-line-start="1258" data-line-end="1260">悬空指针</li>
 </ul>
@@ -1275,7 +1321,7 @@ x++;
 <span class="hljs-keyword">let</span> p = &amp;x;
 x += <span class="hljs-number">1</span>; <span class="hljs-comment">//error</span>
 </code></pre>
-<h5 class="code-line" data-line-start=1313 data-line-end=1314 ><a id="_1313"></a>经过反思形成的一些信息</h5>
+<h5 id="41"class="code-line" data-line-start=1313 data-line-end=1314 ><a id="_1313"></a>经过反思形成的一些信息</h5>
 <ul>
 <li class="has-line-data" data-line-start="1315" data-line-end="1317">所有权不包含可变性</li>
 </ul>
@@ -1365,8 +1411,8 @@ p.push_str(<span class="hljs-string">" world"</span>);
 <pre><code class="has-line-data" data-line-start="1420" data-line-end="1423" class="language-rust"><span class="hljs-keyword">let</span> r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//栈中</span>
 r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//error</span>
 </code></pre>
-<h3 class="code-line" data-line-start=1424 data-line-end=1425 ><a id="05__1424"></a>05 表达式</h3>
-<h5 class="code-line" data-line-start=1426 data-line-end=1427 ><a id="_1426"></a>代码块</h5>
+<h3 id="8"class="code-line" data-line-start=1424 data-line-end=1425 ><a id="05__1424"></a>05 表达式</h3>
+<h5 id="9"class="code-line" data-line-start=1426 data-line-end=1427 ><a id="_1426"></a>代码块</h5>
 <pre><code class="has-line-data" data-line-start="1429" data-line-end="1435" class="language-rust"><span class="hljs-keyword">let</span> a = {
     <span class="hljs-built_in">println!</span>(<span class="hljs-string">"hello"</span>);
     <span class="hljs-number">1</span> + <span class="hljs-number">2</span>;
@@ -1379,7 +1425,7 @@ r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//e
 };
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, a); <span class="hljs-comment">//3</span>
 </code></pre>
-<h5 class="code-line" data-line-start=1444 data-line-end=1445 ><a id="_1444"></a>分支表达式</h5>
+<h5 id="42"class="code-line" data-line-start=1444 data-line-end=1445 ><a id="_1444"></a>分支表达式</h5>
 <ul>
 <li class="has-line-data" data-line-start="1446" data-line-end="1448">let declaration</li>
 </ul>
@@ -1436,7 +1482,7 @@ r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//e
     
 }
 </code></pre>
-<h5 class="code-line" data-line-start=1512 data-line-end=1513 ><a id="_1512"></a>循环表达式</h5>
+<h5 id="43"class="code-line" data-line-start=1512 data-line-end=1513 ><a id="_1512"></a>循环表达式</h5>
 <ul>
 <li class="has-line-data" data-line-start="1514" data-line-end="1516">while循环表达式</li>
 </ul>
@@ -1494,11 +1540,11 @@ r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//e
     }
 };
 </code></pre>
-<h5 class="code-line" data-line-start=1577 data-line-end=1578 ><a id="return_expr_1577"></a>return expr</h5>
+<h5 id="44"class="code-line" data-line-start=1577 data-line-end=1578 ><a id="return_expr_1577"></a>return expr</h5>
 <ul>
 <li class="has-line-data" data-line-start="1579" data-line-end="1581">终止函数，返回表达式的值</li>
 </ul>
-<h5 class="code-line" data-line-start=1581 data-line-end=1582 ><a id="_1581"></a>运算</h5>
+<h5 id="45"class="code-line" data-line-start=1581 data-line-end=1582 ><a id="_1581"></a>运算</h5>
 <pre><code class="has-line-data" data-line-start="1584" data-line-end="1589" class="language-rust"><span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, -<span class="hljs-number">100u32</span>); <span class="hljs-comment">//error，-不能作用在无符号整数上</span>
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, +<span class="hljs-number">100</span>); <span class="hljs-comment">//error，不存在意愿操作符+</span>
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}"</span>, <span class="hljs-number">123.4</span> % <span class="hljs-number">10.0</span>); <span class="hljs-comment">//%适用于浮点数</span>
@@ -1509,29 +1555,29 @@ r = &amp;fac(<span class="hljs-number">6</span>); <span class="hljs-comment">//e
 <li class="has-line-data" data-line-start="1591" data-line-end="1592">比较运算符两个操作数类型必须相同</li>
 <li class="has-line-data" data-line-start="1592" data-line-end="1594">带有短路行为的逻辑运算操作符两个操作数类型必须为bool</li>
 </ul>
-<h5 class="code-line" data-line-start=1594 data-line-end=1595 ><a id="_1594"></a>赋值</h5>
+<h5 id="46"class="code-line" data-line-start=1594 data-line-end=1595 ><a id="_1594"></a>赋值</h5>
 <ul>
 <li class="has-line-data" data-line-start="1596" data-line-end="1597">右侧non-copy type发生所有权转移</li>
 <li class="has-line-data" data-line-start="1597" data-line-end="1598">支持复合赋值操作符：+=</li>
 <li class="has-line-data" data-line-start="1598" data-line-end="1599">不支持自增自减：++、–</li>
 <li class="has-line-data" data-line-start="1599" data-line-end="1601">不支持链式赋值：a = b = 1</li>
 </ul>
-<h5 class="code-line" data-line-start=1601 data-line-end=1602 ><a id="_1601"></a>类型转换</h5>
+<h5 id="47"class="code-line" data-line-start=1601 data-line-end=1602 ><a id="_1601"></a>类型转换</h5>
 <ul>
 <li class="has-line-data" data-line-start="1603" data-line-end="1604">内置数字类型间都可相互转换，浮点转换到整数向0取整</li>
 <li class="has-line-data" data-line-start="1604" data-line-end="1605">bool、char、类C的enum类型可转换为任何整数类型</li>
 <li class="has-line-data" data-line-start="1605" data-line-end="1606">一些unsafe pointer type之间也可转换</li>
 <li class="has-line-data" data-line-start="1606" data-line-end="1608">隐式转换：&amp;mut T→T、&amp;String→&amp;str、&amp;Vec&lt;T&gt;→&amp;[T]、&amp;Box&lt;T&gt;→&amp;T</li>
 </ul>
-<h3 class="code-line" data-line-start=1608 data-line-end=1609 ><a id="06__1608"></a>06 错误处理</h3>
-<h5 class="code-line" data-line-start=1610 data-line-end=1611 ><a id="_1610"></a>程序内部错误</h5>
+<h3 id="10"class="code-line" data-line-start=1608 data-line-end=1609 ><a id="06__1608"></a>06 错误处理</h3>
+<h5 id="48"class="code-line" data-line-start=1610 data-line-end=1611 ><a id="_1610"></a>程序内部错误</h5>
 <ul>
 <li class="has-line-data" data-line-start="1612" data-line-end="1613">应对方式：panic</li>
 <li class="has-line-data" data-line-start="1613" data-line-end="1614">程序检测到某种错误即将发生；程序在执行中调用了宏panic!</li>
 <li class="has-line-data" data-line-start="1614" data-line-end="1615">unwinding（缺省行为）：打印错误信息、逆序释放、退出线程，不影响其他线程</li>
 <li class="has-line-data" data-line-start="1615" data-line-end="1617">aborting：unwinding过程中对某个值的drop方法调用又产生了panic；使用编译参数-C panic=abort</li>
 </ul>
-<h5 class="code-line" data-line-start=1617 data-line-end=1618 ><a id="_1617"></a>程序外部错误</h5>
+<h5 id="49"class="code-line" data-line-start=1617 data-line-end=1618 ><a id="_1617"></a>程序外部错误</h5>
 <ul>
 <li class="has-line-data" data-line-start="1619" data-line-end="1621">应对方式：the Result type</li>
 </ul>
@@ -1596,8 +1642,8 @@ err.source() <span class="hljs-comment">//返回Option&lt;E&gt;，表示错误�
 </code></pre>
 <pre><code class="has-line-data" data-line-start="1691" data-line-end="1693" class="language-rust"><span class="hljs-keyword">let</span> v = f()?;
 </code></pre>
-<h3 class="code-line" data-line-start=1694 data-line-end=1695 ><a id="07_Crates_and_Modules_1694"></a>07 Crates and Modules</h3>
-<h5 class="code-line" data-line-start=1696 data-line-end=1697 ><a id="Crate_1696"></a>Crate</h5>
+<h3 id="11"class="code-line" data-line-start=1694 data-line-end=1695 ><a id="07_Crates_and_Modules_1694"></a>07 Crates and Modules</h3>
+<h5 id="50"class="code-line" data-line-start=1696 data-line-end=1697 ><a id="Crate_1696"></a>Crate</h5>
 <ul>
 <li class="has-line-data" data-line-start="1698" data-line-end="1699">由module构成的树</li>
 <li class="has-line-data" data-line-start="1699" data-line-end="1700">Library crate编译后得到库文件，Binary crate编译后得到可执行程序</li>
@@ -1633,7 +1679,7 @@ cargo build --verbose //编译过程细节
 </code></pre>
 <pre><code class="has-line-data" data-line-start="1739" data-line-end="1741" class="language-rust"><span class="hljs-keyword">use</span> calc::add;
 </code></pre>
-<h5 class="code-line" data-line-start=1742 data-line-end=1743 ><a id="module_1742"></a>module</h5>
+<h5 id="51"class="code-line" data-line-start=1742 data-line-end=1743 ><a id="module_1742"></a>module</h5>
 <ul>
 <li class="has-line-data" data-line-start="1744" data-line-end="1746">
 <p class="has-line-data" data-line-start="1744" data-line-end="1745">a collection of items</p>
@@ -1783,7 +1829,7 @@ add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>); <sp
 <span class="hljs-preprocessor">#[inline]</span> <span class="hljs-comment">//不能#![]</span>
 <span class="hljs-preprocessor">#![feature(...)]</span> <span class="hljs-comment">//只能#![]</span>
 </code></pre>
-<h5 class="code-line" data-line-start=1918 data-line-end=1919 ><a id="_1918"></a>添加单元测试代码</h5>
+<h5 id="52"class="code-line" data-line-start=1918 data-line-end=1919 ><a id="_1918"></a>添加单元测试代码</h5>
 <pre><code class="has-line-data" data-line-start="1921" data-line-end="1924">cargo new unit_test --lib
 cargo test
 </code></pre>
@@ -1830,14 +1876,14 @@ cargo test
 </ul>
 <pre><code class="has-line-data" data-line-start="1970" data-line-end="1972">cargo test f
 </code></pre>
-<h5 class="code-line" data-line-start=1973 data-line-end=1974 ><a id="_1973"></a>添加集成测试代码</h5>
+<h5 id="53"class="code-line" data-line-start=1973 data-line-end=1974 ><a id="_1973"></a>添加集成测试代码</h5>
 <ul>
 <li class="has-line-data" data-line-start="1975" data-line-end="1977">放在./tests/目录下，每一个rs文件视为一个crate</li>
 </ul>
 <pre><code class="has-line-data" data-line-start="1978" data-line-end="1981" class="language-rust"><span class="hljs-comment">// ./tests/test_1.rs</span>
 <span class="hljs-keyword">use</span> inte_test::calc::add;
 </code></pre>
-<h5 class="code-line" data-line-start=1982 data-line-end=1983 ><a id="_1982"></a>添加说明文字</h5>
+<h5 id="54"class="code-line" data-line-start=1982 data-line-end=1983 ><a id="_1982"></a>添加说明文字</h5>
 <pre><code class="has-line-data" data-line-start="1985" data-line-end="1990" class="language-rust"><span class="hljs-preprocessor">#![doc = "hello"]</span>
 
 <span class="hljs-preprocessor">#[doc = "hello"]</span>
@@ -1885,7 +1931,7 @@ cargo test
 <span class="hljs-comment">/// println!("hello");</span>
 <span class="hljs-comment">/// '''</span>
 </code></pre>
-<h5 class="code-line" data-line-start=2043 data-line-end=2044 ><a id="cargo_2043"></a>在cargo项目中声明外部依赖</h5>
+<h5 id="55"class="code-line" data-line-start=2043 data-line-end=2044 ><a id="cargo_2043"></a>在cargo项目中声明外部依赖</h5>
 <ul>
 <li class="has-line-data" data-line-start="2045" data-line-end="2047">外部crate放在本地项目中</li>
 </ul>
@@ -1910,7 +1956,7 @@ cargo test
 <pre><code class="has-line-data" data-line-start="2072" data-line-end="2075" class="language-toml"><span class="hljs-title">[dependencies]</span>
 <span class="hljs-setting">image = <span class="hljs-value"><span class="hljs-string">"0.13.0"</span> //考虑多方需求，找到与<span class="hljs-number">0.13</span>.<span class="hljs-number">0</span>兼容的尽可能新的版本</span></span>
 </code></pre>
-<h5 class="code-line" data-line-start=2076 data-line-end=2077 ><a id="_2076"></a>版本号管理</h5>
+<h5 id="56"class="code-line" data-line-start=2076 data-line-end=2077 ><a id="_2076"></a>版本号管理</h5>
 <ul>
 <li class="has-line-data" data-line-start="2078" data-line-end="2086">
 <p class="has-line-data" data-line-start="2078" data-line-end="2079">Major.Minor.Patch</p>
@@ -1950,12 +1996,12 @@ cargo test
 </ul>
 <pre><code class="has-line-data" data-line-start="2125" data-line-end="2127">cargo update //重新计算
 </code></pre>
-<h5 class="code-line" data-line-start=2128 data-line-end=2129 ><a id="cratecratesio_2128"></a><a href="http://xn--cratecrates-cn7rq5d15jx97bpiak71ee08f897ax2l.io">把自己编写的crate发布到crates.io</a></h5>
+<h5 id="57"class="code-line" data-line-start=2128 data-line-end=2129 ><a id="cratecratesio_2128"></a><a href="http://xn--cratecrates-cn7rq5d15jx97bpiak71ee08f897ax2l.io">把自己编写的crate发布到crates.io</a></h5>
 <pre><code class="has-line-data" data-line-start="2131" data-line-end="2135">cargo package
 cargo login &lt;key&gt;
 cargo publish
 </code></pre>
-<h5 class="code-line" data-line-start=2136 data-line-end=2137 ><a id="workspace_2136"></a>把项目组织为workspace</h5>
+<h5 id="58"class="code-line" data-line-start=2136 data-line-end=2137 ><a id="workspace_2136"></a>把项目组织为workspace</h5>
 <ul>
 <li class="has-line-data" data-line-start="2138" data-line-end="2140">在所有cargo项目的上层目录创建Cargo.toml文件，删除每一个carog项目中的Cargo.lock和target目录</li>
 </ul>
@@ -1964,8 +2010,8 @@ cargo publish
 </code></pre>
 <pre><code class="has-line-data" data-line-start="2146" data-line-end="2148">cargo build --workspace
 </code></pre>
-<h3 class="code-line" data-line-start=2149 data-line-end=2150 ><a id="08__2149"></a>08 结构体</h3>
-<h5 class="code-line" data-line-start=2151 data-line-end=2152 ><a id="NamedField_Struct_2151"></a>Named-Field Struct</h5>
+<h3 id="12"class="code-line" data-line-start=2149 data-line-end=2150 ><a id="08__2149"></a>08 结构体</h3>
+<h5 id="59"class="code-line" data-line-start=2151 data-line-end=2152 ><a id="NamedField_Struct_2151"></a>Named-Field Struct</h5>
 <pre><code class="has-line-data" data-line-start="2154" data-line-end="2163" class="language-rust"><span class="hljs-keyword">struct</span> Image {
     size: (usize, usize),
     pixels: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-keyword">u32</span>&gt;
@@ -2014,19 +2060,19 @@ cargo publish
     (a1, a2)
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2206 data-line-end=2207 ><a id="TupleLike_Struct_2206"></a>Tuple-Like Struct</h5>
+<h5 id="60"class="code-line" data-line-start=2206 data-line-end=2207 ><a id="TupleLike_Struct_2206"></a>Tuple-Like Struct</h5>
 <pre><code class="has-line-data" data-line-start="2209" data-line-end="2214" class="language-rust"><span class="hljs-keyword">struct</span> Bound(usize, usize);
 <span class="hljs-keyword">let</span> b = Bound(<span class="hljs-number">1024</span>, <span class="hljs-number">768</span>);
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{}, {}"</span>, b.<span class="hljs-number">0</span>, b.<span class="hljs-number">1</span>);
 <span class="hljs-keyword">let</span> Bound (b0, b1) = b;
 </code></pre>
-<h5 class="code-line" data-line-start=2215 data-line-end=2216 ><a id="UnitLike_Struct_2215"></a>Unit-Like Struct</h5>
+<h5 id="61"class="code-line" data-line-start=2215 data-line-end=2216 ><a id="UnitLike_Struct_2215"></a>Unit-Like Struct</h5>
 <pre><code class="has-line-data" data-line-start="2218" data-line-end="2223" class="language-rust"><span class="hljs-preprocessor">#[derive(Debug)]</span>
 <span class="hljs-keyword">struct</span> OneSuch;
 <span class="hljs-keyword">let</span> o = OneSuch;
 <span class="hljs-built_in">println!</span>(<span class="hljs-string">"{:?}"</span>, o);
 </code></pre>
-<h5 class="code-line" data-line-start=2224 data-line-end=2225 ><a id="impl_2224"></a>通过impl代码块添加方法</h5>
+<h5 id="62"class="code-line" data-line-start=2224 data-line-end=2225 ><a id="impl_2224"></a>通过impl代码块添加方法</h5>
 <ul>
 <li class="has-line-data" data-line-start="2226" data-line-end="2228">冗余版本</li>
 </ul>
@@ -2056,7 +2102,7 @@ Queue::push(&amp;<span class="hljs-keyword">mut</span> q, <span class="hljs-stri
 <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> q = Queue::new()
 q.push(<span class="hljs-string">'a'</span>) <span class="hljs-comment">//dot操作符知道左边取什么形式的值</span>
 </code></pre>
-<h5 class="code-line" data-line-start=2257 data-line-end=2258 ><a id="dot_2257"></a>dot操作</h5>
+<h5 id="63"class="code-line" data-line-start=2257 data-line-end=2258 ><a id="dot_2257"></a>dot操作</h5>
 <ul>
 <li class="has-line-data" data-line-start="2259" data-line-end="2261">用到Box</li>
 </ul>
@@ -2129,7 +2175,7 @@ q.is_empty();
 <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> c = Rc::new(Node::new(<span class="hljs-string">"c"</span>));
 c.append_to(&amp;<span class="hljs-keyword">mut</span> p); <span class="hljs-comment">//c的所有权转移到append_to，又被转移到向量中</span>
 </code></pre>
-<h5 class="code-line" data-line-start=2340 data-line-end=2341 ><a id="impl_2340"></a>通过impl代码块添加常量</h5>
+<h5 id="64"class="code-line" data-line-start=2340 data-line-end=2341 ><a id="impl_2340"></a>通过impl代码块添加常量</h5>
 <pre><code class="has-line-data" data-line-start="2343" data-line-end="2355" class="language-rust"><span class="hljs-preprocessor">#[derive(Debug)]</span>
 <span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> Vec2D {
     x: <span class="hljs-keyword">f32</span>,
@@ -2145,7 +2191,7 @@ c.append_to(&amp;<span class="hljs-keyword">mut</span> p); <span class="hljs-com
 <ul>
 <li class="has-line-data" data-line-start="2356" data-line-end="2358">可存在多个impl代码块，必须出现在类型所在crate中</li>
 </ul>
-<h5 class="code-line" data-line-start=2358 data-line-end=2359 ><a id="Generic_Struct_2358"></a>Generic Struct</h5>
+<h5 id="65"class="code-line" data-line-start=2358 data-line-end=2359 ><a id="Generic_Struct_2358"></a>Generic Struct</h5>
 <pre><code class="has-line-data" data-line-start="2361" data-line-end="2368" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> Queue&lt;T&gt; {
     older: <span class="hljs-built_in">Vec</span>&lt;T&gt;,
     ynger: <span class="hljs-built_in">Vec</span>&lt;T&gt;
@@ -2153,13 +2199,13 @@ c.append_to(&amp;<span class="hljs-keyword">mut</span> p); <span class="hljs-com
 <span class="hljs-keyword">impl</span>&lt;T&gt; Queue&lt;T&gt; {}
 <span class="hljs-keyword">impl</span> Queue&lt;<span class="hljs-keyword">f64</span>&gt; {}
 </code></pre>
-<h5 class="code-line" data-line-start=2369 data-line-end=2370 ><a id="Struct_with_lifetime_parameters_2369"></a>Struct with lifetime parameters</h5>
+<h5 id="66"class="code-line" data-line-start=2369 data-line-end=2370 ><a id="Struct_with_lifetime_parameters_2369"></a>Struct with lifetime parameters</h5>
 <pre><code class="has-line-data" data-line-start="2372" data-line-end="2377" class="language-rust"><span class="hljs-keyword">struct</span> Extrema&lt;<span class="hljs-string">'elt</span>&gt; {
     min: &amp;<span class="hljs-string">'elt</span> <span class="hljs-keyword">i32</span>, max: &amp;<span class="hljs-string">'elt</span> <span class="hljs-keyword">i32</span>
 }
 <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">find_extrema</span></span>&lt;<span class="hljs-string">'s</span>&gt;(slice: &amp;<span class="hljs-string">'s</span> [<span class="hljs-keyword">i32</span>]) -&gt; Extrema&lt;<span class="hljs-string">'s</span>&gt; {}
 </code></pre>
-<h5 class="code-line" data-line-start=2378 data-line-end=2379 ><a id="Deriving_Common_Traits_for_Struct_2378"></a>Deriving Common Traits for Struct</h5>
+<h5 id="67"class="code-line" data-line-start=2378 data-line-end=2379 ><a id="Deriving_Common_Traits_for_Struct_2378"></a>Deriving Common Traits for Struct</h5>
 <pre><code class="has-line-data" data-line-start="2381" data-line-end="2384" class="language-rust"><span class="hljs-preprocessor">#[derive(Copy, Clone, Debug, PartialEq)]</span>
 <span class="hljs-keyword">struct</span> Point {}
 </code></pre>
@@ -2169,7 +2215,7 @@ c.append_to(&amp;<span class="hljs-keyword">mut</span> p); <span class="hljs-com
 <li class="has-line-data" data-line-start="2387" data-line-end="2388">Dubug：可以通过println!(&quot;{:?}&quot;)打印</li>
 <li class="has-line-data" data-line-start="2388" data-line-end="2390">PartialEq：可以通过相等或不等操作符判断</li>
 </ul>
-<h5 class="code-line" data-line-start=2390 data-line-end=2391 ><a id="Interior_Mutability_2390"></a>Interior Mutability</h5>
+<h5 id="68"class="code-line" data-line-start=2390 data-line-end=2391 ><a id="Interior_Mutability_2390"></a>Interior Mutability</h5>
 <ul>
 <li class="has-line-data" data-line-start="2392" data-line-end="2394">Cell&lt;T&gt;</li>
 </ul>
@@ -2261,8 +2307,8 @@ c1.swap(&amp;d); <span class="hljs-comment">//panics if the value in either RefC
 <span class="hljs-keyword">let</span> s: Rc&lt;<span class="hljs-built_in">String</span>&gt; = Rc::new(String::from(<span class="hljs-string">"hello"</span>));
 <span class="hljs-keyword">let</span> t: Rc&lt;<span class="hljs-built_in">String</span>&gt; = s.clone(); <span class="hljs-comment">//实际修改了共享的值</span>
 </code></pre>
-<h3 class="code-line" data-line-start=2499 data-line-end=2500 ><a id="09__2499"></a>09 枚举</h3>
-<h5 class="code-line" data-line-start=2501 data-line-end=2502 ><a id="Cstyple_Enums_2501"></a>C-styple Enums</h5>
+<h3 id="13"class="code-line" data-line-start=2499 data-line-end=2500 ><a id="09__2499"></a>09 枚举</h3>
+<h5 id="69"class="code-line" data-line-start=2501 data-line-end=2502 ><a id="Cstyple_Enums_2501"></a>C-styple Enums</h5>
 <pre><code class="has-line-data" data-line-start="2504" data-line-end="2522" class="language-rust"><span class="hljs-preprocessor">#[repr(i8)]</span>
 <span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title">Ordering</span> {
     Less,
@@ -2314,7 +2360,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     }
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2562 data-line-end=2563 ><a id="Enums_with_Data_2562"></a>Enums with Data</h5>
+<h5 id="70"class="code-line" data-line-start=2562 data-line-end=2563 ><a id="Enums_with_Data_2562"></a>Enums with Data</h5>
 <pre><code class="has-line-data" data-line-start="2565" data-line-end="2571" class="language-rust"><span class="hljs-keyword">enum</span> <span class="hljs-title">S</span> {
     A, <span class="hljs-comment">//Unit variant/constructor</span>
     B(<span class="hljs-keyword">u32</span>, <span class="hljs-keyword">u32</span>), <span class="hljs-comment">//Tuple variant/constructor</span>
@@ -2324,11 +2370,11 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
 <ul>
 <li class="has-line-data" data-line-start="2572" data-line-end="2574">Enum与每一个variant以及variant的每个field具有相同可见性</li>
 </ul>
-<h5 class="code-line" data-line-start=2574 data-line-end=2575 ><a id="Enum_in_Memory_2574"></a>Enum in Memory</h5>
+<h5 id="71"class="code-line" data-line-start=2574 data-line-end=2575 ><a id="Enum_in_Memory_2574"></a>Enum in Memory</h5>
 <ul>
 <li class="has-line-data" data-line-start="2576" data-line-end="2578">包含两部分：a small integer tag to distinguish variant；enough memory to hold the largest variant</li>
 </ul>
-<h5 class="code-line" data-line-start=2578 data-line-end=2579 ><a id="Rich_Data_Structure_with_Enus_2578"></a>Rich Data Structure with Enus</h5>
+<h5 id="72"class="code-line" data-line-start=2578 data-line-end=2579 ><a id="Rich_Data_Structure_with_Enus_2578"></a>Rich Data Structure with Enus</h5>
 <pre><code class="has-line-data" data-line-start="2581" data-line-end="2590" class="language-rust"><span class="hljs-keyword">enum</span> <span class="hljs-title">Json</span> {
     Null,
     Boolean(<span class="hljs-keyword">bool</span>),
@@ -2338,7 +2384,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     Object(<span class="hljs-built_in">Box</span>&lt;HashMap&lt;<span class="hljs-built_in">String</span>, Json&gt;&gt;)
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2591 data-line-end=2592 ><a id="Generic_Enums_2591"></a>Generic Enums</h5>
+<h5 id="73"class="code-line" data-line-start=2591 data-line-end=2592 ><a id="Generic_Enums_2591"></a>Generic Enums</h5>
 <pre><code class="has-line-data" data-line-start="2594" data-line-end="2601" class="language-rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">enum</span> <span class="hljs-title">Option</span>&lt;T&gt; {
     <span class="hljs-built_in">None</span>, <span class="hljs-built_in">Some</span>(T),
 }
@@ -2349,12 +2395,12 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
 <ul>
 <li class="has-line-data" data-line-start="2602" data-line-end="2604">如果T是ref、Box、其他smart pointer，Rust编译器会消除Option&lt;T&gt;表示中的tag（0表示None，非0表示pointer）</li>
 </ul>
-<h5 class="code-line" data-line-start=2604 data-line-end=2605 ><a id="Enums_2604"></a>Enums存在的一个问题</h5>
+<h5 id="74"class="code-line" data-line-start=2604 data-line-end=2605 ><a id="Enums_2604"></a>Enums存在的一个问题</h5>
 <ul>
 <li class="has-line-data" data-line-start="2606" data-line-end="2608">判断ET类型变量e是ET中的哪一个variant：pattern matching</li>
 </ul>
-<h3 class="code-line" data-line-start=2608 data-line-end=2609 ><a id="10__2608"></a>10 模式匹配</h3>
-<h5 class="code-line" data-line-start=2610 data-line-end=2611 ><a id="Enum_2610"></a>Enum</h5>
+<h3 id="14"class="code-line" data-line-start=2608 data-line-end=2609 ><a id="10__2608"></a>10 模式匹配</h3>
+<h5 id="75"class="code-line" data-line-start=2610 data-line-end=2611 ><a id="Enum_2610"></a>Enum</h5>
 <pre><code class="has-line-data" data-line-start="2613" data-line-end="2622" class="language-rust"><span class="hljs-keyword">impl</span> TimeUnit {
     <span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">plural</span></span>(<span class="hljs-keyword">self</span>) -&gt; &amp;<span class="hljs-string">'static</span> <span class="hljs-keyword">str</span> {
         <span class="hljs-keyword">match</span> <span class="hljs-keyword">self</span> {
@@ -2374,7 +2420,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     }
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2635 data-line-end=2636 ><a id="literal_pattern_variable_pattern_wildcard_pattern_2635"></a>literal pattern, variable pattern, wildcard pattern</h5>
+<h5 id="76"class="code-line" data-line-start=2635 data-line-end=2636 ><a id="literal_pattern_variable_pattern_wildcard_pattern_2635"></a>literal pattern, variable pattern, wildcard pattern</h5>
 <ul>
 <li class="has-line-data" data-line-start="2637" data-line-end="2639">literal pattern, variable pattern</li>
 </ul>
@@ -2391,7 +2437,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     _ =&gt; {},
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2655 data-line-end=2656 ><a id="tuple_pattern_struct_pattern_2655"></a>tuple pattern, struct pattern</h5>
+<h5 id="77"class="code-line" data-line-start=2655 data-line-end=2656 ><a id="tuple_pattern_struct_pattern_2655"></a>tuple pattern, struct pattern</h5>
 <ul>
 <li class="has-line-data" data-line-start="2657" data-line-end="2659">tuple pattern</li>
 </ul>
@@ -2418,7 +2464,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     ...
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2687 data-line-end=2688 ><a id="array_pattern_slice_pattern_2687"></a>array pattern, slice pattern</h5>
+<h5 id="78"class="code-line" data-line-start=2687 data-line-end=2688 ><a id="array_pattern_slice_pattern_2687"></a>array pattern, slice pattern</h5>
 <pre><code class="has-line-data" data-line-start="2690" data-line-end="2695" class="language-rust"><span class="hljs-keyword">match</span> a {
     [_, _, <span class="hljs-number">0</span>] =&gt; [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>],
     ...
@@ -2431,7 +2477,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     [x, .., y] =&gt; {},
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2705 data-line-end=2706 ><a id="reference_pattern_2705"></a>reference pattern</h5>
+<h5 id="79"class="code-line" data-line-start=2705 data-line-end=2706 ><a id="reference_pattern_2705"></a>reference pattern</h5>
 <pre><code class="has-line-data" data-line-start="2708" data-line-end="2721" class="language-rust"><span class="hljs-keyword">match</span> account {
     Account { name, .. } =&gt; {
         f(&amp;name);
@@ -2452,7 +2498,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     &amp;Pointer { x, y } =&gt; {} <span class="hljs-comment">//若x, y不是copy type则编译错误，无法从共享引用中move out一个值</span>
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2730 data-line-end=2731 ><a id="Match_Guards_2730"></a>Match Guards</h5>
+<h5 id="80"class="code-line" data-line-start=2730 data-line-end=2731 ><a id="Match_Guards_2730"></a>Match Guards</h5>
 <pre><code class="has-line-data" data-line-start="2733" data-line-end="2741" class="language-rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>(x: <span class="hljs-keyword">i64</span>) {
     <span class="hljs-keyword">match</span> s {
         <span class="hljs-built_in">None</span> =&gt; {},
@@ -2469,14 +2515,14 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     }
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2752 data-line-end=2753 ><a id="Matching_Multiple_Possibilities_2752"></a>Matching Multiple Possibilities</h5>
+<h5 id="81"class="code-line" data-line-start=2752 data-line-end=2753 ><a id="Matching_Multiple_Possibilities_2752"></a>Matching Multiple Possibilities</h5>
 <pre><code class="has-line-data" data-line-start="2755" data-line-end="2761" class="language-rust"><span class="hljs-keyword">match</span> c {
     <span class="hljs-string">'a'</span>..=<span class="hljs-string">'z'</span> | <span class="hljs-string">'A'</span>..=<span class="hljs-string">'Z'</span> =&gt; {},
     <span class="hljs-string">'0'</span>..=<span class="hljs-string">'9'</span> =&gt; {},
     _ =&gt; {},
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2762 data-line-end=2763 ><a id="Bingding_with__Patterns_2762"></a>Bingding with @ Patterns</h5>
+<h5 id="82"class="code-line" data-line-start=2762 data-line-end=2763 ><a id="Bingding_with__Patterns_2762"></a>Bingding with @ Patterns</h5>
 <pre><code class="has-line-data" data-line-start="2765" data-line-end="2772" class="language-rust"><span class="hljs-keyword">match</span> s {
     Shape::Rect(top_left, bottom_right) =&gt; {
         paint(&amp;Shape::Rect(top_left, bottom_right))
@@ -2491,7 +2537,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     _ {}
 }
 </code></pre>
-<h5 class="code-line" data-line-start=2782 data-line-end=2783 ><a id="Pattern_Matching__2782"></a>Pattern Matching 其他可以使用的地方</h5>
+<h5 id="83"class="code-line" data-line-start=2782 data-line-end=2783 ><a id="Pattern_Matching__2782"></a>Pattern Matching 其他可以使用的地方</h5>
 <pre><code class="has-line-data" data-line-start="2785" data-line-end="2797" class="language-rust"><span class="hljs-keyword">let</span> Track { album, title, .. } = song; 
 
 <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">dis</span></span>((x, y): (<span class="hljs-keyword">f64</span>, <span class="hljs-keyword">f64</span>)) {}
@@ -2504,7 +2550,7 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
 
 <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-built_in">Err</span>(err) = f() {}
 </code></pre>
-<h5 class="code-line" data-line-start=2798 data-line-end=2799 ><a id="Binary_Tree__2798"></a>Binary Tree 示例</h5>
+<h5 id="84"class="code-line" data-line-start=2798 data-line-end=2799 ><a id="Binary_Tree__2798"></a>Binary Tree 示例</h5>
 <pre><code class="has-line-data" data-line-start="2801" data-line-end="2823" class="language-rust"><span class="hljs-keyword">impl</span>&lt;T: <span class="hljs-built_in">Ord</span>&gt; BinaryTree&lt;T&gt; {
     <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">add</span></span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, value: T) {
         <span class="hljs-keyword">match</span> *<span class="hljs-keyword">self</span> {
@@ -2527,8 +2573,8 @@ assert_eq(size_of::&lt;Ordering&gt;(), <span class="hljs-number">1</span>);
     }
 }
 </code></pre>
-<h3 class="code-line" data-line-start=2824 data-line-end=2825 ><a id="11_Trait_and_Generic_2824"></a>11 Trait and Generic</h3>
-<h5 class="code-line" data-line-start=2826 data-line-end=2827 ><a id="Trait_2826"></a>Trait</h5>
+<h3 id="15"class="code-line" data-line-start=2824 data-line-end=2825 ><a id="11_Trait_and_Generic_2824"></a>11 Trait and Generic</h3>
+<h5 id="16"class="code-line" data-line-start=2826 data-line-end=2827 ><a id="Trait_2826"></a>Trait</h5>
 <ul>
 <li class="has-line-data" data-line-start="2828" data-line-end="2830">定义示例</li>
 </ul>
@@ -2551,7 +2597,7 @@ sya_hello(&amp;<span class="hljs-keyword">mut</span> file)?;
 <pre><code class="has-line-data" data-line-start="2850" data-line-end="2853" class="language-rust"><span class="hljs-comment">//Trait Bound on type parameters in generic functions</span>
 <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">min</span></span>&lt;T: <span class="hljs-built_in">Ord</span>&gt;(value1: T, value2: T) -&gt; T {}
 </code></pre>
-<h5 class="code-line" data-line-start=2854 data-line-end=2855 ><a id="Trait_2854"></a>Trait的使用</h5>
+<h5 id="17"class="code-line" data-line-start=2854 data-line-end=2855 ><a id="Trait_2854"></a>Trait的使用</h5>
 <ul>
 <li class="has-line-data" data-line-start="2856" data-line-end="2862">
 <p class="has-line-data" data-line-start="2856" data-line-end="2857">需要确保trait被引入到当前作用域</p>
@@ -2594,5 +2640,18 @@ say_hello(&amp;<span class="hljs-keyword">mut</span> file)?;
 <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">f</span></span>&lt;<span class="hljs-string">'t</span>, <span class="hljs-string">'c</span>, P&gt;() {}
 </code></pre>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.12.3/tocbot.min.js"></script>
+    <script>
+        // 页面加载后初始化目录
+        document.addEventListener('DOMContentLoaded', function() {
+            tocbot.init({
+                tocSelector: '#toc',
+                contentSelector: '.markdown-body',
+                headingSelector: 'h3, h5',
+                collapseDepth: 3,
+                scrollSmooth: true
+            });
+        });
+    </script>
 </body>
 </html>
